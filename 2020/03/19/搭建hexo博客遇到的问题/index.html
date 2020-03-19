@@ -79,18 +79,16 @@
 
 
 
-<meta name="description" content="折腾了一天，终于搭好了这个博客，明天开始认真写博客。">
+<meta name="description" content="1. 初始化hexo在windows下如果用cmd执行 hexo init 会报错，要用git bash执行 2. 安装上传到github的插件npm install hexo-deployer-git --save 也要在git bash执行，如果在cmd执行，hexo d 的时候会报错 ERROR Deployer not found: git 3. 在文章中插入图片在站点配置文件中找到 po">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第一篇博客">
-<meta property="og:url" content="http://yoursite.com/2020/03/17/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:title" content="搭建hexo博客遇到的问题">
+<meta property="og:url" content="http://yoursite.com/2020/03/19/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Oah&#39;s Blog">
-<meta property="og:description" content="折腾了一天，终于搭好了这个博客，明天开始认真写博客。">
-<meta property="og:image" content="http://yoursite.com/2020/03/17/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/036add8c3645aa3a2d2bdec6d270edcb.jpg">
-<meta property="article:published_time" content="2020-03-17T13:22:49.000Z">
-<meta property="article:modified_time" content="2020-03-18T07:08:14.421Z">
+<meta property="og:description" content="1. 初始化hexo在windows下如果用cmd执行 hexo init 会报错，要用git bash执行 2. 安装上传到github的插件npm install hexo-deployer-git --save 也要在git bash执行，如果在cmd执行，hexo d 的时候会报错 ERROR Deployer not found: git 3. 在文章中插入图片在站点配置文件中找到 po">
+<meta property="article:published_time" content="2020-03-19T00:46:14.000Z">
+<meta property="article:modified_time" content="2020-03-19T01:02:55.774Z">
 <meta property="article:author" content="Oah">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/03/17/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/036add8c3645aa3a2d2bdec6d270edcb.jpg">
 
 
 
@@ -120,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/03/17/第一篇博客/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/03/19/搭建hexo博客遇到的问题/"/>
 
 
 
 
 
-  <title>第一篇博客 | Oah's Blog</title>
+  <title>搭建hexo博客遇到的问题 | Oah's Blog</title>
   
 
 
@@ -223,7 +221,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/17/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/19/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Oah">
@@ -240,7 +238,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">第一篇博客</h1>
+          <h1 class="post-title" itemprop="name headline">搭建hexo博客遇到的问题</h1>
         
 
         <div class="post-meta">
@@ -252,8 +250,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-17T21:22:49+08:00">
-                2020-03-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-19T08:46:14+08:00">
+                2020-03-19
               </time>
             
 
@@ -290,8 +288,22 @@
       
 
       
-        <p>折腾了一天，终于搭好了这个博客，明天开始认真写博客。</p>
-<p><img src="036add8c3645aa3a2d2bdec6d270edcb.jpg" alt="img"></p>
+        <h2 id="1-初始化hexo"><a href="#1-初始化hexo" class="headerlink" title="1. 初始化hexo"></a>1. 初始化hexo</h2><p>在windows下如果用cmd执行 <code>hexo init</code> 会报错，要用git bash执行</p>
+<h2 id="2-安装上传到github的插件"><a href="#2-安装上传到github的插件" class="headerlink" title="2. 安装上传到github的插件"></a>2. 安装上传到github的插件</h2><p><code>npm install hexo-deployer-git --save</code> 也要在git bash执行，如果在cmd执行，<code>hexo d</code> 的时候会报错 <code>ERROR Deployer not found: git</code></p>
+<h2 id="3-在文章中插入图片"><a href="#3-在文章中插入图片" class="headerlink" title="3. 在文章中插入图片"></a>3. 在文章中插入图片</h2><p>在站点配置文件中找到 <code>post_asset_folder: false</code>，改为 <code>true</code>，再执行 <code>hexo n</code> 的时候会在 <code>_post</code> 新建一个markdown文件和同名文件夹，将要用到的图片放进同名文件夹，在markdown文件中用 <code>![图片备注](图片名.jpg)</code> 的方式引用</p>
+<h2 id="4-next主题菜单设置"><a href="#4-next主题菜单设置" class="headerlink" title="4. next主题菜单设置"></a>4. next主题菜单设置</h2><p>next主题配置文件中的菜单设置默认是这样的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: &#x2F; || home</span><br></pre></td></tr></table></figure>
+
+<p>但是在博客中点击首页按钮会报错 <code>cannot GET /20%/</code>，因为它把 <code>/</code> 后的空格也当成目录了，所以要把 <code>/</code> 后的空格去掉</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: &#x2F;|| home</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-next主题默认不显示全文"><a href="#5-next主题默认不显示全文" class="headerlink" title="5. next主题默认不显示全文"></a>5. next主题默认不显示全文</h2><p>找到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">auto_excerpt:</span><br><span class="line">  enable: false</span><br><span class="line">  length: 150</span><br></pre></td></tr></table></figure>
+
+<p>改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">auto_excerpt:</span><br><span class="line">  enable: true</span><br><span class="line">  length: 150</span><br></pre></td></tr></table></figure>
+
+<p>也可以在文章中加入 <code>&lt;!-- more --&gt;</code>，后面的内容就不会显示在首页中</p>
 
       
     </div>
@@ -316,15 +328,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2020/03/17/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" rel="next" title="第一篇博客">
+                <i class="fa fa-chevron-left"></i> 第一篇博客
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/19/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" rel="prev" title="搭建hexo博客遇到的问题">
-                搭建hexo博客遇到的问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -376,8 +388,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -419,6 +440,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-初始化hexo"><span class="nav-number">1.</span> <span class="nav-text">1. 初始化hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-安装上传到github的插件"><span class="nav-number">2.</span> <span class="nav-text">2. 安装上传到github的插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-在文章中插入图片"><span class="nav-number">3.</span> <span class="nav-text">3. 在文章中插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-next主题菜单设置"><span class="nav-number">4.</span> <span class="nav-text">4. next主题菜单设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-next主题默认不显示全文"><span class="nav-number">5.</span> <span class="nav-text">5. next主题默认不显示全文</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
