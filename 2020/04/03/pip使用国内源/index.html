@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="项目目录结构12345|_项目文件夹    |_Dockerfile    |_app        |_app.py        |_requirements.txt  Dockerfile的编写假设要部署到 &#x2F;usr&#x2F;src&#x2F;app 目录 1234567891011121314#基于的基础镜像FROM python#代码添加到目标目录ADD .&#x2F;app &#x2F;usr&amp;#x2F">
+<meta name="description" content="用pip安装模块的时候，默认使用国外的源，速度特别慢。可以通过使用国内源解决。 用法1pip install -i &lt;源地址&gt; &lt;模块名&gt;  国内源   源 源地址    豆瓣 https:&#x2F;&#x2F;pypi.douban.com&#x2F;simple&#x2F;   阿里云 http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;pypi&#x2F;simple&#x2F;   中国科技大学 https:&#x2F;&#x2F;pypi.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="将Python项目部署到Docker">
-<meta property="og:url" content="http://yoursite.com/2020/03/19/%E5%B0%86Python%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0Docker/index.html">
+<meta property="og:title" content="pip使用国内源">
+<meta property="og:url" content="http://yoursite.com/2020/04/03/pip%E4%BD%BF%E7%94%A8%E5%9B%BD%E5%86%85%E6%BA%90/index.html">
 <meta property="og:site_name" content="Oah&#39;s Blog">
-<meta property="og:description" content="项目目录结构12345|_项目文件夹    |_Dockerfile    |_app        |_app.py        |_requirements.txt  Dockerfile的编写假设要部署到 &#x2F;usr&#x2F;src&#x2F;app 目录 1234567891011121314#基于的基础镜像FROM python#代码添加到目标目录ADD .&#x2F;app &#x2F;usr&amp;#x2F">
-<meta property="article:published_time" content="2020-03-19T03:41:04.000Z">
-<meta property="article:modified_time" content="2020-03-27T06:20:06.760Z">
+<meta property="og:description" content="用pip安装模块的时候，默认使用国外的源，速度特别慢。可以通过使用国内源解决。 用法1pip install -i &lt;源地址&gt; &lt;模块名&gt;  国内源   源 源地址    豆瓣 https:&#x2F;&#x2F;pypi.douban.com&#x2F;simple&#x2F;   阿里云 http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;pypi&#x2F;simple&#x2F;   中国科技大学 https:&#x2F;&#x2F;pypi.">
+<meta property="article:published_time" content="2020-04-03T07:44:41.000Z">
+<meta property="article:modified_time" content="2020-04-03T07:52:04.819Z">
 <meta property="article:author" content="Oah">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/03/19/将Python项目部署到Docker/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/04/03/pip使用国内源/"/>
 
 
 
 
 
-  <title>将Python项目部署到Docker | Oah's Blog</title>
+  <title>pip使用国内源 | Oah's Blog</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/19/%E5%B0%86Python%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0Docker/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/03/pip%E4%BD%BF%E7%94%A8%E5%9B%BD%E5%86%85%E6%BA%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Oah">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">将Python项目部署到Docker</h1>
+          <h1 class="post-title" itemprop="name headline">pip使用国内源</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-19T11:41:04+08:00">
-                2020-03-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-03T15:44:41+08:00">
+                2020-04-03
               </time>
             
 
@@ -299,12 +299,38 @@
       
 
       
-        <h2 id="项目目录结构"><a href="#项目目录结构" class="headerlink" title="项目目录结构"></a>项目目录结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">|_项目文件夹</span><br><span class="line">    |_Dockerfile</span><br><span class="line">    |_app</span><br><span class="line">        |_app.py</span><br><span class="line">        |_requirements.txt</span><br></pre></td></tr></table></figure>
+        <p>用pip安装模块的时候，默认使用国外的源，速度特别慢。可以通过使用国内源解决。</p>
+<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -i &lt;源地址&gt; &lt;模块名&gt;</span><br></pre></td></tr></table></figure>
 
-<h2 id="Dockerfile的编写"><a href="#Dockerfile的编写" class="headerlink" title="Dockerfile的编写"></a>Dockerfile的编写</h2><p>假设要部署到 <code>/usr/src/app</code> 目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#基于的基础镜像</span><br><span class="line">FROM python</span><br><span class="line"></span><br><span class="line">#代码添加到目标目录</span><br><span class="line">ADD .&#x2F;app &#x2F;usr&#x2F;src&#x2F;app</span><br><span class="line"></span><br><span class="line"># 设置app文件夹是工作目录</span><br><span class="line">WORKDIR &#x2F;usr&#x2F;src&#x2F;app</span><br><span class="line"></span><br><span class="line"># 安装支持（使用国内源，不然会很慢）</span><br><span class="line">RUN pip install -i https:&#x2F;&#x2F;pypi.douban.com&#x2F;simple --no-cache-dir -r requirements.txt</span><br><span class="line"></span><br><span class="line"># 运行</span><br><span class="line">CMD [ &quot;python&quot;, &quot;&#x2F;usr&#x2F;src&#x2F;app&#x2F;app.py&quot; ]</span><br></pre></td></tr></table></figure>
+<h1 id="国内源"><a href="#国内源" class="headerlink" title="国内源"></a>国内源</h1><table>
+<thead>
+<tr>
+<th>源</th>
+<th>源地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>豆瓣</td>
+<td><a href="https://pypi.douban.com/simple/" target="_blank" rel="noopener">https://pypi.douban.com/simple/</a></td>
+</tr>
+<tr>
+<td>阿里云</td>
+<td><a href="http://mirrors.aliyun.com/pypi/simple/" target="_blank" rel="noopener">http://mirrors.aliyun.com/pypi/simple/</a></td>
+</tr>
+<tr>
+<td>中国科技大学</td>
+<td><a href="https://pypi.mirrors.ustc.edu.cn/simple/" target="_blank" rel="noopener">https://pypi.mirrors.ustc.edu.cn/simple/</a></td>
+</tr>
+<tr>
+<td>清华大学</td>
+<td><a href="https://pypi.tuna.tsinghua.edu.cn/simple/" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple/</a></td>
+</tr>
+<tr>
+<td>中国科学技术大学</td>
+<td><a href="http://pypi.mirrors.ustc.edu.cn/simple/" target="_blank" rel="noopener">http://pypi.mirrors.ustc.edu.cn/simple/</a></td>
+</tr>
+</tbody></table>
 
-<h2 id="生成Docker镜像"><a href="#生成Docker镜像" class="headerlink" title="生成Docker镜像"></a>生成Docker镜像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docekr build -t &lt;镜像名:标签&gt; -f &lt;DockerFile路径&gt;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -334,8 +360,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/19/Python%E7%94%9F%E6%88%90requirements-txt%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95/" rel="next" title="Python生成requirements.txt的两种方法">
-                <i class="fa fa-chevron-left"></i> Python生成requirements.txt的两种方法
+              <a href="/2020/04/03/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB/" rel="next" title="Web安全学习资源汇总">
+                <i class="fa fa-chevron-left"></i> Web安全学习资源汇总
               </a>
             
           </div>
@@ -343,10 +369,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/25/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/" rel="prev" title="浏览器的同源策略">
-                浏览器的同源策略 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -469,7 +491,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目目录结构"><span class="nav-number">1.</span> <span class="nav-text">项目目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dockerfile的编写"><span class="nav-number">2.</span> <span class="nav-text">Dockerfile的编写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成Docker镜像"><span class="nav-number">3.</span> <span class="nav-text">生成Docker镜像</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#用法"><span class="nav-number">1.</span> <span class="nav-text">用法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#国内源"><span class="nav-number">2.</span> <span class="nav-text">国内源</span></a></li></ol></div>
             
 
           </div>
