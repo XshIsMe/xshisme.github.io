@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="A1:2017-注入将不受信任的数据作为命令或查询的一部分发送到解析器时，会产生诸如SQL注入、NoSQL注入、OS注入和LDAP注入的注入缺陷。攻击者的恶意数据可以诱使解析器在没有适当授权的情况下执行非预期命令或访问数据。 A2:2017-失效的身份认证通常，通过错误使用应用程序的身份认证和会话管理功能，攻击者能够破译密码、密钥或会话令牌，或者利用其它开发缺陷来暂时性或永久性冒充其他用户的身份。">
+<meta name="description" content="2017 OWASP TOP 10">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OWASP TOP 10">
 <meta property="og:url" content="http://yoursite.com/2020/04/23/OWASP-TOP-10/index.html">
 <meta property="og:site_name" content="Oah&#39;s Blog">
-<meta property="og:description" content="A1:2017-注入将不受信任的数据作为命令或查询的一部分发送到解析器时，会产生诸如SQL注入、NoSQL注入、OS注入和LDAP注入的注入缺陷。攻击者的恶意数据可以诱使解析器在没有适当授权的情况下执行非预期命令或访问数据。 A2:2017-失效的身份认证通常，通过错误使用应用程序的身份认证和会话管理功能，攻击者能够破译密码、密钥或会话令牌，或者利用其它开发缺陷来暂时性或永久性冒充其他用户的身份。">
+<meta property="og:description" content="2017 OWASP TOP 10">
 <meta property="article:published_time" content="2020-04-23T09:26:47.000Z">
-<meta property="article:modified_time" content="2020-04-23T09:32:40.439Z">
+<meta property="article:modified_time" content="2020-04-23T09:58:37.391Z">
 <meta property="article:author" content="Oah">
 <meta property="article:tag" content="Web安全">
 <meta name="twitter:card" content="summary">
@@ -299,16 +299,7 @@
       
 
       
-        <h1 id="A1-2017-注入"><a href="#A1-2017-注入" class="headerlink" title="A1:2017-注入"></a>A1:2017-注入</h1><p>将不受信任的数据作为命令或查询的一部分发送到解析器时，会产生诸如SQL注入、NoSQL注入、OS注入和LDAP注入的注入缺陷。攻击者的恶意数据可以诱使解析器在没有适当授权的情况下执行非预期命令或访问数据。</p>
-<h1 id="A2-2017-失效的身份认证"><a href="#A2-2017-失效的身份认证" class="headerlink" title="A2:2017-失效的身份认证"></a>A2:2017-失效的身份认证</h1><p>通常，通过错误使用应用程序的身份认证和会话管理功能，攻击者能够破译密码、密钥或会话令牌，或者利用其它开发缺陷来暂时性或永久性冒充其他用户的身份。</p>
-<h1 id="A3-2017-敏感信息泄露"><a href="#A3-2017-敏感信息泄露" class="headerlink" title="A3:2017-敏感信息泄露"></a>A3:2017-敏感信息泄露</h1><p>许多Web应用程序和API都无法正确保护敏感数据，例如：财务数据、医疗数据和PII数据。攻击者可以通过窃取或修改未加密的数据来实施信用卡诈骗、身份盗窃或其他犯罪行为。未加密的敏感数据容易受到破坏，因此，我们需要对敏感数据加密，这些数据包括：传输过程中的数据、存储的数据以及浏览器的交互数据。</p>
-<h1 id="A4-2017-XML-外部实体（XXE）"><a href="#A4-2017-XML-外部实体（XXE）" class="headerlink" title="A4:2017-XML 外部实体（XXE）"></a>A4:2017-XML 外部实体（XXE）</h1><p>许多较早的或配置错误的XML处理器评估了XML文件中的外部实体引用。攻击者可以利用外部实体窃取使用URI文件处理器的内部文件和共享文件、监听内部扫描端口、执行远程代码和实施拒绝服务攻击。</p>
-<h1 id="A5-2017-失效的访问控制"><a href="#A5-2017-失效的访问控制" class="headerlink" title="A5:2017-失效的访问控制"></a>A5:2017-失效的访问控制</h1><p>未对通过身份验证的用户实施恰当的访问控制。攻击者可以利用这些缺陷访问未经授权的功能或数据，例如：访问其他用户的帐户、查看敏感文件、修改其他用户的数据、更改访问权限等。</p>
-<h1 id="A6-2017-安全配置错误"><a href="#A6-2017-安全配置错误" class="headerlink" title="A6:2017-安全配置错误"></a>A6:2017-安全配置错误</h1><p>安全配置错误是最常见的安全问题，这通常是由于不安全的默认配置、不完整的临时配置、开源云存储、错误的HTTP 标头配置以及包含敏感信息的详细错误信息所造成的。因此，我们不仅需要对所有的操作系统、框架、库和应用程序进行安全配置，而且必须及时修补和升级它们。</p>
-<h1 id="A7-2017-跨站脚本（XSS）"><a href="#A7-2017-跨站脚本（XSS）" class="headerlink" title="A7:2017-跨站脚本（XSS）"></a>A7:2017-跨站脚本（XSS）</h1><p>当应用程序的新网页中包含不受信任的、未经恰当验证或转义的数据时，或者使用可以创建HTML或JavaScript 的浏览器API 更新现有的网页时，就会出现XSS 缺陷。XSS 让攻击者能够在受害者的浏览器中执行脚本，并劫持用户会话、破坏网站或将用户重定向到恶意站点。</p>
-<h1 id="A8-2017-不安全的反序列化"><a href="#A8-2017-不安全的反序列化" class="headerlink" title="A8:2017-不安全的反序列化"></a>A8:2017-不安全的反序列化</h1><p>不安全的反序列化会导致远程代码执行。即使反序列化缺陷不会导致远程代码执行，攻击者也可以利用它们来执行攻击，包括：重播攻击、注入攻击和特权升级攻击。</p>
-<h1 id="A9-2017-使用含有已知漏洞的组件"><a href="#A9-2017-使用含有已知漏洞的组件" class="headerlink" title="A9:2017-使用含有已知漏洞的组件"></a>A9:2017-使用含有已知漏洞的组件</h1><p>组件（例如：库、框架和其他软件模块）拥有和应用程序相同的权限。如果应用程序中含有已知漏洞的组件被攻击者利用，可能会造成严重的数据丢失或服务器接管。同时，使用含有已知漏洞的组件的应用程序和API可能会破坏应用程序防御、造成各种攻击并产生严重影响。</p>
-<h1 id="A10-2017-不足的日志记录和监控"><a href="#A10-2017-不足的日志记录和监控" class="headerlink" title="A10:2017-不足的日志记录和监控"></a>A10:2017-不足的日志记录和监控</h1><p>不足的日志记录和监控，以及事件响应缺失或无效的集成，使攻击者能够进一步攻击系统、保持持续性或转向更多系统，以及篡改、提取或销毁数据。大多数缺陷研究显示，缺陷被检测出的时间超过200天，且通常通过外部检测方检测，而不是通过内部流程或监控检测。</p>
+        <p><a href="http://www.owasp.org.cn/owasp-project/2017-owasp-top-10" target="_blank" rel="noopener">2017 OWASP TOP 10</a></p>
 
       
     </div>
@@ -399,17 +390,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -460,22 +442,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#A1-2017-注入"><span class="nav-number">1.</span> <span class="nav-text">A1:2017-注入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A2-2017-失效的身份认证"><span class="nav-number">2.</span> <span class="nav-text">A2:2017-失效的身份认证</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A3-2017-敏感信息泄露"><span class="nav-number">3.</span> <span class="nav-text">A3:2017-敏感信息泄露</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A4-2017-XML-外部实体（XXE）"><span class="nav-number">4.</span> <span class="nav-text">A4:2017-XML 外部实体（XXE）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A5-2017-失效的访问控制"><span class="nav-number">5.</span> <span class="nav-text">A5:2017-失效的访问控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A6-2017-安全配置错误"><span class="nav-number">6.</span> <span class="nav-text">A6:2017-安全配置错误</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A7-2017-跨站脚本（XSS）"><span class="nav-number">7.</span> <span class="nav-text">A7:2017-跨站脚本（XSS）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A8-2017-不安全的反序列化"><span class="nav-number">8.</span> <span class="nav-text">A8:2017-不安全的反序列化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A9-2017-使用含有已知漏洞的组件"><span class="nav-number">9.</span> <span class="nav-text">A9:2017-使用含有已知漏洞的组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A10-2017-不足的日志记录和监控"><span class="nav-number">10.</span> <span class="nav-text">A10:2017-不足的日志记录和监控</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
