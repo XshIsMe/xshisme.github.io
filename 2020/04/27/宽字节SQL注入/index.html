@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Oah&#39;s Blog">
 <meta property="og:description" content="GBK 和 UTF-8 UTF-8 (8-bit Unicode Transformation Format)是一种针对Unicode的可变长度字符编码，又称万国码，它包含全世界所有国家需要用到的字符，是国际编码，通用性强，是用以解决国际上字符的一种多字节编码。由Ken Thompson于1992年创建。UTF-8用1到4个字节编码UNICODE字符，它对英文使用8位&#x2F;8Bit（即1个字节&#x2F;1By">
 <meta property="article:published_time" content="2020-04-27T05:11:40.000Z">
-<meta property="article:modified_time" content="2020-04-27T05:12:11.830Z">
+<meta property="article:modified_time" content="2020-04-27T06:02:53.162Z">
 <meta property="article:author" content="Oah">
 <meta property="article:tag" content="Web安全">
 <meta name="twitter:card" content="summary">
@@ -328,7 +328,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">content</span>, <span class="keyword">length</span>(<span class="keyword">content</span>) <span class="keyword">FROM</span> <span class="keyword">test</span>;</span><br></pre></td></tr></table></figure>
 
-<h1 id="宽字节SQL注入"><a href="#宽字节SQL注入" class="headerlink" title="宽字节SQL注入"></a>宽字节SQL注入</h1><figure class="highlight plain"><figcaption><span>输入</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1&#39; UNION SELECT 1,2 #</span><br><span class="line"># URL编码</span><br><span class="line">1%27+UNION+SELECT+1%2C2%23</span><br><span class="line"># 在%27前加上%DF</span><br><span class="line">1%DF%27+UNION+SELECT+1%2C2%23</span><br></pre></td></tr></table></figure>
+<h1 id="宽字节SQL注入"><a href="#宽字节SQL注入" class="headerlink" title="宽字节SQL注入"></a>宽字节SQL注入</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入</span></span><br><span class="line">1' UNION <span class="keyword">SELECT</span> <span class="number">1</span>,<span class="number">2</span><span class="comment">#</span></span><br><span class="line"><span class="comment"># URL编码</span></span><br><span class="line"><span class="number">1</span>%<span class="number">27</span>+<span class="keyword">UNION</span>+<span class="keyword">SELECT</span>+<span class="number">1</span>%<span class="number">2</span>C2%<span class="number">23</span></span><br><span class="line"><span class="comment"># 在%27前加上%DF</span></span><br><span class="line"><span class="number">1</span>%DF%<span class="number">27</span>+<span class="keyword">UNION</span>+<span class="keyword">SELECT</span>+<span class="number">1</span>%<span class="number">2</span>C2%<span class="number">23</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="为什么反斜杠会变成-“運”"><a href="#为什么反斜杠会变成-“運”" class="headerlink" title="为什么反斜杠会变成 “運”"></a>为什么反斜杠会变成 “運”</h2><ul>
 <li><code>id=1&#39;</code> 转义成 <code>id=1\&#39;</code></li>
