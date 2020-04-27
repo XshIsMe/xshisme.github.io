@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Oah&#39;s Blog">
 <meta property="og:description" content="information_schema 数据库存储了数据库的信息  tables 表  table_schema 字段：数据库名 table_name 字段：表名   columns 表  table_schema 字段：数据库名 table_name 字段：表名 column_name 字段：字段名    用法 123# FROM 数据库名.表名SELECT table_schema, table">
 <meta property="article:published_time" content="2020-04-27T04:45:29.000Z">
-<meta property="article:modified_time" content="2020-04-27T05:10:18.905Z">
+<meta property="article:modified_time" content="2020-04-27T05:12:28.569Z">
 <meta property="article:author" content="Oah">
 <meta property="article:tag" content="Web安全">
 <meta name="twitter:card" content="summary">
@@ -371,34 +371,6 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM (SELECT 1)a JOIN (SELECT 2)b JOIN (SELECT 3)c;</span><br><span class="line">+<span class="comment">---+---+---+</span></span><br><span class="line">| 1 | 2 | 3 |</span><br><span class="line">+<span class="comment">---+---+---+</span></span><br><span class="line">| 1 | 2 | 3 |</span><br><span class="line">+<span class="comment">---+---+---+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
 
 <h2 id="regexp-语句"><a href="#regexp-语句" class="headerlink" title="regexp 语句"></a>regexp 语句</h2><p>如果 <code>=</code> 被禁用，可以用 <code>regexp</code> 代替</p>
-<h1 id="宽字节SQL注入"><a href="#宽字节SQL注入" class="headerlink" title="宽字节SQL注入"></a>宽字节SQL注入</h1><h2 id="GBK-和-UTF-8"><a href="#GBK-和-UTF-8" class="headerlink" title="GBK 和 UTF-8"></a>GBK 和 UTF-8</h2><ul>
-<li><p><strong>UTF-8 (8-bit Unicode Transformation Format)</strong><br>是一种针对Unicode的可变长度字符编码，又称万国码，它包含全世界所有国家需要用到的字符，是国际编码，通用性强，是用以解决国际上字符的一种多字节编码。由Ken Thompson于1992年创建。UTF-8用1到4个字节编码UNICODE字符，它对英文使用8位/8Bit（即1个字节/1Byte），中文使用24位/24Bit（3个字节/3Byte）来编码。用在网页上可以同一页面显示中文简体繁体及其它语言（如日文，韩文）</p>
-</li>
-<li><p><strong>GBK (Chinese Internal Code Specification)</strong><br>是汉字编码标准之一，全称《汉字内码扩展规范》，中华人民共和国全国信息技术标准化技术委员会1995年12月1日制订，国家技术监督局标准化司、电子工业部科技与质量监督司1995年12月15日联合以技监标函1995 229号文件的形式，将它确定为技术规范指导性文件。<br>GBK是国家标准GB2312基础上扩容后兼容GB2312的标准（GB2312共收录了7445个字符，包括6763个汉字和682个其它符号；GBK共收录了27484个汉字，同时还收录了藏文、蒙文、维吾尔文等主要的少数民族文字）。GBK的文字编码是用双字节来表示的，即不论中、英文字符均使用双字节来表示（注意，GB系列编码是利用了字节中的最高位和ASCII编码区分的，可以和ASCII码混用。所以全角模式下英文是2字节，半角模式英文还是1字节）。为了区分中文，将其最高位都设定成1。GBK包含全部中文字符，是国家编码，通用性比UTF8差，不过UTF8占用的数据库比GBD大</p>
-</li>
-<li><p>简单概况就是：</p>
-<ul>
-<li>UTF-8英文1字节中文3字节，在编码效率和编码安全性之间做了平衡，适合网络传输，是理想的中文编码方式</li>
-<li>GBK英文1字节(半角1字节，全角2字节)，中文2字节,GBK的范围比GB2312广，GBK兼容GB2312</li>
-</ul>
-</li>
-</ul>
-<h2 id="UTF-8-和-GBK-在-MySQL-中的区别"><a href="#UTF-8-和-GBK-在-MySQL-中的区别" class="headerlink" title="UTF-8 和 GBK 在 MySQL 中的区别"></a>UTF-8 和 GBK 在 MySQL 中的区别</h2><ul>
-<li>分别建一个 GBK 和 UTF-8 的数据库</li>
-<li>在里面存储三行数据：”中文”、”E文”、”a0”</li>
-<li>查询他们的长度</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">content</span>, <span class="keyword">length</span>(<span class="keyword">content</span>) <span class="keyword">FROM</span> <span class="keyword">test</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="宽字节SQL注入-1"><a href="#宽字节SQL注入-1" class="headerlink" title="宽字节SQL注入"></a>宽字节SQL注入</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入</span></span><br><span class="line">1' UNION <span class="keyword">SELECT</span> <span class="number">1</span>,<span class="number">2</span> <span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># URL编码</span></span><br><span class="line"><span class="number">1</span>%<span class="number">27</span>+<span class="keyword">UNION</span>+<span class="keyword">SELECT</span>+<span class="number">1</span>%<span class="number">2</span>C2%<span class="number">23</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在%27前加上%DF</span></span><br><span class="line"><span class="number">1</span>%DF%<span class="number">27</span>+<span class="keyword">UNION</span>+<span class="keyword">SELECT</span>+<span class="number">1</span>%<span class="number">2</span>C2%<span class="number">23</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="为什么反斜杠会变成-“運”"><a href="#为什么反斜杠会变成-“運”" class="headerlink" title="为什么反斜杠会变成 “運”"></a>为什么反斜杠会变成 “運”</h3><ul>
-<li><code>id=1&#39;</code> 转义成 <code>id=1\&#39;</code></li>
-<li><code>id=1\&#39;</code> 进行URL编码变成 <code>id=1%5C%27</code></li>
-<li><code>id=1%5C%27</code> 加上 <code>%DF</code> 变成 <code>id=1%DF%5C%27</code> </li>
-<li><code>id=1%DF%5C%27</code> 进行URL解码变成 <code>id=1運&#39;</code> </li>
-<li>其实就是利用GBK是多字节的编码，两个字节代表一个汉字 <code>%DF</code> <code>%5C</code> 组合出了一个 “運” 字</li>
-</ul>
 
       
     </div>
@@ -439,8 +411,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/9999/01/01/Web%E5%AE%89%E5%85%A8%E8%B5%84%E6%BA%90%E6%94%B6%E8%97%8F/" rel="prev" title="【置顶】Web安全资源收藏">
-                【置顶】Web安全资源收藏 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/" rel="prev" title="宽字节SQL注入">
+                宽字节SQL注入 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -518,7 +490,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -564,7 +536,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#information-schema-数据库"><span class="nav-number">1.</span> <span class="nav-text">information_schema 数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注入步骤"><span class="nav-number">2.</span> <span class="nav-text">注入步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#猜解字段数"><span class="nav-number">2.1.</span> <span class="nav-text">猜解字段数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#order"><span class="nav-number">2.1.1.</span> <span class="nav-text">order</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#select"><span class="nav-number">2.1.2.</span> <span class="nav-text">select</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取数据库信息"><span class="nav-number">2.2.</span> <span class="nav-text">获取数据库信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取表名-字段名"><span class="nav-number">2.3.</span> <span class="nav-text">获取表名, 字段名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用函数"><span class="nav-number">3.</span> <span class="nav-text">常用函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#conv-N-from-base-to-base"><span class="nav-number">3.1.</span> <span class="nav-text">conv(N, from_base, to_base)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#substr-string-string-num-start-num-length"><span class="nav-number">3.2.</span> <span class="nav-text">substr(string string,num start,num length)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#limit-子句"><span class="nav-number">3.3.</span> <span class="nav-text">limit 子句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#group-concat"><span class="nav-number">3.4.</span> <span class="nav-text">group_concat()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#join-语句"><span class="nav-number">3.5.</span> <span class="nav-text">join 语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#regexp-语句"><span class="nav-number">3.6.</span> <span class="nav-text">regexp 语句</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#宽字节SQL注入"><span class="nav-number">4.</span> <span class="nav-text">宽字节SQL注入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GBK-和-UTF-8"><span class="nav-number">4.1.</span> <span class="nav-text">GBK 和 UTF-8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF-8-和-GBK-在-MySQL-中的区别"><span class="nav-number">4.2.</span> <span class="nav-text">UTF-8 和 GBK 在 MySQL 中的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#宽字节SQL注入-1"><span class="nav-number">4.3.</span> <span class="nav-text">宽字节SQL注入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么反斜杠会变成-“運”"><span class="nav-number">4.3.1.</span> <span class="nav-text">为什么反斜杠会变成 “運”</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#information-schema-数据库"><span class="nav-number">1.</span> <span class="nav-text">information_schema 数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注入步骤"><span class="nav-number">2.</span> <span class="nav-text">注入步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#猜解字段数"><span class="nav-number">2.1.</span> <span class="nav-text">猜解字段数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#order"><span class="nav-number">2.1.1.</span> <span class="nav-text">order</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#select"><span class="nav-number">2.1.2.</span> <span class="nav-text">select</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取数据库信息"><span class="nav-number">2.2.</span> <span class="nav-text">获取数据库信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取表名-字段名"><span class="nav-number">2.3.</span> <span class="nav-text">获取表名, 字段名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用函数"><span class="nav-number">3.</span> <span class="nav-text">常用函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#conv-N-from-base-to-base"><span class="nav-number">3.1.</span> <span class="nav-text">conv(N, from_base, to_base)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#substr-string-string-num-start-num-length"><span class="nav-number">3.2.</span> <span class="nav-text">substr(string string,num start,num length)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#limit-子句"><span class="nav-number">3.3.</span> <span class="nav-text">limit 子句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#group-concat"><span class="nav-number">3.4.</span> <span class="nav-text">group_concat()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#join-语句"><span class="nav-number">3.5.</span> <span class="nav-text">join 语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#regexp-语句"><span class="nav-number">3.6.</span> <span class="nav-text">regexp 语句</span></a></li></ol></li></ol></div>
             
 
           </div>
