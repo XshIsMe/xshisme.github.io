@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="安装Ubuntu虚拟机 VituralBox：https:&#x2F;&#x2F;www.virtualbox.org&#x2F; Ubuntu：https:&#x2F;&#x2F;ubuntu.com&#x2F;  安装Git 下载Git  1sudo apt install git   配置用户信息  12git config --global user.name &quot;Vulhub&quot;git config --global user.e">
+<meta name="description" content="联合查询注入布尔盲注延时注入报错注入floor 报错注入用到的函数 concat(str1, str2, ...)：将多个字符串连接成一个字符串 floor()：向下取整，只保留整数部分 rand()：生成 0 到 1 之间的随机数，rand(0) 可以设置随机数种子，每次结果相同 version()：返回数据库版本  SQL语句123456789101112SELECT count(*), (">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vulhub的安装">
-<meta property="og:url" content="http://yoursite.com/2020/05/04/Vulhub%E7%9A%84%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:title" content="SQL注入的四种类型">
+<meta property="og:url" content="http://yoursite.com/2020/05/07/SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B/index.html">
 <meta property="og:site_name" content="Oah&#39;s Blog">
-<meta property="og:description" content="安装Ubuntu虚拟机 VituralBox：https:&#x2F;&#x2F;www.virtualbox.org&#x2F; Ubuntu：https:&#x2F;&#x2F;ubuntu.com&#x2F;  安装Git 下载Git  1sudo apt install git   配置用户信息  12git config --global user.name &quot;Vulhub&quot;git config --global user.e">
-<meta property="article:published_time" content="2020-05-04T03:06:38.000Z">
-<meta property="article:modified_time" content="2020-05-04T04:00:38.860Z">
+<meta property="og:description" content="联合查询注入布尔盲注延时注入报错注入floor 报错注入用到的函数 concat(str1, str2, ...)：将多个字符串连接成一个字符串 floor()：向下取整，只保留整数部分 rand()：生成 0 到 1 之间的随机数，rand(0) 可以设置随机数种子，每次结果相同 version()：返回数据库版本  SQL语句123456789101112SELECT count(*), (">
+<meta property="article:published_time" content="2020-05-07T02:31:59.000Z">
+<meta property="article:modified_time" content="2020-05-07T03:06:51.083Z">
 <meta property="article:author" content="Oah">
 <meta property="article:tag" content="Web安全">
 <meta name="twitter:card" content="summary">
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/05/04/Vulhub的安装/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/05/07/SQL注入的四种类型/"/>
 
 
 
 
 
-  <title>Vulhub的安装 | Oah's Blog</title>
+  <title>SQL注入的四种类型 | Oah's Blog</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/04/Vulhub%E7%9A%84%E5%AE%89%E8%A3%85/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Oah">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Vulhub的安装</h1>
+          <h1 class="post-title" itemprop="name headline">SQL注入的四种类型</h1>
         
 
         <div class="post-meta">
@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-04T11:06:38+08:00">
-                2020-05-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-07T10:31:59+08:00">
+                2020-05-07
               </time>
             
 
@@ -309,38 +309,22 @@
       
 
       
-        <h1 id="安装Ubuntu虚拟机"><a href="#安装Ubuntu虚拟机" class="headerlink" title="安装Ubuntu虚拟机"></a>安装Ubuntu虚拟机</h1><ul>
-<li>VituralBox：<a href="https://www.virtualbox.org/" target="_blank" rel="noopener">https://www.virtualbox.org/</a></li>
-<li>Ubuntu：<a href="https://ubuntu.com/" target="_blank" rel="noopener">https://ubuntu.com/</a></li>
+        <h1 id="联合查询注入"><a href="#联合查询注入" class="headerlink" title="联合查询注入"></a>联合查询注入</h1><h1 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h1><h1 id="延时注入"><a href="#延时注入" class="headerlink" title="延时注入"></a>延时注入</h1><h1 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h1><h2 id="floor-报错注入"><a href="#floor-报错注入" class="headerlink" title="floor 报错注入"></a>floor 报错注入</h2><h3 id="用到的函数"><a href="#用到的函数" class="headerlink" title="用到的函数"></a>用到的函数</h3><ul>
+<li><code>concat(str1, str2, ...)</code>：将多个字符串连接成一个字符串</li>
+<li><code>floor()</code>：向下取整，只保留整数部分</li>
+<li><code>rand()</code>：生成 0 到 1 之间的随机数，<code>rand(0)</code> 可以设置随机数种子，每次结果相同</li>
+<li><code>version()</code>：返回数据库版本</li>
 </ul>
-<h1 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h1><ul>
-<li>下载Git</li>
+<h3 id="SQL语句"><a href="#SQL语句" class="headerlink" title="SQL语句"></a>SQL语句</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">count</span>(*), (</span><br><span class="line">    <span class="keyword">concat</span>(</span><br><span class="line">        <span class="keyword">floor</span>(</span><br><span class="line">            <span class="keyword">rand</span>()*<span class="number">2</span></span><br><span class="line">        ), </span><br><span class="line">        (</span><br><span class="line">            <span class="keyword">SELECT</span> <span class="keyword">version</span>()</span><br><span class="line">        )</span><br><span class="line">    )</span><br><span class="line">)x</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">test</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> x;</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT count(*), (</span><br><span class="line">    -&gt;     concat(</span><br><span class="line">    -&gt;         floor(</span><br><span class="line">    -&gt;             rand()*2</span><br><span class="line">    -&gt;         ),</span><br><span class="line">    -&gt;         (</span><br><span class="line">    -&gt;             SELECT version()</span><br><span class="line">    -&gt;         )</span><br><span class="line">    -&gt;     )</span><br><span class="line">    -&gt; )x</span><br><span class="line">    -&gt; FROM test</span><br><span class="line">    -&gt; GROUP BY x;</span><br><span class="line">+----------+---------+</span><br><span class="line">| count(*) | x       |</span><br><span class="line">+----------+---------+</span><br><span class="line">|        1 | 05.5.53 |</span><br><span class="line">|        1 | 15.5.53 |</span><br><span class="line">+----------+---------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT count(*), (</span><br><span class="line">    -&gt;     concat(</span><br><span class="line">    -&gt;         floor(</span><br><span class="line">    -&gt;             rand()*2</span><br><span class="line">    -&gt;         ),</span><br><span class="line">    -&gt;         (</span><br><span class="line">    -&gt;             SELECT version()</span><br><span class="line">    -&gt;         )</span><br><span class="line">    -&gt;     )</span><br><span class="line">    -&gt; )x</span><br><span class="line">    -&gt; FROM test</span><br><span class="line">    -&gt; GROUP BY x;</span><br><span class="line">ERROR 1062 (23000): Duplicate entry &#39;15.5.53&#39; for key &#39;group_key&#39;</span><br></pre></td></tr></table></figure>
+
+<h3 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h3><ul>
+<li><code>floor(rand()*2)</code> 随机生成 0 或 1</li>
+<li><code>group by</code> 进行分组时，<code>floor(rand()*2)</code> 执行一次（查看分组是否存在），如果虚拟表中不存在该分组，就要把它插入到虚拟表中。那么在插入新分组的时候，<code>floor(rand()*2)</code> 就又计算了一次。第二次运算的结果可能与第一次运算的结果不一致，但是这个运算的结果可能在虚拟表中已经存在了，那么这时的插入必然导致主键的重复，进而引发错误</li>
+<li>当 <code>group by</code> 对其进行分组的时候，首先遇到第一个值 0，发现 0 不存在，于是需要插入分组，就在这时，<code>floor(rand()*2)</code> 再次被触发，生成第二个值 1，因此最终插入虚拟表的也就是第二个值 1；然后遇到第三个值 1，因为已经存在分组 1 了，就直接计数加 1（这时 1 的计数变为 2）；遇到第四个值 0 的时候，发现 0 不存在，于是又需要插入新分组，然后 <code>floor(rand()*2)</code>又被触发，生成第五个值 1，因此这时还是往虚拟表里插入分组 1，但是分组 1 已经存在了，所以报错</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install git</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>配置用户信息</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Vulhub&quot;</span><br><span class="line">git config --global user.email &quot;Vulhub@Vulhub.com&quot;</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装pip"><a href="#安装pip" class="headerlink" title="安装pip"></a>安装pip</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install python3-pip</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装curl"><a href="#安装curl" class="headerlink" title="安装curl"></a>安装curl</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install curl</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h1><ul>
-<li>参考官方文档：<a href="https://docs.docker.com/engine/install/ubuntu/" target="_blank" rel="noopener">https://docs.docker.com/engine/install/ubuntu/</a></li>
-</ul>
-<h1 id="安装docker-compose"><a href="#安装docker-compose" class="headerlink" title="安装docker-compose"></a>安装docker-compose</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip3 install docker-compose</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>有时候网络不好可能失败，可以用国内源</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip3 install -i https:&#x2F;&#x2F;pypi.douban.com&#x2F;simple&#x2F; docker-compose</span><br></pre></td></tr></table></figure>
-
-<h1 id="下载Vulhub"><a href="#下载Vulhub" class="headerlink" title="下载Vulhub"></a>下载Vulhub</h1><ul>
-<li>Vulhub官网：<a href="https://vulhub.org/" target="_blank" rel="noopener">https://vulhub.org/</a></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo git clone https:&#x2F;&#x2F;github.com&#x2F;vulhub&#x2F;vulhub.git</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -370,8 +354,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/27/order-by-%E5%90%8E%E7%9A%84SQL%E6%B3%A8%E5%85%A5/" rel="next" title="order by 后的SQL注入">
-                <i class="fa fa-chevron-left"></i> order by 后的SQL注入
+              <a href="/2020/05/04/Vulhub%E7%9A%84%E5%AE%89%E8%A3%85/" rel="next" title="Vulhub的安装">
+                <i class="fa fa-chevron-left"></i> Vulhub的安装
               </a>
             
           </div>
@@ -380,8 +364,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/05/07/SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B/" rel="prev" title="SQL注入的四种类型">
-                SQL注入的四种类型 <i class="fa fa-chevron-right"></i>
+              <a href="/9999/09/09/Web%E5%AE%89%E5%85%A8%E8%B5%84%E6%BA%90%E6%94%B6%E8%97%8F/" rel="prev" title="【置顶】Web安全资源收藏">
+                【置顶】Web安全资源收藏 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -505,7 +489,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Ubuntu虚拟机"><span class="nav-number">1.</span> <span class="nav-text">安装Ubuntu虚拟机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Git"><span class="nav-number">2.</span> <span class="nav-text">安装Git</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装pip"><span class="nav-number">3.</span> <span class="nav-text">安装pip</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装curl"><span class="nav-number">4.</span> <span class="nav-text">安装curl</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Docker"><span class="nav-number">5.</span> <span class="nav-text">安装Docker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装docker-compose"><span class="nav-number">6.</span> <span class="nav-text">安装docker-compose</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#下载Vulhub"><span class="nav-number">7.</span> <span class="nav-text">下载Vulhub</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#联合查询注入"><span class="nav-number">1.</span> <span class="nav-text">联合查询注入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#布尔盲注"><span class="nav-number">2.</span> <span class="nav-text">布尔盲注</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#延时注入"><span class="nav-number">3.</span> <span class="nav-text">延时注入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#报错注入"><span class="nav-number">4.</span> <span class="nav-text">报错注入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#floor-报错注入"><span class="nav-number">4.1.</span> <span class="nav-text">floor 报错注入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用到的函数"><span class="nav-number">4.1.1.</span> <span class="nav-text">用到的函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL语句"><span class="nav-number">4.1.2.</span> <span class="nav-text">SQL语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试结果"><span class="nav-number">4.1.3.</span> <span class="nav-text">测试结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理分析"><span class="nav-number">4.1.4.</span> <span class="nav-text">原理分析</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
