@@ -456,10 +456,14 @@ T00LS
         
           
           前言
-在复现 [CVE-2016-10134](https://vulhub.org/#/environments/zabbix/CVE-2016-10134）漏洞时，对它的Payload不是特别理解，所以对其中的函数进行了学习
+在复现 CVE-2016-10134 漏洞时，对它的Payload不是特别理解，所以对其中的函数进行了学习
 Payload：
 
-1updatexml(0, concat(0xa,
+1updatexml(0, concat(0xa, user()), 0)
+
+单独理解0xa
+0x 是十六进制数字，在SQL中会解析为ASCII字符
+比如字符 a 的
           ...
           <!--noindex-->
           <div class="post-button text-center">
