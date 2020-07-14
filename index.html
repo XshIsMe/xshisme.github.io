@@ -384,6 +384,136 @@ T00LS
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/14/updatexml%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Oah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oah's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/14/updatexml%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/" itemprop="url">updatexml报错注入</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-14T18:03:53+08:00">
+                2020-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          前言
+在复现 [CVE-2016-10134](https://vulhub.org/#/environments/zabbix/CVE-2016-10134）漏洞时，对它的Payload不是特别理解，所以对其中的函数进行了学习
+Payload：
+
+1updatexml(0, concat(0xa,
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/14/updatexml%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/13/%E6%9D%A1%E4%BB%B6%E7%AB%9E%E4%BA%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1424,144 +1554,6 @@ version(
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/04/Vulhub%E7%9A%84%E5%AE%89%E8%A3%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Oah">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oah's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/04/Vulhub%E7%9A%84%E5%AE%89%E8%A3%85/" itemprop="url">Vulhub的安装</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-04T11:06:38+08:00">
-                2020-05-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          安装Ubuntu虚拟机
-VituralBox：https://www.virtualbox.org/
-Ubuntu：https://ubuntu.com/
-
-安装Git
-下载Git
-
-1sudo apt install git
-
-
-配置用户信息
-
-12git config --global user
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/05/04/Vulhub%E7%9A%84%E5%AE%89%E8%A3%85/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1612,7 +1604,7 @@ Ubuntu：https://ubuntu.com/
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
