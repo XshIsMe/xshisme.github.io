@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Oah&#39;s Blog">
 <meta property="og:description" content="安装CentOS 到 官网 下载镜像 用VMware安装，安装过程省略  查看系统版本1cat &#x2F;etc&#x2F;redhat-release   我的版本是7.6.1810  设置默认登录root 先以root用户登录系统 编辑 &#x2F;etc&#x2F;gdm&#x2F;custom.conf 文件 在 [daemon] 下面一行添加以下内容  1234# 允许自动登录AutomaticLoginEnable&#x3D;True# 自动">
 <meta property="article:published_time" content="2020-07-15T09:06:55.000Z">
-<meta property="article:modified_time" content="2020-07-15T09:07:35.198Z">
+<meta property="article:modified_time" content="2020-07-15T09:32:15.639Z">
 <meta property="article:author" content="Oah">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -328,6 +328,11 @@
 <h1 id="更换国内yum源"><a href="#更换国内yum源" class="headerlink" title="更换国内yum源"></a>更换国内yum源</h1><ul>
 <li>访问 <a href="https://mirrors.cnnic.cn/help/centos/" target="_blank" rel="noopener">清华大学镜像仓库</a>，具体操作在里面都有说明</li>
 </ul>
+<h1 id="安装PHP环境（phpStudy）"><a href="#安装PHP环境（phpStudy）" class="headerlink" title="安装PHP环境（phpStudy）"></a>安装PHP环境（phpStudy）</h1><ul>
+<li>phpStudy一定要第一个安装，否则会出错</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget &amp;&amp; wget -O install.sh https://download.xp.cn/install.sh &amp;&amp; sh install.sh</span><br></pre></td></tr></table></figure>
+
 <h1 id="安装Python和pip"><a href="#安装Python和pip" class="headerlink" title="安装Python和pip"></a>安装Python和pip</h1><ul>
 <li>CentOS7自带了Python2.7，但是Python3和pip还需要我们自己安装</li>
 <li>执行下面的命令安装Pyhton3，pip3也会一起安装</li>
@@ -335,6 +340,7 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install python3</span><br></pre></td></tr></table></figure>
 
 <h1 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h1><ul>
+<li>前面安装phpStudy的时候，也自动安装了Docker，不需要再手动安装</li>
 <li>访问 <a href="https://docs.docker.com/engine/install/centos/" target="_blank" rel="noopener">Docker官方文档</a>，具体操作在里面都有说明</li>
 </ul>
 <h2 id="Docker更换国内镜像源"><a href="#Docker更换国内镜像源" class="headerlink" title="Docker更换国内镜像源"></a>Docker更换国内镜像源</h2><ul>
@@ -361,8 +367,6 @@
 <li>使用国内源会快很多</li>
 </ul>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install -i https://pypi.douban.com/simple/ docker-compose</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装PHP环境（phpStudy）"><a href="#安装PHP环境（phpStudy）" class="headerlink" title="安装PHP环境（phpStudy）"></a>安装PHP环境（phpStudy）</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget &amp;&amp; wget -O install.sh https://download.xp.cn/install.sh &amp;&amp; sh install.sh</span><br></pre></td></tr></table></figure>
 
 <h1 id="安装Visual-Studio-Code"><a href="#安装Visual-Studio-Code" class="headerlink" title="安装Visual Studio Code"></a>安装Visual Studio Code</h1><ul>
 <li>访问 <a href="https://code.visualstudio.com/docs/setup/linux" target="_blank" rel="noopener">Visual Studio Code官方文档</a>，具体操作在里面都有说明</li>
@@ -537,7 +541,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装CentOS"><span class="nav-number">1.</span> <span class="nav-text">安装CentOS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看系统版本"><span class="nav-number">2.</span> <span class="nav-text">查看系统版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置默认登录root"><span class="nav-number">3.</span> <span class="nav-text">设置默认登录root</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更换国内yum源"><span class="nav-number">4.</span> <span class="nav-text">更换国内yum源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Python和pip"><span class="nav-number">5.</span> <span class="nav-text">安装Python和pip</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Docker"><span class="nav-number">6.</span> <span class="nav-text">安装Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker更换国内镜像源"><span class="nav-number">6.1.</span> <span class="nav-text">Docker更换国内镜像源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装docker-compose"><span class="nav-number">6.2.</span> <span class="nav-text">安装docker-compose</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装PHP环境（phpStudy）"><span class="nav-number">7.</span> <span class="nav-text">安装PHP环境（phpStudy）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Visual-Studio-Code"><span class="nav-number">8.</span> <span class="nav-text">安装Visual Studio Code</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">9.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装CentOS"><span class="nav-number">1.</span> <span class="nav-text">安装CentOS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看系统版本"><span class="nav-number">2.</span> <span class="nav-text">查看系统版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置默认登录root"><span class="nav-number">3.</span> <span class="nav-text">设置默认登录root</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更换国内yum源"><span class="nav-number">4.</span> <span class="nav-text">更换国内yum源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装PHP环境（phpStudy）"><span class="nav-number">5.</span> <span class="nav-text">安装PHP环境（phpStudy）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Python和pip"><span class="nav-number">6.</span> <span class="nav-text">安装Python和pip</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Docker"><span class="nav-number">7.</span> <span class="nav-text">安装Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker更换国内镜像源"><span class="nav-number">7.1.</span> <span class="nav-text">Docker更换国内镜像源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装docker-compose"><span class="nav-number">7.2.</span> <span class="nav-text">安装docker-compose</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Visual-Studio-Code"><span class="nav-number">8.</span> <span class="nav-text">安装Visual Studio Code</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">9.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
             
 
           </div>
