@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Web安全,Vulhub," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="启动Docker 因为下载速度太慢，要把docker镜像源换成国内的 编辑 &#x2F;etc&#x2F;docker&#x2F;daemon.json，粘贴以下内容  123&amp;#123;    &quot;registry-mirrors&quot;: [&quot;hhttp:&#x2F;&#x2F;hub-mirror.c.163.com&quot;]&amp;#125;   重启docker  1systemctl resta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vulhub学习（一）zabbix latest.php SQL注入漏洞（CVE-2016-10134）">
+<meta property="og:url" content="http://yoursite.com/2020/07/15/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:site_name" content="Oah&#39;s Blog">
+<meta property="og:description" content="启动Docker 因为下载速度太慢，要把docker镜像源换成国内的 编辑 &#x2F;etc&#x2F;docker&#x2F;daemon.json，粘贴以下内容  123&amp;#123;    &quot;registry-mirrors&quot;: [&quot;hhttp:&#x2F;&#x2F;hub-mirror.c.163.com&quot;]&amp;#125;   重启docker  1systemctl resta">
+<meta property="og:image" content="http://yoursite.com/2020/07/15/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/1e08122a4e17204393cbe4c3baada553.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/15/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/fe122075b5ed0f730a9a4e81127f14a3.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/15/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/ef2611aa901498231056ef7355598a19.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/15/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/256eb7807ead48cdaba7d135752dd583.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/15/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/6856f0adbe4996b84271b4abbd02cd37.png">
+<meta property="article:published_time" content="2020-07-15T04:45:53.000Z">
+<meta property="article:modified_time" content="2020-07-15T04:47:25.457Z">
+<meta property="article:author" content="Oah">
+<meta property="article:tag" content="Web安全">
+<meta property="article:tag" content="Vulhub">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/15/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/1e08122a4e17204393cbe4c3baada553.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/07/15/Vulhub学习（一）/"/>
+
+
+
+
+
+  <title>Vulhub学习（一）zabbix latest.php SQL注入漏洞（CVE-2016-10134） | Oah's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Oah's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/15/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Oah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oah's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Vulhub学习（一）zabbix latest.php SQL注入漏洞（CVE-2016-10134）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-15T12:45:53+08:00">
+                2020-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="启动Docker"><a href="#启动Docker" class="headerlink" title="启动Docker"></a>启动Docker</h1><ul>
+<li>因为下载速度太慢，要把docker镜像源换成国内的</li>
+<li>编辑 <code>/etc/docker/daemon.json</code>，粘贴以下内容</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;registry-mirrors&quot;: [&quot;hhttp:&#x2F;&#x2F;hub-mirror.c.163.com&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重启docker</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>发现报了 <code>Job for docker.service failed</code> 的错误</li>
+<li>参考这篇文章：<a href="https://www.cnblogs.com/mhSui/p/11791761.html" target="_blank" rel="noopener">Job for docker.service failed 修改docker镜像源遇到的坑</a></li>
+<li>将 <code>daemon.json</code> 改名为 <code>daemon.conf</code>，就可以了</li>
+<li>然后执行以下命令启动</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd vulhub&#x2F;zabbix&#x2F;CVE-2016-10134</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+
+<h1 id="配置虚拟机"><a href="#配置虚拟机" class="headerlink" title="配置虚拟机"></a>配置虚拟机</h1><ul>
+<li>我使用的虚拟机是VirtualBox，连接方式是网络地址转换(NAT)</li>
+<li>为了使宿主机能访问虚拟机中的服务，需要配置端口转发</li>
+<li>管理 → 全局设定 → 网络，添加以下网络</li>
+</ul>
+<p><img src="1e08122a4e17204393cbe4c3baada553.png" alt="img"></p>
+<ul>
+<li>选择虚拟机 → 设置 → 网络 → 高级 → 端口转发</li>
+</ul>
+<p><img src="fe122075b5ed0f730a9a4e81127f14a3.png" alt="img"></p>
+<ul>
+<li>宿主机就可以通过 <code>http://127.0.0.1:8080</code> 访问服务了</li>
+</ul>
+<h1 id="测试漏洞"><a href="#测试漏洞" class="headerlink" title="测试漏洞"></a>测试漏洞</h1><ul>
+<li>访问 <code>http://127.0.0.1:8080/jsrpc.php?type=0&amp;mode=1&amp;method=screen.get&amp;profileIdx=web.item.graph&amp;resourcetype=17&amp;profileIdx2=updatexml(0,concat(0xa,user()),0)</code></li>
+</ul>
+<p><img src="ef2611aa901498231056ef7355598a19.png" alt="img"></p>
+<h1 id="分析源码"><a href="#分析源码" class="headerlink" title="分析源码"></a>分析源码</h1><h2 id="下载旧版本源码"><a href="#下载旧版本源码" class="headerlink" title="下载旧版本源码"></a>下载旧版本源码</h2><ul>
+<li>在zabbix官网放出来的源码都是已经修复好漏洞的版本，找了很久也没找到存在漏洞的版本</li>
+</ul>
+<p><img src="256eb7807ead48cdaba7d135752dd583.png" alt="img"></p>
+<ul>
+<li>后来发现它的下载链接是这样的 <code>https://cdn.zabbix.com/zabbix/sources/oldstable/2.2/zabbix-2.2.23.tar.gz</code></li>
+<li>于是访问上级目录 <code>https://cdn.zabbix.com/zabbix/sources/oldstable/2.2/</code>，发现了老版本</li>
+</ul>
+<p><img src="6856f0adbe4996b84271b4abbd02cd37.png" alt="img"></p>
+<ul>
+<li>下载 <a href="https://cdn.zabbix.com/zabbix/sources/oldstable/2.2/zabbix-2.2.10.tar.gz" target="_blank" rel="noopener">zabbix-2.2.10</a></li>
+</ul>
+<h2 id="代码审计"><a href="#代码审计" class="headerlink" title="代码审计"></a>代码审计</h2><h3 id="jsrpc-php"><a href="#jsrpc-php" class="headerlink" title="jsrpc.php"></a>jsrpc.php</h3><ul>
+<li>找到 <code>jsrpc.php</code> 的文件 <code>zabbix-2.2.10\frontends\php\jsrpc.php</code></li>
+<li>可以看出请求的参数绑定到了 <code>$data</code> 变量中</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 24-32行 */</span></span><br><span class="line">$requestType = get_request(<span class="string">'type'</span>, PAGE_TYPE_JSON);</span><br><span class="line"><span class="keyword">if</span> ($requestType == PAGE_TYPE_JSON) &#123;</span><br><span class="line">	$http_request = <span class="keyword">new</span> CHTTP_request();</span><br><span class="line">	$json = <span class="keyword">new</span> CJSON();</span><br><span class="line">	$data = $json-&gt;decode($http_request-&gt;body(), <span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">	$data = $_REQUEST;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其中根据 <code>method</code> 参数执行不同的操作</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 47-421行 */</span></span><br><span class="line"><span class="keyword">switch</span> ($data[<span class="string">'method'</span>]) &#123;</span><br><span class="line">    <span class="comment">// 各种case</span></span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">	    fatal_error(<span class="string">'Wrong RPC call to JS RPC!'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>根据POC中的 <code>method=screen.get</code>，找到 <code>case &#39;screen.get&#39;:</code></li>
+<li><code>profileIdx2</code> 参数被赋值到了 <code>$option</code> 变量，再通过 <code>CScreenBuilder::getScreen($options);</code> 处理 <code>$option</code> 变量</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 178-223行 */</span></span><br><span class="line"><span class="keyword">case</span> <span class="string">'screen.get'</span>:</span><br><span class="line">    $options = <span class="keyword">array</span>(</span><br><span class="line">    	<span class="string">'pageFile'</span> =&gt; !<span class="keyword">empty</span>($data[<span class="string">'pageFile'</span>]) ? $data[<span class="string">'pageFile'</span>] : <span class="keyword">null</span>,</span><br><span class="line">    	<span class="string">'mode'</span> =&gt; !<span class="keyword">empty</span>($data[<span class="string">'mode'</span>]) ? $data[<span class="string">'mode'</span>] : <span class="keyword">null</span>,</span><br><span class="line">    	<span class="string">'timestamp'</span> =&gt; !<span class="keyword">empty</span>($data[<span class="string">'timestamp'</span>]) ? $data[<span class="string">'timestamp'</span>] : time(),</span><br><span class="line">    	<span class="string">'resourcetype'</span> =&gt; !<span class="keyword">empty</span>($data[<span class="string">'resourcetype'</span>]) ? $data[<span class="string">'resourcetype'</span>] : <span class="keyword">null</span>,</span><br><span class="line">    	<span class="string">'screenitemid'</span> =&gt; !<span class="keyword">empty</span>($data[<span class="string">'screenitemid'</span>]) ? $data[<span class="string">'screenitemid'</span>] : <span class="keyword">null</span>,</span><br><span class="line">    	<span class="string">'groupid'</span> =&gt; !<span class="keyword">empty</span>($data[<span class="string">'groupid'</span>]) ? $data[<span class="string">'groupid'</span>] : <span class="keyword">null</span>,</span><br><span class="line">    	<span class="string">'hostid'</span> =&gt; !<span class="keyword">empty</span>($data[<span class="string">'hostid'</span>]) ? $data[<span class="string">'hostid'</span>] : <span class="keyword">null</span>,</span><br><span class="line">    	<span class="string">'period'</span> =&gt; !<span class="keyword">empty</span>($data[<span class="string">'period'</span>]) ? $data[<span class="string">'period'</span>] : <span class="keyword">null</span>,</span><br><span class="line">    	<span class="string">'stime'</span> =&gt; !<span class="keyword">empty</span>($data[<span class="string">'stime'</span>]) ? $data[<span class="string">'stime'</span>] : <span class="keyword">null</span>,</span><br><span class="line">    	<span class="string">'profileIdx'</span> =&gt; !<span class="keyword">empty</span>($data[<span class="string">'profileIdx'</span>]) ? $data[<span class="string">'profileIdx'</span>] : <span class="keyword">null</span>,</span><br><span class="line">    	<span class="string">'profileIdx2'</span> =&gt; !<span class="keyword">empty</span>($data[<span class="string">'profileIdx2'</span>]) ? $data[<span class="string">'profileIdx2'</span>] : <span class="keyword">null</span>,</span><br><span class="line">    	<span class="string">'updateProfile'</span> =&gt; <span class="keyword">isset</span>($data[<span class="string">'updateProfile'</span>]) ? $data[<span class="string">'updateProfile'</span>] : <span class="keyword">null</span></span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">if</span> ($options[<span class="string">'resourcetype'</span>] == SCREEN_RESOURCE_HISTORY) &#123;</span><br><span class="line">    	$options[<span class="string">'itemids'</span>] = !<span class="keyword">empty</span>($data[<span class="string">'itemids'</span>]) ? $data[<span class="string">'itemids'</span>] : <span class="keyword">null</span>;</span><br><span class="line">    	$options[<span class="string">'action'</span>] = !<span class="keyword">empty</span>($data[<span class="string">'action'</span>]) ? $data[<span class="string">'action'</span>] : <span class="keyword">null</span>;</span><br><span class="line">    	$options[<span class="string">'filter'</span>] = !<span class="keyword">empty</span>($data[<span class="string">'filter'</span>]) ? $data[<span class="string">'filter'</span>] : <span class="keyword">null</span>;</span><br><span class="line">    	$options[<span class="string">'filter_task'</span>] = !<span class="keyword">empty</span>($data[<span class="string">'filter_task'</span>]) ? $data[<span class="string">'filter_task'</span>] : <span class="keyword">null</span>;</span><br><span class="line">    	$options[<span class="string">'mark_color'</span>] = !<span class="keyword">empty</span>($data[<span class="string">'mark_color'</span>]) ? $data[<span class="string">'mark_color'</span>] : <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">elseif</span> ($options[<span class="string">'resourcetype'</span>] == SCREEN_RESOURCE_CHART) &#123;</span><br><span class="line">    	$options[<span class="string">'graphid'</span>] = !<span class="keyword">empty</span>($data[<span class="string">'graphid'</span>]) ? $data[<span class="string">'graphid'</span>] : <span class="keyword">null</span>;</span><br><span class="line">    	$options[<span class="string">'profileIdx2'</span>] = $options[<span class="string">'graphid'</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    $screenBase = CScreenBuilder::getScreen($options);</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">empty</span>($screenBase)) &#123;</span><br><span class="line">    	$screen = $screenBase-&gt;get();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">empty</span>($screen)) &#123;</span><br><span class="line">    	<span class="keyword">if</span> ($options[<span class="string">'mode'</span>] == SCREEN_MODE_JS) &#123;</span><br><span class="line">            $result = $screen;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (is_object($screen)) &#123;</span><br><span class="line">                $result = $screen-&gt;toString();</span><br><span class="line">            &#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">    	$result = <span class="string">''</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">break</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="CScreenBuilder-php"><a href="#CScreenBuilder-php" class="headerlink" title="CScreenBuilder.php"></a>CScreenBuilder.php</h3><ul>
+<li>跟踪到 <code>zabbix-2.2.10\frontends\php\include\classes\screens\CScreenBuilder.php</code></li>
+<li>在它的构造函数中，将 <code>profileIdx2</code> 参数传到了 <code>CScreenBase::calculateTime()</code></li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 148-154行 */</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;timeline = CScreenBase::calculateTime(<span class="keyword">array</span>(</span><br><span class="line">	<span class="string">'profileIdx'</span> =&gt; <span class="keyword">$this</span>-&gt;profileIdx,</span><br><span class="line">	<span class="string">'profileIdx2'</span> =&gt; <span class="keyword">$this</span>-&gt;profileIdx2,</span><br><span class="line">	<span class="string">'updateProfile'</span> =&gt; <span class="keyword">$this</span>-&gt;updateProfile,</span><br><span class="line">	<span class="string">'period'</span> =&gt; !<span class="keyword">empty</span>($options[<span class="string">'period'</span>]) ? $options[<span class="string">'period'</span>] : <span class="keyword">null</span>,</span><br><span class="line">	<span class="string">'stime'</span> =&gt; !<span class="keyword">empty</span>($options[<span class="string">'stime'</span>]) ? $options[<span class="string">'stime'</span>] : <span class="keyword">null</span></span><br><span class="line">));</span><br></pre></td></tr></table></figure>
+
+<h3 id="CScreenBase-php"><a href="#CScreenBase-php" class="headerlink" title="CScreenBase.php"></a>CScreenBase.php</h3><ul>
+<li>跟踪到 <code>zabbix-2.2.10\frontends\php\include\classes\screens\CScreenBase.php</code> 的 <code>calculateTime()</code> 方法</li>
+<li>根据if判断，<code>profileIdx2</code> 传入了 <code>CProfile::update()</code></li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 397-400行 */</span></span><br><span class="line"><span class="keyword">if</span> ($options[<span class="string">'updateProfile'</span>] &amp;&amp; !<span class="keyword">empty</span>($options[<span class="string">'profileIdx'</span>])) &#123;</span><br><span class="line">	CProfile::update($options[<span class="string">'profileIdx'</span>].<span class="string">'.stime'</span>, $options[<span class="string">'stime'</span>], PROFILE_TYPE_STR, $options[<span class="string">'profileIdx2'</span>]);</span><br><span class="line">	CProfile::update($options[<span class="string">'profileIdx'</span>].<span class="string">'.isnow'</span>, $isNow, PROFILE_TYPE_INT, $options[<span class="string">'profileIdx2'</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="profiles-inc-php"><a href="#profiles-inc-php" class="headerlink" title="profiles.inc.php"></a>profiles.inc.php</h3><ul>
+<li>跟踪到 <code>zabbix-2.2.10\frontends\php\include\profiles.inc.php</code> 的 <code>update()</code> 方法</li>
+<li>发现 <code>profileIdx2</code> 被赋值到了 <code>self::$insert[$idx][$idx2]</code></li>
+<li>但是至今还没有执行数据库操作</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 136-172行 */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span><span class="params">($idx, $value, $type, $idx2 = <span class="number">0</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (is_null(<span class="keyword">self</span>::$profiles)) &#123;</span><br><span class="line">		<span class="keyword">self</span>::init();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (!<span class="keyword">self</span>::checkValueType($value, $type)) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	$profile = <span class="keyword">array</span>(</span><br><span class="line">		<span class="string">'idx'</span> =&gt; $idx,</span><br><span class="line">		<span class="string">'value'</span> =&gt; $value,</span><br><span class="line">		<span class="string">'type'</span> =&gt; $type,</span><br><span class="line">		<span class="string">'idx2'</span> =&gt; $idx2</span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line">	$current = CProfile::get($idx, <span class="keyword">null</span>, $idx2);</span><br><span class="line">	<span class="keyword">if</span> (is_null($current)) &#123;</span><br><span class="line">		<span class="keyword">if</span> (!<span class="keyword">isset</span>(<span class="keyword">self</span>::$insert[$idx])) &#123;</span><br><span class="line">			<span class="keyword">self</span>::$insert[$idx] = <span class="keyword">array</span>();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">self</span>::$insert[$idx][$idx2] = $profile;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> ($current != $value) &#123;</span><br><span class="line">			<span class="keyword">if</span> (!<span class="keyword">isset</span>(<span class="keyword">self</span>::$update[$idx])) &#123;</span><br><span class="line">				<span class="keyword">self</span>::$update[$idx] = <span class="keyword">array</span>();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">self</span>::$update[$idx][$idx2] = $profile;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (!<span class="keyword">isset</span>(<span class="keyword">self</span>::$profiles[$idx])) &#123;</span><br><span class="line">		<span class="keyword">self</span>::$profiles[$idx] = <span class="keyword">array</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">self</span>::$profiles[$idx][$idx2] = $value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="page-footer-php"><a href="#page-footer-php" class="headerlink" title="page_footer.php"></a>page_footer.php</h3><ul>
+<li>回到 <code>jsrpc.php</code>，文件的最后调用了 <code>page_footer.php</code></li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 444行 */</span></span><br><span class="line"><span class="keyword">require_once</span> dirname(<span class="keyword">__FILE__</span>).<span class="string">'/include/page_footer.php'</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>跟踪到 <code>zabbix-2.2.10\frontends\php\include\page_footer.php</code></li>
+<li>其中46行调用了 <code>CProfile::flush();</code></li>
+</ul>
+<h3 id="profiles-inc-php-1"><a href="#profiles-inc-php-1" class="headerlink" title="profiles.inc.php"></a>profiles.inc.php</h3><ul>
+<li>跟踪到 <code>zabbix-2.2.10\frontends\php\include\profiles.inc.php</code> 的 <code>flush()</code> 方法</li>
+<li>其中将 <code>profileIdx2</code> 参数传入了 <code>self::insertDB()</code></li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 54-81行 */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">flush</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">// if not initialised, no changes were made</span></span><br><span class="line">	<span class="keyword">if</span> (is_null(<span class="keyword">self</span>::$profiles)) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">self</span>::$userDetails[<span class="string">'userid'</span>] &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="keyword">self</span>::$insert) || !<span class="keyword">empty</span>(<span class="keyword">self</span>::$update)) &#123;</span><br><span class="line">		DBstart();</span><br><span class="line">		<span class="keyword">foreach</span> (<span class="keyword">self</span>::$insert <span class="keyword">as</span> $idx =&gt; $profile) &#123;</span><br><span class="line">			<span class="keyword">foreach</span> ($profile <span class="keyword">as</span> $idx2 =&gt; $data) &#123;</span><br><span class="line">				<span class="keyword">self</span>::insertDB($idx, $data[<span class="string">'value'</span>], $data[<span class="string">'type'</span>], $idx2);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		ksort(<span class="keyword">self</span>::$update);</span><br><span class="line">		<span class="keyword">foreach</span> (<span class="keyword">self</span>::$update <span class="keyword">as</span> $idx =&gt; $profile) &#123;</span><br><span class="line">			ksort($profile);</span><br><span class="line">			<span class="keyword">foreach</span> ($profile <span class="keyword">as</span> $idx2 =&gt; $data) &#123;</span><br><span class="line">				<span class="keyword">self</span>::updateDB($idx, $data[<span class="string">'value'</span>], $data[<span class="string">'type'</span>], $idx2);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		DBend();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>跟踪到 <code>insetDB()</code> 方法</li>
+<li>发现 <code>profileIdx2</code> 参数没有经过处理就拼接到了SQL语句中，SQL注入就在这里产生</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 174-186行 */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">insertDB</span><span class="params">($idx, $value, $type, $idx2)</span> </span>&#123;</span><br><span class="line">	$value_type = <span class="keyword">self</span>::getFieldByType($type);</span><br><span class="line"></span><br><span class="line">	$values = <span class="keyword">array</span>(</span><br><span class="line">		<span class="string">'profileid'</span> =&gt; get_dbid(<span class="string">'profiles'</span>, <span class="string">'profileid'</span>),</span><br><span class="line">		<span class="string">'userid'</span> =&gt; <span class="keyword">self</span>::$userDetails[<span class="string">'userid'</span>],</span><br><span class="line">		<span class="string">'idx'</span> =&gt; zbx_dbstr($idx),</span><br><span class="line">		$value_type =&gt; zbx_dbstr($value),</span><br><span class="line">		<span class="string">'type'</span> =&gt; $type,</span><br><span class="line">		<span class="string">'idx2'</span> =&gt; $idx2</span><br><span class="line">	);</span><br><span class="line">	<span class="keyword">return</span> DBexecute(<span class="string">'INSERT INTO profiles ('</span>.implode(<span class="string">', '</span>, array_keys($values)).<span class="string">') VALUES ('</span>.implode(<span class="string">', '</span>, $values).<span class="string">')'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/66248991" target="_blank" rel="noopener">一个曾经的Zabbix SQL注入漏洞分析</a></li>
+<li><a href="https://zerokeeper.com/vul-analysis/zabbix-22x-30x-sql-injection-vulnerability-analysis-and-utilization-of-exp.html#0x01-%E8%83%8C%E6%99%AF" target="_blank" rel="noopener">Zabbix 2.2.x,3.0.x SQL注入漏洞分析及利用EXP</a></li>
+<li><a href="https://blog.csdn.net/hehuii/article/details/102832857" target="_blank" rel="noopener">【运维心得】VirtualBox宿主机访问虚拟机web服务</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web%E5%AE%89%E5%85%A8/" rel="tag"># Web安全</a>
+          
+            <a href="/tags/Vulhub/" rel="tag"># Vulhub</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/14/updatexml%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/" rel="next" title="updatexml报错注入">
+                <i class="fa fa-chevron-left"></i> updatexml报错注入
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/9999/09/09/%E8%B5%84%E6%BA%90%E6%94%B6%E8%97%8F/" rel="prev" title="【置顶】资源收藏">
+                【置顶】资源收藏 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Oah</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#启动Docker"><span class="nav-number">1.</span> <span class="nav-text">启动Docker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置虚拟机"><span class="nav-number">2.</span> <span class="nav-text">配置虚拟机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试漏洞"><span class="nav-number">3.</span> <span class="nav-text">测试漏洞</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析源码"><span class="nav-number">4.</span> <span class="nav-text">分析源码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载旧版本源码"><span class="nav-number">4.1.</span> <span class="nav-text">下载旧版本源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码审计"><span class="nav-number">4.2.</span> <span class="nav-text">代码审计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jsrpc-php"><span class="nav-number">4.2.1.</span> <span class="nav-text">jsrpc.php</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CScreenBuilder-php"><span class="nav-number">4.2.2.</span> <span class="nav-text">CScreenBuilder.php</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CScreenBase-php"><span class="nav-number">4.2.3.</span> <span class="nav-text">CScreenBase.php</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#profiles-inc-php"><span class="nav-number">4.2.4.</span> <span class="nav-text">profiles.inc.php</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#page-footer-php"><span class="nav-number">4.2.5.</span> <span class="nav-text">page_footer.php</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#profiles-inc-php-1"><span class="nav-number">4.2.6.</span> <span class="nav-text">profiles.inc.php</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">5.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Oah</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
