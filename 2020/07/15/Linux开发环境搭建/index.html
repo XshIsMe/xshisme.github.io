@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Oah&#39;s Blog">
 <meta property="og:description" content="安装CentOS 到 官网 下载镜像 用VMware安装，安装过程省略  查看系统版本1cat &#x2F;etc&#x2F;redhat-release   我的版本是7.6.1810  设置默认登录root 先以root用户登录系统 编辑 &#x2F;etc&#x2F;gdm&#x2F;custom.conf 文件 在 [daemon] 下面一行添加以下内容  1234# 允许自动登录AutomaticLoginEnable&#x3D;True# 自动">
 <meta property="article:published_time" content="2020-07-15T09:06:55.000Z">
-<meta property="article:modified_time" content="2020-07-17T01:36:44.341Z">
+<meta property="article:modified_time" content="2020-07-17T02:19:56.089Z">
 <meta property="article:author" content="Oah">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -327,6 +327,7 @@
 
 <h1 id="更换国内yum源"><a href="#更换国内yum源" class="headerlink" title="更换国内yum源"></a>更换国内yum源</h1><ul>
 <li>访问 <a href="https://mirrors.cnnic.cn/help/centos/" target="_blank" rel="noopener">清华大学镜像仓库</a>，具体操作在里面都有说明</li>
+<li>把 <code>baseurl</code> 中的 <code>http</code> 改为 <code>https</code>，会快很多</li>
 </ul>
 <h1 id="安装PHP环境"><a href="#安装PHP环境" class="headerlink" title="安装PHP环境"></a>安装PHP环境</h1><h2 id="phpStudy"><a href="#phpStudy" class="headerlink" title="phpStudy"></a>phpStudy</h2><ul>
 <li>phpStudy一定要第一个安装，否则会出错</li>
