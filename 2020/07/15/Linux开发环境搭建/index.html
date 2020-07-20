@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Oah&#39;s Blog">
 <meta property="og:description" content="安装CentOS 到 官网 下载镜像 用VMware安装，安装过程省略  查看系统版本1cat &#x2F;etc&#x2F;redhat-release   我的版本是7.6.1810  设置默认登录root 先以root用户登录系统 编辑 &#x2F;etc&#x2F;gdm&#x2F;custom.conf 文件 在 [daemon] 下面一行添加以下内容  1234# 允许自动登录AutomaticLoginEnable&#x3D;True# 自动">
 <meta property="article:published_time" content="2020-07-15T09:06:55.000Z">
-<meta property="article:modified_time" content="2020-07-17T02:19:56.089Z">
+<meta property="article:modified_time" content="2020-07-20T06:30:24.232Z">
 <meta property="article:author" content="Oah">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -351,7 +351,7 @@
 <li>创建或编辑 <code>/etc/docker/daemon.json</code> 文件</li>
 <li>粘贴以下内容</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;registry-mirrors&quot;: [&quot;hhttp:&#x2F;&#x2F;hub-mirror.c.163.com&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;registry-mirrors&quot;: [&quot;http:&#x2F;&#x2F;hub-mirror.c.163.com&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>重启Docker</li>
