@@ -1,103 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Oah's Blog</title><meta name="description"><meta name="author" content="Oah"><meta name="copyright" content="Oah"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://xshisme.github.io/page/3/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><meta property="og:type" content="website"><meta property="og:title" content="Oah's Blog"><meta property="og:url" content="https://xshisme.github.io/page/3/"><meta property="og:site_name" content="Oah's Blog"><meta property="og:description"><meta property="og:image" content="https://xshisme.github.io/img/avatar.png"><meta property="article:published_time" content="2020-08-06T12:02:47.618Z"><meta property="article:modified_time" content="2020-08-06T12:02:47.618Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
-  document.documentElement.setAttribute('data-theme', 'dark')
-  if (document.querySelector('meta[name="theme-color"]') !== null) {
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
-  }
-}
-var activateLightMode = function () {
-  document.documentElement.setAttribute('data-theme', 'light')
-  if (document.querySelector('meta[name="theme-color"]') !== null) {
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
-  }
-}
-
-var getCookies = function (name) {
-  const value = `; ${document.cookie}`
-  const parts = value.split(`; ${name}=`)
-  if (parts.length === 2) return parts.pop().split(';').shift()
-}
-
-var autoChangeMode = 'false'
-var t = getCookies('theme')
-if (autoChangeMode === '1') {
-  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
-  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
-  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
-
-  if (t === undefined) {
-    if (isLightMode) activateLightMode()
-    else if (isDarkMode) activateDarkMode()
-    else if (isNotSpecified || hasNoSupport) {
-      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
-      var now = new Date()
-      var hour = now.getHours()
-      var isNight = hour <= 6 || hour >= 18
-      isNight ? activateDarkMode() : activateLightMode()
-    }
-    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
-      if (Cookies.get('theme') === undefined) {
-        e.matches ? activateDarkMode() : activateLightMode()
-      }
-    })
-  } else if (t === 'light') activateLightMode()
-  else activateDarkMode()
-} else if (autoChangeMode === '2') {
-  now = new Date()
-  hour = now.getHours()
-  isNight = hour <= 6 || hour >= 18
-  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
-  else if (t === 'light') activateLightMode()
-  else activateDarkMode()
-} else {
-  if (t === 'dark') activateDarkMode()
-  else if (t === 'light') activateLightMode()
-}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content=""><meta name="keywords" content=""><meta name="author" content="Oah"><meta name="copyright" content="Oah"><title>Oah's Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: undefined,
-  translate: undefined,
-  noticeOutdate: undefined,
   copy: {
     success: '复制成功',
     error: '复制错误',
     noSupport: '浏览器不支持'
-  },
-  bookmark: {
-    message_prev: '按',
-    message_next: '键将本页加入书签'
-  },
-  runtime_unit: '天',
-  runtime: false,
-  copyright: undefined,
-  ClickShowText: undefined,
-  medium_zoom: false,
-  fancybox: true,
-  Snackbar: undefined,
-  justifiedGallery: {
-    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
-  },
-  baiduPush: false,
-  highlightCopy: true,
-  highlightLang: true,
-  isPhotoFigcaption: false,
-  islazyload: true,
-  isanchor: false    
-}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
-  isPost: false,
-  isHome: true,
-  isHighlightShrink: false,
-  isSidebar: false,
-  postUpdate: '2020-08-06 20:02:47'
-}</script><noscript><style>
-#nav {
-  opacity: 1
-}
-.justified-gallery img {
-  opacity: 1
-}
-</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">46</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">15</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/img/lucency.png)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">Oah's Blog</a></span><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site_title">Oah's Blog</h1><div id="site_subtitle"><span id="subtitle"></span></div></div><div id="scroll_down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/05/28/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="Docker常用命令">Docker常用命令</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-28T01:34:21.000Z" title="发表于 2020-05-28 09:34:21">2020-05-28</time></span></div><div class="content">镜像镜像命名方式1[命名空间&#x2F;]镜像名[:标签]
+  }
+} </script><meta name="generator" content="Hexo 4.2.0"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="false"><div class="author-info"><div class="author-info__avatar text-center"><img src="/img/avatar.gif"></div><div class="author-info__name text-center">Oah</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/XshIsMe" target="_blank" rel="noopener">GitHub</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">46</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">15</span></a></div></div></div><nav class="no-bg" id="nav"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Oah's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a></span><span class="pull-right"></span></div><div id="site-info"><div id="site-title">Oah's Blog</div><div id="site-sub-title"></div></div></nav><div id="content-outer"><div class="layout" id="content-inner"><div class="recent-post-item article-container"><a class="article-title" href="/2020/05/28/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Docker常用命令</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-05-28</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/Docker/">Docker</a></span><div class="content">镜像镜像命名方式1[命名空间&#x2F;]镜像名[:标签]
 
 列出本地主机上的镜像
 -q：只显示镜像ID
@@ -110,55 +20,15 @@ if (autoChangeMode === '1') {
 1docker rmi &lt;镜像名&#x2F;镜像ID&gt;[:tag]
 
 根据Dockerfile创建镜像
--t：设置镜像名
--f：指定Dockerfile路径
-
-12docekr build -t &lt;镜像名&gt;[:tag] .docker build -t &lt;镜像名&gt;[:tag] -f &lt;Dockerfile路径- .
-
-容器新建并启动容器
-–name：为容器指定一个名称
--d：后台运行容器，并返回容器 ID，也即启动守护式容器
--it：前台运行容器
--p：指定端口映射，-p 容器外端口:容器内端口
-
-1docker run &lt;镜像名&#x2F;镜像ID&gt;
-
-列出当前所有正在运行的容器
--a：列出当前所有正在运行 + 历史上运行过的容器
--q：只显示容器编号
-
-1docker ps
-
-容器内退出容器
-停止容器并退出
-
-1exit
-
-
-不停止容器退出
-
-1Ctrl + P  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/05/14/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E7%AC%94%E8%AE%B0/" title="漏洞挖掘笔记">漏洞挖掘笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-14T01:03:15.000Z" title="发表于 2020-05-14 09:03:15">2020-05-14</time></span></div><div class="content">常用Payload1&lt;img src="#" onerror="javascript:console.log('xss_success');" /&gt;
+-t：设置镜像名 ...</div><a class="more" href="/2020/05/28/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#more" style="margin-top: 14px">阅读更多</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2020/05/14/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E7%AC%94%E8%AE%B0/">漏洞挖掘笔记</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-05-14</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/Web%E5%AE%89%E5%85%A8/">Web安全</a></span><div class="content">常用Payload1&lt;img src="#" onerror="javascript:console.log('xss_success');" /&gt;
 
 1&lt;script&gt;console.log('xss_success');&lt;/script&gt;
 
-1&lt;img src="#" onerror="javascript:location.href='http://www.baidu.com';" /&gt;
-
-1&lt;?php phpinfo();?&gt;
-
-1&lt;?php eval($GET_['cmd']);?&gt;
-
-12data:text&#x2F;html;base64,PHNjcmlwdD5hbGVydCgzKTwvc2NyaXB0Pg&#x3D;&#x3D;data:text&#x2F;html;%3C%73%63%72%69%70%74%3E%61%6C%65%72%74%2829%29%3C%2F%73%63%72%69%70%74%3E
-
-代码审计常用正则获取用户输入
-1\$_SERVER|\$_COOKIE|\$_REQ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/05/07/SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B/" title="SQL注入的四种类型">SQL注入的四种类型</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-07T02:31:59.000Z" title="发表于 2020-05-07 10:31:59">2020-05-07</time></span></div><div class="content">联合查询注入布尔盲注延时注入报错注入floor 报错注入用到的函数
+1&lt;img  ...</div><a class="more" href="/2020/05/14/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E7%AC%94%E8%AE%B0/#more" style="margin-top: 14px">阅读更多</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2020/05/07/SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B/">SQL注入的四种类型</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-05-07</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/Web%E5%AE%89%E5%85%A8/">Web安全</a></span><div class="content">联合查询注入布尔盲注延时注入报错注入floor 报错注入用到的函数
 concat(str1, str2, ...)：将多个字符串连接成一个字符串
 floor()：向下取整，只保留整数部分
 rand()：生成 0 到 1 之间的随机数，rand(0) 可以设置随机数种子，每次结果相同
-version()：返回数据库版本
-
-SQL语句123456789101112SELECT count(*), (    concat(        floor(            rand()*2        ),         (            SELECT version()        )    ))xFROM testGROUP BY x;
-
-测试结果123456789101112131415161718192021222324252627282930313233mysql&gt; SELECT count(*), (    -&gt;     concat(    -&gt;         floor(    -&gt;             rand()*2    -& ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/05/04/Vulhub%E7%9A%84%E5%AE%89%E8%A3%85/" title="Vulhub的安装">Vulhub的安装</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-04T03:06:38.000Z" title="发表于 2020-05-04 11:06:38">2020-05-04</time></span></div><div class="content">安装Ubuntu虚拟机
+version( ...</div><a class="more" href="/2020/05/07/SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B/#more" style="margin-top: 14px">阅读更多</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2020/05/04/Vulhub%E7%9A%84%E5%AE%89%E8%A3%85/">Vulhub的安装</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-05-04</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/Web%E5%AE%89%E5%85%A8/">Web安全</a></span><div class="content">安装Ubuntu虚拟机
 VituralBox：https://www.virtualbox.org/
 Ubuntu：https://ubuntu.com/
 
@@ -170,29 +40,10 @@ Ubuntu：https://ubuntu.com/
 
 配置用户信息
 
-12git config --global user.name &quot;Vulhub&quot;git config --global user.email &quot;Vulhub@Vulhub.com&quot;
-
-安装pip1sudo apt install python3-pip
-
-安装curl1sudo apt install curl
-
-安装Docker
-参考官方文档：https://docs.docker.com/engine/install/ubuntu/
-
-安装docker-compose1sudo pip3 install docker-compose
-
-
-有时候网络不好可能失败，可以用国内源
-
-1sudo pip3 install -i https:&#x2F;&#x2F;pypi.douban.com&#x2F;s ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/04/27/order-by-%E5%90%8E%E7%9A%84SQL%E6%B3%A8%E5%85%A5/" title="order by 后的SQL注入">order by 后的SQL注入</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-04-27T05:13:11.000Z" title="发表于 2020-04-27 13:13:11">2020-04-27</time></span></div><div class="content">order by 由于是排序语句，所以可以利用条件语句做判断，根据返回的排序结果不同判断条件的真假。一般带有 order 或者 order by 的变量很可能是这种注入
+12git config --global user ...</div><a class="more" href="/2020/05/04/Vulhub%E7%9A%84%E5%AE%89%E8%A3%85/#more" style="margin-top: 14px">阅读更多</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2020/04/27/order-by-%E5%90%8E%E7%9A%84SQL%E6%B3%A8%E5%85%A5/">order by 后的SQL注入</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-04-27</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/Web%E5%AE%89%E5%85%A8/">Web安全</a></span><div class="content">order by 由于是排序语句，所以可以利用条件语句做判断，根据返回的排序结果不同判断条件的真假。一般带有 order 或者 order by 的变量很可能是这种注入
 正常的查询
-1234567mysql&gt; SELECT * FROM test ORDER BY username;+----+----------+----------+| id | username | password |+----+----------+----------+|  1 | admin    | admin    ||  2 | user     | user     |+----+----------+----------+
-
-修改 username 为 username desc，返回的结果顺序变化（默认asc）
-1234567mysql&gt; SELECT * FROM test ORDER BY username desc;+----+----------+----------+| id | username | password |+----+----------+-------- ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/" title="宽字节SQL注入">宽字节SQL注入</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-04-27T05:11:40.000Z" title="发表于 2020-04-27 13:11:40">2020-04-27</time></span></div><div class="content">GBK 和 UTF-8
-UTF-8 (8-bit Unicode Transformation Format)是一种针对Unicode的可变长度字符编码，又称万国码，它包含全世界所有国家需要用到的字符，是国际编码，通用性强，是用以解决国际上字符的一种多字节编码。由Ken Thompson于1992年创建。UTF-8用1到4个字节编码UNICODE字符，它对英文使用8位/8Bit（即1个字节/1Byte），中文使用24位/24Bit（3个字节/3Byte）来编码。用在网页上可以同一页面显示中文简体繁体及其它语言（如日文，韩文）
-
-GBK (Chinese Internal Code Specification)是汉字编码标准之一，全称《汉字内码扩展规范》，中华人民共和国全国信息技术标准化技术委员会1995年12月1日制订，国家技术监督局标准化司、电子工业部科技与质量监督司1995年12月15日联合以技监标函1995 229号文件的形式，将它确定为技术规范指导性文件。GBK是国家标准GB2312基础上扩容后兼容GB2312的标准（GB2312共收录了7445个字符，包括6763个汉字和68 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/04/27/SQL%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/" title="SQL注入基础">SQL注入基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-04-27T04:45:29.000Z" title="发表于 2020-04-27 12:45:29">2020-04-27</time></span></div><div class="content">information_schema 数据库存储了数据库的信息
+1234567mysql&gt; SELECT * FROM test ORDER BY username;+---- ...</div><a class="more" href="/2020/04/27/order-by-%E5%90%8E%E7%9A%84SQL%E6%B3%A8%E5%85%A5/#more" style="margin-top: 14px">阅读更多</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/">宽字节SQL注入</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-04-27</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/Web%E5%AE%89%E5%85%A8/">Web安全</a></span><div class="content">GBK 和 UTF-8
+UTF-8 (8-bit Unicode Transformation Format)是一种针对Unicode的可变长度字符编码，又称万国码，它包含全世界所有国家需要用到的字符，是国际编码，通用性强，是用以解决国际上字符的一种多字节编码。由Ken Thompson于1992年 ...</div><a class="more" href="/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/#more" style="margin-top: 14px">阅读更多</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2020/04/27/SQL%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/">SQL注入基础</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-04-27</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/Web%E5%AE%89%E5%85%A8/">Web安全</a></span><div class="content">information_schema 数据库存储了数据库的信息
 
 tables 表
 
@@ -204,51 +55,20 @@ columns 表
 
 table_schema 字段：数据库名
 table_name 字段：表名
-column_name 字段：字段名
-
-
-
-用法
-123# FROM 数据库名.表名SELECT table_schema, table_name, column_nameFROM information_schema.columns #
-
-
-注入步骤猜解字段数order11' ORDER BY 1 #
-select可以用这个方法找出在网页的哪个位置回显结果
-11' UNION SELECT 1, 2, 3 #
-
-获取数据库信息
-database()：将会返回当前所使用的数据库名字
-user()：将会返回执行当前查询的用户名
-version()：获取当前数据库版本
-@@version_compile_os：获取当前操作系统
-
-11' UNION SELECT database(), user(), version(), @@v ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/04/27/SQL%E5%BB%B6%E6%97%B6%E6%B3%A8%E5%85%A5/" title="SQL延时注入">SQL延时注入</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-04-27T02:31:23.000Z" title="发表于 2020-04-27 10:31:23">2020-04-27</time></span></div><div class="content">在SQL注入无回显的情况下，可以使用延时注入，通过服务响应时间，判断是否成功注入
+column_name 字段：字段名 ...</div><a class="more" href="/2020/04/27/SQL%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/#more" style="margin-top: 14px">阅读更多</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2020/04/27/SQL%E5%BB%B6%E6%97%B6%E6%B3%A8%E5%85%A5/">SQL延时注入</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-04-27</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/Web%E5%AE%89%E5%85%A8/">Web安全</a></span><div class="content">在SQL注入无回显的情况下，可以使用延时注入，通过服务响应时间，判断是否成功注入
 用到的函数
 sleep(N)：让语句停留 N 秒钟，再继续执行
 benchmark(count, expression)：重复计算 expression 表达式 count 次
-if(condition, value_true, value_false)：判断 condition，结果为 true 返回 value_true，为 false 返回 value_false
-ascii(char)：返回 char 的 ascii 码
-left(string, N)：返回字符串 string 左边的 N 个字符
-right(string, N)：返回字符串 string 右边的 N 个字符
-substringing(string, start, length)：返回 string 字符串从第 start 个字符开始的 length 个字符
-mid(string, start, length)：和 substringing() 一样
-
-注入方法猜解当前数据库名长度
-1SELECT if(length(databa ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/04/26/PrepareStatement%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E9%98%B2SQL%E6%B3%A8%E5%85%A5/" title="PrepareStatement为什么能防SQL注入">PrepareStatement为什么能防SQL注入</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-04-26T10:00:01.000Z" title="发表于 2020-04-26 18:00:01">2020-04-26</time></span></div><div class="content">使用 prepareStatement.toString() 可以将填充占位符后的sql语句打印出来，用这个方法测试预编译后的sql语句有什么不同。下面是三个输入例子：
-123456789输入参数：admin测试 PrepareStatement: select * from test where username&#x3D;&#39;admin&#39;查询到一个结果1 admin admin测试 Statement: select * from test where username&#x3D;&#39;admin&#39;查询到一个结果1 admin admin
-
-123456789输入参数：&#39; or 1&#x3D;1 # 测试 PrepareStatement: select * from test where username&#x3D;&#39;&#39;&#39; or 1&#x3D;1 # &#39;没有查询到结果测试 Statement: select * from test where username&#x3D;&#39;&#39; or 1&#x3D;1 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/04/26/JDBC%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/" title="JDBC的安装和使用">JDBC的安装和使用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-04-26T07:58:45.000Z" title="发表于 2020-04-26 15:58:45">2020-04-26</time></span></div><div class="content">下载JDBC下载地址：https://dev.mysql.com/downloads/connector/j/
+if(condition, value_ ...</div><a class="more" href="/2020/04/27/SQL%E5%BB%B6%E6%97%B6%E6%B3%A8%E5%85%A5/#more" style="margin-top: 14px">阅读更多</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2020/04/26/PrepareStatement%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E9%98%B2SQL%E6%B3%A8%E5%85%A5/">PrepareStatement为什么能防SQL注入</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-04-26</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/Web%E5%AE%89%E5%85%A8/">Web安全</a></span><div class="content">使用 prepareStatement.toString() 可以将填充占位符后的sql语句打印出来，用这个方法测试预编译后的sql语句有什么不同。下面是三个输入例子：
+123456789输入参数：admin测试 PrepareStatement: select * from test where  ...</div><a class="more" href="/2020/04/26/PrepareStatement%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E9%98%B2SQL%E6%B3%A8%E5%85%A5/#more" style="margin-top: 14px">阅读更多</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2020/04/26/JDBC%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/">JDBC的安装和使用</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-04-26</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/Java/">Java</a></span><div class="content">下载JDBC下载地址：https://dev.mysql.com/downloads/connector/j/
 选择 Platform Independent
 因为我是Windows环境，所以下载zip包
 
 解压压缩包
 
 导入JDBCIDE用的是eclipse
-在项目下新建一个文件夹（例如：lib），将jar文件复制粘贴到文件夹下
-
-添加到路径
-
-成功后包会添加到 Referenced Libraries 中
-
-JDBC的使用连接数据库
-12345678910111213// URL要用serverTimezone=GMT%2B8设置时区，不然会报错public static final String URL = "jdbc:mysql://localhost:3306/&lt;数据库名&gt;?serverTimezone=GMT%2B8";// 数据库用户名public static final String USER = "root";// 数据库密码public static final String PASSWORD = "123456";public static void ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Oah</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives"><div class="headline">文章</div><div class="length_num">46</div></a></div><div class="card-info-data-item is-center">      <a href="/tags"><div class="headline">标签</div><div class="length_num">15</div></a></div></div><a class="button--animated" id="card-info-btn" href="https://github.com/XshIsMe" target="_blank" rel="noopener"><i class="fab fa-github"></i><span>Follow Me</span></a></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-recent-item"><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/9999/09/09/%E8%B5%84%E6%BA%90%E6%94%B6%E8%97%8F/" title="【置顶】资源收藏">【置顶】资源收藏</a><time class="aside-post_meta post-meta-date" datetime="9999-09-08T16:00:00.000Z" title="发表于 9999-09-09 00:00:00">9999-09-09</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2020/08/04/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%85%AD%EF%BC%89/" title="Vulhub学习（六）">Vulhub学习（六）</a><time class="aside-post_meta post-meta-date" datetime="2020-08-04T01:54:07.000Z" title="发表于 2020-08-04 09:54:07">2020-08-04</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2020/07/29/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="Linux常用命令">Linux常用命令</a><time class="aside-post_meta post-meta-date" datetime="2020-07-29T01:38:54.000Z" title="发表于 2020-07-29 09:38:54">2020-07-29</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/" title="SpringBoot学习">SpringBoot学习</a><time class="aside-post_meta post-meta-date" datetime="2020-07-28T07:19:09.000Z" title="发表于 2020-07-28 15:19:09">2020-07-28</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2020/07/23/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%94%EF%BC%89/" title="Vulhub学习（五）">Vulhub学习（五）</a><time class="aside-post_meta post-meta-date" datetime="2020-07-23T01:56:36.000Z" title="发表于 2020-07-23 09:56:36">2020-07-23</time></div></div></div></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href='/tags/Docker/' style='font-size:21px; color:rgb(141, 199, 186)'>Docker</a><a href='/tags/Git/' style='font-size:17px; color:rgb(63, 35, 85)'>Git</a><a href='/tags/Java/' style='font-size:18px; color:rgb(124, 139, 57)'>Java</a><a href='/tags/JavaScript/' style='font-size:17px; color:rgb(47, 135, 124)'>JavaScript</a><a href='/tags/Linux/' style='font-size:20px; color:rgb(114, 16, 195)'>Linux</a><a href='/tags/Python/' style='font-size:17px; color:rgb(85, 177, 137)'>Python</a><a href='/tags/Redis/' style='font-size:18px; color:rgb(20, 3, 157)'>Redis</a><a href='/tags/SpringBoot/' style='font-size:21px; color:rgb(5, 87, 67)'>SpringBoot</a><a href='/tags/Vulhub/' style='font-size:17px; color:rgb(36, 4, 83)'>Vulhub</a><a href='/tags/Web%E5%AE%89%E5%85%A8/' style='font-size:18px; color:rgb(53, 131, 71)'>Web安全</a><a href='/tags/hexo/' style='font-size:17px; color:rgb(194, 182, 132)'>hexo</a><a href='/tags/%E5%85%B6%E4%BB%96/' style='font-size:16px; color:rgb(59, 162, 170)'>其他</a><a href='/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/' style='font-size:16px; color:rgb(40, 64, 174)'>密码学</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/' style='font-size:21px; color:rgb(75, 7, 163)'>数据库</a><a href='/tags/%E7%AE%97%E6%B3%95/' style='font-size:21px; color:rgb(2, 178, 96)'>算法</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/9999/09/"><span class="card-archive-list-date">九月 9999</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">七月 2020</span><span class="card-archive-list-count">14</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/06/"><span class="card-archive-list-date">六月 2020</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/05/"><span class="card-archive-list-date">五月 2020</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/04/"><span class="card-archive-list-date">四月 2020</span><span class="card-archive-list-count">16</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/03/"><span class="card-archive-list-date">三月 2020</span><span class="card-archive-list-count">6</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">文章数目 :</div><div class="webinfo-article-count">46</div></div></div></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By Oah</div><div class="framework-info"><span>框架 </span><a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><div class="js-pjax"></div></div></body></html>
+在项目下新建一个文件夹（例如：lib） ...</div><a class="more" href="/2020/04/26/JDBC%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/#more" style="margin-top: 14px">阅读更多</a><hr></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-chevron-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2020 By Oah</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
