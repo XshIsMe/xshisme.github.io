@@ -1,329 +1,105 @@
-<!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Java,SpringBoot," />
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="安装Maven下载安装到官网下载Binary zip archive 新建一个Maven目录，将压缩包解压到该目录下。并且创建一个MavenRepository文件夹，用作本地Maven仓库  修改Maven配置找到配置文件 Maven\apache-maven-3.6.3\conf\settings.xml 添加本地仓库路径找到下面这段注释 123456&lt;!-- localReposito">
-<meta property="og:type" content="article">
-<meta property="og:title" content="SpringBoot学习">
-<meta property="og:url" content="http://yoursite.com/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/index.html">
-<meta property="og:site_name" content="Oah&#39;s Blog">
-<meta property="og:description" content="安装Maven下载安装到官网下载Binary zip archive 新建一个Maven目录，将压缩包解压到该目录下。并且创建一个MavenRepository文件夹，用作本地Maven仓库  修改Maven配置找到配置文件 Maven\apache-maven-3.6.3\conf\settings.xml 添加本地仓库路径找到下面这段注释 123456&lt;!-- localReposito">
-<meta property="og:image" content="http://yoursite.com/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/a2edf623799cc26411153f6dfc545f17.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/4c9e6df443d57ea5f612593abcee1b8b.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/704ed84d9ccc584ad5e3ab2e0e76bcef.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/7109cc5bae11b97df61a01074a4c2e7d.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/84200f0056bcd72d2d3db233949d1d90.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/09bd1466be21763af2674a612bf7b6db.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/27c55540c58a7d7bb5298691b374efe4.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/ada91aba5102628383b6eb0ae2dbe43e.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/8959fdda6ba8469642e59cd5c8319854.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/bc28fdde553b0ff215987a1c856c65c7.png">
-<meta property="article:published_time" content="2020-07-28T07:19:09.000Z">
-<meta property="article:modified_time" content="2020-07-29T08:44:48.739Z">
-<meta property="article:author" content="Oah">
-<meta property="article:tag" content="Java">
-<meta property="article:tag" content="SpringBoot">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/a2edf623799cc26411153f6dfc545f17.png">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SpringBoot学习 | Oah's Blog</title><meta name="description" content="安装Maven下载安装到官网下载Binary zip archive 新建一个Maven目录，将压缩包解压到该目录下。并且创建一个MavenRepository文件夹，用作本地Maven仓库  修改Maven配置找到配置文件 Maven\apache-maven-3.6.3\conf\settings.xml 添加本地仓库路径找到下面这段注释 123456&lt;!-- localReposito"><meta name="keywords" content="Java,SpringBoot"><meta name="author" content="Oah"><meta name="copyright" content="Oah"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://xshisme.github.io/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><meta property="og:type" content="article"><meta property="og:title" content="SpringBoot学习"><meta property="og:url" content="https://xshisme.github.io/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/"><meta property="og:site_name" content="Oah's Blog"><meta property="og:description" content="安装Maven下载安装到官网下载Binary zip archive 新建一个Maven目录，将压缩包解压到该目录下。并且创建一个MavenRepository文件夹，用作本地Maven仓库  修改Maven配置找到配置文件 Maven\apache-maven-3.6.3\conf\settings.xml 添加本地仓库路径找到下面这段注释 123456&lt;!-- localReposito"><meta property="og:image" content="https://xshisme.github.io/img/white.png"><meta property="article:published_time" content="2020-07-28T07:19:09.000Z"><meta property="article:modified_time" content="2020-07-29T08:44:48.739Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
     }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/2020/07/28/SpringBoot学习/"/>
-
-
-
-
-
-  <title>SpringBoot学习 | Oah's Blog</title>
-  
-
-
-
-
-
-
-
-
-<meta name="generator" content="Hexo 4.2.0"></head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Oah's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Oah">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oah's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">SpringBoot学习</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-28T15:19:09+08:00">
-                2020-07-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h1 id="安装Maven"><a href="#安装Maven" class="headerlink" title="安装Maven"></a>安装Maven</h1><h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><p>到<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">官网</a>下载Binary zip archive</p>
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: false,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-07-29 16:44:48'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">46</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">15</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Maven"><span class="toc-number">1.</span> <span class="toc-text">安装Maven</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载安装"><span class="toc-number">1.1.</span> <span class="toc-text">下载安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改Maven配置"><span class="toc-number">1.2.</span> <span class="toc-text">修改Maven配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加本地仓库路径"><span class="toc-number">1.2.1.</span> <span class="toc-text">添加本地仓库路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加镜像"><span class="toc-number">1.2.2.</span> <span class="toc-text">添加镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置环境变量"><span class="toc-number">1.3.</span> <span class="toc-text">配置环境变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IDEA配置Maven"><span class="toc-number">2.</span> <span class="toc-text">IDEA配置Maven</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#启动Maven插件"><span class="toc-number">2.1.</span> <span class="toc-text">启动Maven插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置Maven插件"><span class="toc-number">2.2.</span> <span class="toc-text">设置Maven插件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IDEA创建SpringBoot项目"><span class="toc-number">3.</span> <span class="toc-text">IDEA创建SpringBoot项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装SpringBoot插件"><span class="toc-number">3.1.</span> <span class="toc-text">安装SpringBoot插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建项目"><span class="toc-number">3.2.</span> <span class="toc-text">创建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行中的错误"><span class="toc-number">3.3.</span> <span class="toc-text">运行中的错误</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文章"><span class="toc-number">4.</span> <span class="toc-text">参考文章</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(/img/white.png)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">Oah's Blog</a></span><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">SpringBoot学习</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-07-28T07:19:09.000Z" title="发表于 2020-07-28 15:19:09">2020-07-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-07-29T08:44:48.739Z" title="更新于 2020-07-29 16:44:48">2020-07-29</time></span></div><div class="meta-secondline"> </div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="安装Maven"><a href="#安装Maven" class="headerlink" title="安装Maven"></a>安装Maven</h1><h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><p>到<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">官网</a>下载Binary zip archive</p>
 <p>新建一个Maven目录，将压缩包解压到该目录下。并且创建一个MavenRepository文件夹，用作本地Maven仓库</p>
-<p><img src="a2edf623799cc26411153f6dfc545f17.png" alt="img"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="a2edf623799cc26411153f6dfc545f17.png" alt="img"></p>
 <h2 id="修改Maven配置"><a href="#修改Maven配置" class="headerlink" title="修改Maven配置"></a>修改Maven配置</h2><p>找到配置文件 <code>Maven\apache-maven-3.6.3\conf\settings.xml</code></p>
 <h3 id="添加本地仓库路径"><a href="#添加本地仓库路径" class="headerlink" title="添加本地仓库路径"></a>添加本地仓库路径</h3><p>找到下面这段注释</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- localRepository</span></span><br><span class="line"><span class="comment"> | The path to the local repository maven will use to store artifacts.</span></span><br><span class="line"><span class="comment"> |</span></span><br><span class="line"><span class="comment"> | Default: $&#123;user.home&#125;/.m2/repository</span></span><br><span class="line"><span class="comment">&lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
@@ -338,26 +114,26 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- mirror</span></span><br><span class="line"><span class="comment">     | Specifies a repository mirror site to use instead of a given repository. The repository that</span></span><br><span class="line"><span class="comment">     | this mirror serves has an ID that matches the mirrorOf element of this mirror. IDs are used</span></span><br><span class="line"><span class="comment">     | for inheritance and direct lookup purposes, and must be unique across the set of mirrors.</span></span><br><span class="line"><span class="comment">     |</span></span><br><span class="line"><span class="comment">    &lt;mirror&gt;</span></span><br><span class="line"><span class="comment">        &lt;id&gt;mirrorId&lt;/id&gt;</span></span><br><span class="line"><span class="comment">        &lt;mirrorOf&gt;repositoryId&lt;/mirrorOf&gt;</span></span><br><span class="line"><span class="comment">        &lt;name&gt;Human Readable Name for this Mirror.&lt;/name&gt;</span></span><br><span class="line"><span class="comment">        &lt;url&gt;http://my.repository.com/repo/path&lt;/url&gt;</span></span><br><span class="line"><span class="comment">    &lt;/mirror&gt;</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><p>新建一个系统变量，变量名是M2_HOME，变量值是Maven的路径</p>
-<p><img src="4c9e6df443d57ea5f612593abcee1b8b.png" alt="img"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="4c9e6df443d57ea5f612593abcee1b8b.png" alt="img"></p>
 <p>编辑PATH系统变量，增加一个Maven目录下bin的路径</p>
-<p><img src="704ed84d9ccc584ad5e3ab2e0e76bcef.png" alt="img"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="704ed84d9ccc584ad5e3ab2e0e76bcef.png" alt="img"></p>
 <h1 id="IDEA配置Maven"><a href="#IDEA配置Maven" class="headerlink" title="IDEA配置Maven"></a>IDEA配置Maven</h1><p>如果有正在打开的项目，要点击 <code>File --&gt; Close Project</code> 关闭项目，进入这个页面，否则设置是只针对当前项目有效的</p>
-<p><img src="7109cc5bae11b97df61a01074a4c2e7d.png" alt="img"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="7109cc5bae11b97df61a01074a4c2e7d.png" alt="img"></p>
 <h2 id="启动Maven插件"><a href="#启动Maven插件" class="headerlink" title="启动Maven插件"></a>启动Maven插件</h2><p>点击 <code>Configure --&gt; Plugins</code>，搜索Maven，然后点击Enable</p>
-<p><img src="84200f0056bcd72d2d3db233949d1d90.png" alt="img"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="84200f0056bcd72d2d3db233949d1d90.png" alt="img"></p>
 <h2 id="设置Maven插件"><a href="#设置Maven插件" class="headerlink" title="设置Maven插件"></a>设置Maven插件</h2><p>点击 <code>Configure --&gt; Settings --&gt; Build, Execution, Deployment --&gt; Build Tools --&gt; Maven</code>，修改红框内的配置</p>
 <ul>
 <li>Maven home directory：Maven路径</li>
 <li>User settings file：settings.xml的路径</li>
 <li>Local repository：本地Maven仓库路径</li>
 </ul>
-<p><img src="09bd1466be21763af2674a612bf7b6db.png" alt="img"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="09bd1466be21763af2674a612bf7b6db.png" alt="img"></p>
 <h1 id="IDEA创建SpringBoot项目"><a href="#IDEA创建SpringBoot项目" class="headerlink" title="IDEA创建SpringBoot项目"></a>IDEA创建SpringBoot项目</h1><h2 id="安装SpringBoot插件"><a href="#安装SpringBoot插件" class="headerlink" title="安装SpringBoot插件"></a>安装SpringBoot插件</h2><p>搜索 <code>Spring Boot</code>，Enable</p>
-<p><img src="27c55540c58a7d7bb5298691b374efe4.png" alt="img"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="27c55540c58a7d7bb5298691b374efe4.png" alt="img"></p>
 <h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p>创建项目，选择 <code>Spring Initializr</code></p>
-<p><img src="ada91aba5102628383b6eb0ae2dbe43e.png" alt="img"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="ada91aba5102628383b6eb0ae2dbe43e.png" alt="img"></p>
 <p>Java Version我选的是8</p>
-<p><img src="8959fdda6ba8469642e59cd5c8319854.png" alt="img"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="8959fdda6ba8469642e59cd5c8319854.png" alt="img"></p>
 <p>接下来一路Next直到Finish就好了</p>
 <h2 id="运行中的错误"><a href="#运行中的错误" class="headerlink" title="运行中的错误"></a>运行中的错误</h2><p>直接运行可能会报以下错误</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Could not transfer artifact org.springframework.boot:spring-boot-starter-parent:pom:2.3.2.RELEASE from&#x2F;to alimaven (http:&#x2F;&#x2F;maven.aliyun.com&#x2F;nexus&#x2F;content&#x2F;groups&#x2F;public&#x2F;): Transfer failed for http:&#x2F;&#x2F;maven.aliyun.com&#x2F;nexus&#x2F;content&#x2F;groups&#x2F;public&#x2F;org&#x2F;springframework&#x2F;boot&#x2F;spring-boot-starter-parent&#x2F;2.3.2.RELEASE&#x2F;spring-boot-starter-parent-2.3.2.RELEASE.pom</span><br></pre></td></tr></table></figure>
@@ -365,386 +141,11 @@
 <p>需要在 <code>File --&gt; Settings --&gt; Build, Execution, Deployment --&gt; Build Tools --&gt; Maven --&gt; Runner</code> 处，给VM Options填上以下内容</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Dmaven.wagon.http.ssl.insecure&#x3D;true -Dmaven.wagon.http.ssl.allowall&#x3D;true</span><br></pre></td></tr></table></figure>
 
-<p><img src="bc28fdde553b0ff215987a1c856c65c7.png" alt="img"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="bc28fdde553b0ff215987a1c856c65c7.png" alt="img"></p>
 <h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ul>
 <li><a href="https://blog.csdn.net/xxaann/article/details/104794669" target="_blank" rel="noopener">idea使用maven下载jar包，出现证书校验问题问题_xxaann的博客-CSDN博客</a></li>
 <li><a href="https://www.jianshu.com/p/af3d5800f763" target="_blank" rel="noopener">SpringBoot入门最详细教程 - 简书</a></li>
 <li><a href="https://blog.csdn.net/stevensam_lin/article/details/81907050" target="_blank" rel="noopener">Maven入门（一）_stevensam_lin的博客-CSDN博客_maven入门</a></li>
 <li><a href="https://www.cnblogs.com/xihehua/p/9639045.html" target="_blank" rel="noopener">IDEA  如何搭建maven 安装、下载、配置（图文） - 隰荷华 - 博客园</a></li>
 </ul>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Java/" rel="tag"># Java</a>
-          
-            <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2020/07/23/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%94%EF%BC%89/" rel="next" title="Vulhub学习（五）">
-                <i class="fa fa-chevron-left"></i> Vulhub学习（五）
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/07/29/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="prev" title="Linux常用命令">
-                Linux常用命令 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Oah</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/%7C%7C%20archive">
-              
-                  <span class="site-state-item-count">46</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Maven"><span class="nav-number">1.</span> <span class="nav-text">安装Maven</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载安装"><span class="nav-number">1.1.</span> <span class="nav-text">下载安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改Maven配置"><span class="nav-number">1.2.</span> <span class="nav-text">修改Maven配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加本地仓库路径"><span class="nav-number">1.2.1.</span> <span class="nav-text">添加本地仓库路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加镜像"><span class="nav-number">1.2.2.</span> <span class="nav-text">添加镜像</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置环境变量"><span class="nav-number">1.3.</span> <span class="nav-text">配置环境变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IDEA配置Maven"><span class="nav-number">2.</span> <span class="nav-text">IDEA配置Maven</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#启动Maven插件"><span class="nav-number">2.1.</span> <span class="nav-text">启动Maven插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置Maven插件"><span class="nav-number">2.2.</span> <span class="nav-text">设置Maven插件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IDEA创建SpringBoot项目"><span class="nav-number">3.</span> <span class="nav-text">IDEA创建SpringBoot项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装SpringBoot插件"><span class="nav-number">3.1.</span> <span class="nav-text">安装SpringBoot插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建项目"><span class="nav-number">3.2.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行中的错误"><span class="nav-number">3.3.</span> <span class="nav-text">运行中的错误</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">4.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Oah</span>
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-</body>
-</html>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Oah</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://xshisme.github.io/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/">https://xshisme.github.io/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xshisme.github.io" target="_blank">Oah's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/SpringBoot/">SpringBoot</a></div><div class="post_share"><div class="social-share" data-image="/img/white.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/07/29/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"><img class="prev-cover" data-lazy-src="/img/white.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Linux常用命令</div></div></a></div><div class="next-post pull-right"><a href="/2020/07/23/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%94%EF%BC%89/"><img class="next-cover" data-lazy-src="/img/white.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Vulhub学习（五）</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/04/26/JDBC的安装和使用/" title="JDBC的安装和使用"><img class="relatedPosts_cover" data-lazy-src="/img/white.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-04-26</div><div class="relatedPosts_title">JDBC的安装和使用</div></div></a></div></div></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By Oah</div><div class="framework-info"><span>框架 </span><a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><div class="js-pjax"></div></div></body></html>

