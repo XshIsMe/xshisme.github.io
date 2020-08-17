@@ -45,7 +45,7 @@
 <li>在A线程执行到一半时，B线程读取了数据，导致A、B的数据不统一</li>
 <li>最终用户1、2的余额总和大于原来的4000，数据出错</li>
 </ul>
-<p><img src="%E6%9D%A1%E4%BB%B6%E7%AB%9E%E4%BA%89/%E6%97%B6%E5%BA%8F%E5%9B%BE.png" alt=""></p>
+<p><img src="%E6%97%B6%E5%BA%8F%E5%9B%BE.png" alt=""></p>
 <h1 id="修复方法"><a href="#修复方法" class="headerlink" title="修复方法"></a>修复方法</h1><ul>
 <li>给转账操作加锁</li>
 </ul>
