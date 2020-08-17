@@ -11,16 +11,16 @@
 <li>首先设置v2ray允许来自局域网的连接</li>
 <li>主界面 → 参数设置 → v2rayN设置 → 勾选 <code>“允许来自局域网的连接”</code></li>
 </ul>
-<p><img src="e35213f71f11e226ee4cbf406ffc017f.png" alt=""></p>
+<p><img src="%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E7%9A%84v2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/e35213f71f11e226ee4cbf406ffc017f.png" alt=""></p>
 <h1 id="VMware设置"><a href="#VMware设置" class="headerlink" title="VMware设置"></a>VMware设置</h1><ul>
 <li>要将网络模式改为桥接模式</li>
 <li>选中虚拟机右键 → 设置 → 网络适配器 → 勾选 <code>“桥接模式（B）：直接连接物理网络”</code></li>
 </ul>
-<p><img src="cb672761da1e14385528047dad60a88d.png" alt=""></p>
+<p><img src="%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E7%9A%84v2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/cb672761da1e14385528047dad60a88d.png" alt=""></p>
 <h1 id="Linux系统设置"><a href="#Linux系统设置" class="headerlink" title="Linux系统设置"></a>Linux系统设置</h1><h2 id="查看宿主机的IP地址"><a href="#查看宿主机的IP地址" class="headerlink" title="查看宿主机的IP地址"></a>查看宿主机的IP地址</h2><ul>
 <li>在 <code>cmd</code> 中输入 <code>ipconfig</code></li>
 </ul>
-<p><img src="641b9bb30bb197ef98f8160791477577.png" alt=""></p>
+<p><img src="%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E7%9A%84v2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/641b9bb30bb197ef98f8160791477577.png" alt=""></p>
 <ul>
 <li>可以看到有三个适配器，其中 <code>VMnet1</code> 是主机模式的网卡，<code>VMnet8</code> 是NAT模式的网卡，<code>WLAN</code> 是宿主机WIFI的网卡</li>
 <li>我们需要的是 <code>WLAN</code> 的IP地址</li>
@@ -30,7 +30,7 @@
 <li>勾选 <code>Manual</code></li>
 <li>在 <code>Socks Host</code> 处填入 <code>WLAN</code> 的IP地址和v2ray监听的端口</li>
 </ul>
-<p><img src="17870fa3ae61dfc36199badc3e49dddb.png" alt=""></p>
+<p><img src="%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E7%9A%84v2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/17870fa3ae61dfc36199badc3e49dddb.png" alt=""></p>
 <h2 id="设置终端代理"><a href="#设置终端代理" class="headerlink" title="设置终端代理"></a>设置终端代理</h2><ul>
 <li>虽然设置了系统代理，但是终端是不会自动走Socks代理的</li>
 <li>可以安装proxychains来走代理</li>

