@@ -38,9 +38,9 @@ def main():
         action = "del"
     handle(folderpath, action)
     if "del" == action:
-        print("INFO  Deleted img path")
+        print("INFO  Deleted img path.")
     elif "add" == action:
-        print("INFO  Add img path")
+        print("INFO  Add img path.")
 
 
 if __name__ == "__main__":
