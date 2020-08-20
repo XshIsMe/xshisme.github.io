@@ -1,13 +1,159 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="宽字节SQL注入"><meta name="keywords" content="Web安全,SQL注入"><meta name="author" content="Oah"><meta name="copyright" content="Oah"><title>宽字节SQL注入 | Oah's Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  }
-} </script><meta name="generator" content="Hexo 4.2.0"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GBK-和-UTF-8"><span class="toc-number">1.</span> <span class="toc-text">GBK 和 UTF-8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UTF-8-和-GBK-在-MySQL-中的区别"><span class="toc-number">2.</span> <span class="toc-text">UTF-8 和 GBK 在 MySQL 中的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#宽字节SQL注入"><span class="toc-number">3.</span> <span class="toc-text">宽字节SQL注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么反斜杠会变成-“運”"><span class="toc-number">3.1.</span> <span class="toc-text">为什么反斜杠会变成 “運”</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.gif"></div><div class="author-info__name text-center">Oah</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/XshIsMe" target="_blank" rel="noopener">GitHub</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">46</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">32</span></a></div></div></div><div id="content-outer"><div class="plain" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Oah's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">文章</a><a class="site-page" href="/tags">标签</a></span><span class="pull-right"></span></div></div><div class="layout" id="content-inner"><article id="post"><div class="plain" id="post-title">宽字节SQL注入</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-04-27</time></div><div class="article-container" id="post-content"><h1 id="GBK-和-UTF-8"><a href="#GBK-和-UTF-8" class="headerlink" title="GBK 和 UTF-8"></a>GBK 和 UTF-8</h1><ul>
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="GBK 和 UTF-8 UTF-8 (8-bit Unicode Transformation Format)是一种针对Unicode的可变长度字符编码，又称万国码，它包含全世界所有国家需要用到的字符，是国际编码，通用性强，是用以解决国际上字符的一种多字节编码。由Ken Thompson于1992年创建。UTF-8用1到4个字节编码UNICODE字符，它对英文使用8位&#x2F;8Bit（即1个字节&#x2F;1By">
+<meta property="og:type" content="article">
+<meta property="og:title" content="宽字节SQL注入">
+<meta property="og:url" content="https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/index.html">
+<meta property="og:site_name" content="Oah&#39;s Blog">
+<meta property="og:description" content="GBK 和 UTF-8 UTF-8 (8-bit Unicode Transformation Format)是一种针对Unicode的可变长度字符编码，又称万国码，它包含全世界所有国家需要用到的字符，是国际编码，通用性强，是用以解决国际上字符的一种多字节编码。由Ken Thompson于1992年创建。UTF-8用1到4个字节编码UNICODE字符，它对英文使用8位&#x2F;8Bit（即1个字节&#x2F;1By">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-27T05:11:40.000Z">
+<meta property="article:modified_time" content="2020-08-20T04:36:55.734Z">
+<meta property="article:author" content="Oah">
+<meta property="article:tag" content="Web安全">
+<meta property="article:tag" content="SQL注入">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>宽字节SQL注入</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="https://github.com/XshIsMe" target="_blank" rel="noopener">Github</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/04/27/order-by-%E5%90%8E%E7%9A%84SQL%E6%B3%A8%E5%85%A5/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/04/27/SQL%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/&text=宽字节SQL注入" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/&title=宽字节SQL注入" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/&is_video=false&description=宽字节SQL注入" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=宽字节SQL注入&body=Check out this article: https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/&title=宽字节SQL注入" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/&title=宽字节SQL注入" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/&title=宽字节SQL注入" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/&title=宽字节SQL注入" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/&name=宽字节SQL注入&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/&t=宽字节SQL注入" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GBK-和-UTF-8"><span class="toc-number">1.</span> <span class="toc-text">GBK 和 UTF-8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UTF-8-和-GBK-在-MySQL-中的区别"><span class="toc-number">2.</span> <span class="toc-text">UTF-8 和 GBK 在 MySQL 中的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#宽字节SQL注入"><span class="toc-number">3.</span> <span class="toc-text">宽字节SQL注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么反斜杠会变成-“運”"><span class="toc-number">3.1.</span> <span class="toc-text">为什么反斜杠会变成 “運”</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        宽字节SQL注入
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Oah's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-04-27T05:11:40.000Z" itemprop="datePublished">2020-04-27</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/SQL%E6%B3%A8%E5%85%A5/" rel="tag">SQL注入</a>, <a class="tag-link" href="/tags/Web%E5%AE%89%E5%85%A8/" rel="tag">Web安全</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="GBK-和-UTF-8"><a href="#GBK-和-UTF-8" class="headerlink" title="GBK 和 UTF-8"></a>GBK 和 UTF-8</h1><ul>
 <li><p><strong>UTF-8 (8-bit Unicode Transformation Format)</strong><br>是一种针对Unicode的可变长度字符编码，又称万国码，它包含全世界所有国家需要用到的字符，是国际编码，通用性强，是用以解决国际上字符的一种多字节编码。由Ken Thompson于1992年创建。UTF-8用1到4个字节编码UNICODE字符，它对英文使用8位/8Bit（即1个字节/1Byte），中文使用24位/24Bit（3个字节/3Byte）来编码。用在网页上可以同一页面显示中文简体繁体及其它语言（如日文，韩文）</p>
 </li>
 <li><p><strong>GBK (Chinese Internal Code Specification)</strong><br>是汉字编码标准之一，全称《汉字内码扩展规范》，中华人民共和国全国信息技术标准化技术委员会1995年12月1日制订，国家技术监督局标准化司、电子工业部科技与质量监督司1995年12月15日联合以技监标函1995 229号文件的形式，将它确定为技术规范指导性文件。<br>GBK是国家标准GB2312基础上扩容后兼容GB2312的标准（GB2312共收录了7445个字符，包括6763个汉字和682个其它符号；GBK共收录了27484个汉字，同时还收录了藏文、蒙文、维吾尔文等主要的少数民族文字）。GBK的文字编码是用双字节来表示的，即不论中、英文字符均使用双字节来表示（注意，GB系列编码是利用了字节中的最高位和ASCII编码区分的，可以和ASCII码混用。所以全角模式下英文是2字节，半角模式英文还是1字节）。为了区分中文，将其最高位都设定成1。GBK包含全部中文字符，是国家编码，通用性比UTF8差，不过UTF8占用的数据库比GBD大</p>
@@ -35,8 +181,139 @@
 <li><code>id=1%DF%5C%27</code> 进行URL解码变成 <code>id=1運&#39;</code> </li>
 <li>其实就是利用GBK是多字节的编码，两个字节代表一个汉字 <code>%DF</code> <code>%5C</code> 组合出了一个 “運” 字</li>
 </ul>
-</div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Web%E5%AE%89%E5%85%A8/">Web安全</a><a class="post-meta__tags" href="/tags/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/04/27/order-by-%E5%90%8E%E7%9A%84SQL%E6%B3%A8%E5%85%A5/"><i class="fa fa-chevron-left">  </i><span>order by 后的SQL注入</span></a></div><div class="next-post pull-right"><a href="/2020/04/27/SQL%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/"><span>SQL注入基础</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2020 By Oah</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
-  $('#nav').addClass('is-mobile')
-  $('footer').addClass('is-mobile')
-  $('#top-container').addClass('is-mobile')
-}</script></body></html>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="https://github.com/XshIsMe" target="_blank" rel="noopener">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GBK-和-UTF-8"><span class="toc-number">1.</span> <span class="toc-text">GBK 和 UTF-8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UTF-8-和-GBK-在-MySQL-中的区别"><span class="toc-number">2.</span> <span class="toc-text">UTF-8 和 GBK 在 MySQL 中的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#宽字节SQL注入"><span class="toc-number">3.</span> <span class="toc-text">宽字节SQL注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么反斜杠会变成-“運”"><span class="toc-number">3.1.</span> <span class="toc-text">为什么反斜杠会变成 “運”</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/&text=宽字节SQL注入" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/&title=宽字节SQL注入" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/&is_video=false&description=宽字节SQL注入" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=宽字节SQL注入&body=Check out this article: https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/&title=宽字节SQL注入" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/&title=宽字节SQL注入" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/&title=宽字节SQL注入" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/&title=宽字节SQL注入" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/&name=宽字节SQL注入&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://xshisme.github.io/2020/04/27/%E5%AE%BD%E5%AD%97%E8%8A%82SQL%E6%B3%A8%E5%85%A5/&t=宽字节SQL注入" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2020
+    Oah
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="https://github.com/XshIsMe" target="_blank" rel="noopener">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
