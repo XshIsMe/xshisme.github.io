@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="一、题目公司新购入了一批咖啡机，大家都想来尝一尝这个咖啡机煮的咖啡。咖啡机可以连续不断地工作，但是每台咖啡机煮一杯咖啡所花费的时间都不一样，并且每一台咖啡机一次只能煮一杯咖啡。每个人都会带着自己的被子来喝咖啡（喝咖啡的时间不计入答案），并且喝完咖啡后，所有人都要清洁各自的杯子。 清洁杯子有两种方案：  使用洗杯器清洁。但是洗杯器只有一个，一次只能洗一个杯子，洗一个杯子需要 X 单位时间。 根据研究">
+    <meta name="description" content="0x01 题目公司新购入了一批咖啡机，大家都想来尝一尝这个咖啡机煮的咖啡。咖啡机可以连续不断地工作，但是每台咖啡机煮一杯咖啡所花费的时间都不一样，并且每一台咖啡机一次只能煮一杯咖啡。每个人都会带着自己的被子来喝咖啡（喝咖啡的时间不计入答案），并且喝完咖啡后，所有人都要清洁各自的杯子。 清洁杯子有两种方案：  使用洗杯器清洁。但是洗杯器只有一个，一次只能洗一个杯子，洗一个杯子需要 X 单位时间。 根">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法：喝咖啡问题">
 <meta property="og:url" content="https://xshisme.github.io/2020/04/23/%E7%AE%97%E6%B3%95%EF%BC%9A%E5%96%9D%E5%92%96%E5%95%A1%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Oah&#39;s Blog">
-<meta property="og:description" content="一、题目公司新购入了一批咖啡机，大家都想来尝一尝这个咖啡机煮的咖啡。咖啡机可以连续不断地工作，但是每台咖啡机煮一杯咖啡所花费的时间都不一样，并且每一台咖啡机一次只能煮一杯咖啡。每个人都会带着自己的被子来喝咖啡（喝咖啡的时间不计入答案），并且喝完咖啡后，所有人都要清洁各自的杯子。 清洁杯子有两种方案：  使用洗杯器清洁。但是洗杯器只有一个，一次只能洗一个杯子，洗一个杯子需要 X 单位时间。 根据研究">
+<meta property="og:description" content="0x01 题目公司新购入了一批咖啡机，大家都想来尝一尝这个咖啡机煮的咖啡。咖啡机可以连续不断地工作，但是每台咖啡机煮一杯咖啡所花费的时间都不一样，并且每一台咖啡机一次只能煮一杯咖啡。每个人都会带着自己的被子来喝咖啡（喝咖啡的时间不计入答案），并且喝完咖啡后，所有人都要清洁各自的杯子。 清洁杯子有两种方案：  使用洗杯器清洁。但是洗杯器只有一个，一次只能洗一个杯子，洗一个杯子需要 X 单位时间。 根">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-04-23T08:25:07.000Z">
-<meta property="article:modified_time" content="2020-08-21T06:01:21.307Z">
+<meta property="article:modified_time" content="2020-08-21T06:09:05.980Z">
 <meta property="article:author" content="Oah">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="算法">
@@ -111,7 +111,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、题目"><span class="toc-number">1.</span> <span class="toc-text">一、题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-输入描述"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 输入描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-输出描述"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 输出描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-示例"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、解题"><span class="toc-number">2.</span> <span class="toc-text">二、解题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-思路"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-算法"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 算法</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-题目"><span class="toc-number">1.</span> <span class="toc-text">0x01 题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-输入描述"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 输入描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-输出描述"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 输出描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-示例"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-解题"><span class="toc-number">2.</span> <span class="toc-text">0x02 解题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-思路"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-算法"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 算法</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -155,7 +155,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="一、题目"><a href="#一、题目" class="headerlink" title="一、题目"></a>一、题目</h2><p>公司新购入了一批咖啡机，大家都想来尝一尝这个咖啡机煮的咖啡。<br>咖啡机可以连续不断地工作，但是每台咖啡机煮一杯咖啡所花费的时间都不一样，并且每一台咖啡机一次只能煮一杯咖啡。<br>每个人都会带着自己的被子来喝咖啡（喝咖啡的时间不计入答案），并且喝完咖啡后，所有人都要清洁各自的杯子。</p>
+    <h2 id="0x01-题目"><a href="#0x01-题目" class="headerlink" title="0x01 题目"></a>0x01 题目</h2><p>公司新购入了一批咖啡机，大家都想来尝一尝这个咖啡机煮的咖啡。<br>咖啡机可以连续不断地工作，但是每台咖啡机煮一杯咖啡所花费的时间都不一样，并且每一台咖啡机一次只能煮一杯咖啡。<br>每个人都会带着自己的被子来喝咖啡（喝咖啡的时间不计入答案），并且喝完咖啡后，所有人都要清洁各自的杯子。</p>
 <p>清洁杯子有两种方案：</p>
 <ul>
 <li>使用洗杯器清洁。但是洗杯器只有一个，一次只能洗一个杯子，洗一个杯子需要 X 单位时间。</li>
@@ -170,7 +170,7 @@
 <p>输出</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">11</span><br><span class="line">11</span><br></pre></td></tr></table></figure>
 
-<h2 id="二、解题"><a href="#二、解题" class="headerlink" title="二、解题"></a>二、解题</h2><h3 id="2-1-思路"><a href="#2-1-思路" class="headerlink" title="2.1 思路"></a>2.1 思路</h3><p>暂无</p>
+<h2 id="0x02-解题"><a href="#0x02-解题" class="headerlink" title="0x02 解题"></a>0x02 解题</h2><h3 id="2-1-思路"><a href="#2-1-思路" class="headerlink" title="2.1 思路"></a>2.1 思路</h3><p>暂无</p>
 <h3 id="2-2-算法"><a href="#2-2-算法" class="headerlink" title="2.2 算法"></a>2.2 算法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
   </div>
 </article>
@@ -198,7 +198,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、题目"><span class="toc-number">1.</span> <span class="toc-text">一、题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-输入描述"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 输入描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-输出描述"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 输出描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-示例"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、解题"><span class="toc-number">2.</span> <span class="toc-text">二、解题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-思路"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-算法"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 算法</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-题目"><span class="toc-number">1.</span> <span class="toc-text">0x01 题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-输入描述"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 输入描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-输出描述"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 输出描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-示例"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-解题"><span class="toc-number">2.</span> <span class="toc-text">0x02 解题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-思路"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-算法"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 算法</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

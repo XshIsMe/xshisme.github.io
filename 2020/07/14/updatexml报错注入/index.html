@@ -14,7 +14,7 @@
 <meta property="og:description" content="前言 在复现 CVE-2016-10134 漏洞时，对它的Payload不是特别理解，所以对其中的函数进行了学习 Payload：  1updatexml(0, concat(0xa, user()), 0)  单独理解0xa 0x 是十六进制数字，在SQL中会解析为ASCII字符 比如字符 a 的ASCII码是 0x41  123456mysql&gt; SELECT 0x41;+------+">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-14T10:03:53.000Z">
-<meta property="article:modified_time" content="2020-08-21T06:01:20.926Z">
+<meta property="article:modified_time" content="2020-08-21T06:09:05.598Z">
 <meta property="article:author" content="Oah">
 <meta property="article:tag" content="Web安全">
 <meta property="article:tag" content="SQL注入">
@@ -188,7 +188,7 @@
 <li>其中第二个参数（XPath_string）如果不是Xpath格式的字符串就会报错</li>
 </ul>
 <h1 id="Payload分析"><a href="#Payload分析" class="headerlink" title="Payload分析"></a>Payload分析</h1><ul>
-<li><code>updatexml()</code> 的第一、第三个参数都不是关键，关键在第二个参数。因为 <code>concat()</code> 的返回值不是Xpath格式的字符串，所以会引起报错</li>
+<li><code>updatexml()</code> 的第0x01 第三个参数都不是关键，关键在第二个参数。因为 <code>concat()</code> 的返回值不是Xpath格式的字符串，所以会引起报错</li>
 <li><code>0xa</code> 可以替换为任意字符串，选择 <code>0xa</code> 的理由是换行符可以让 <code>user()</code> 的结果在单独一行</li>
 <li><code>user()</code> 可以替换为我们要执行的SQL语句</li>
 </ul>
