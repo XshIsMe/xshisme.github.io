@@ -6,20 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Weblogic SSRF漏洞  漏洞复现启动环境 12cd vulhub&#x2F;weblogic&#x2F;ssrfdocker-compose up -d  访问 http:&#x2F;&#x2F;[your-ip]:7001&#x2F;uddiexplorer&#x2F; 点击Search Public Registries 跳转到 http:&#x2F;&#x2F;[your-ip]:7001&#x2F;uddiexplorer&#x2F;SearchPublicRegistrie">
+    <meta name="description" content="Weblogic SSRF漏洞  0x01 漏洞复现启动环境 12cd vulhub&#x2F;weblogic&#x2F;ssrfdocker-compose up -d  访问 http:&#x2F;&#x2F;[your-ip]:7001&#x2F;uddiexplorer&#x2F; 点击Search Public Registries 跳转到 http:&#x2F;&#x2F;[your-ip]:7001&#x2F;uddiexplorer&#x2F;SearchPublicRegi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vulhub学习（五）">
 <meta property="og:url" content="https://xshisme.github.io/2020/07/23/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%94%EF%BC%89/index.html">
 <meta property="og:site_name" content="Oah&#39;s Blog">
-<meta property="og:description" content="Weblogic SSRF漏洞  漏洞复现启动环境 12cd vulhub&#x2F;weblogic&#x2F;ssrfdocker-compose up -d  访问 http:&#x2F;&#x2F;[your-ip]:7001&#x2F;uddiexplorer&#x2F; 点击Search Public Registries 跳转到 http:&#x2F;&#x2F;[your-ip]:7001&#x2F;uddiexplorer&#x2F;SearchPublicRegistrie">
+<meta property="og:description" content="Weblogic SSRF漏洞  0x01 漏洞复现启动环境 12cd vulhub&#x2F;weblogic&#x2F;ssrfdocker-compose up -d  访问 http:&#x2F;&#x2F;[your-ip]:7001&#x2F;uddiexplorer&#x2F; 点击Search Public Registries 跳转到 http:&#x2F;&#x2F;[your-ip]:7001&#x2F;uddiexplorer&#x2F;SearchPublicRegi">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://xshisme.github.io/2020/07/23/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%94%EF%BC%89/87225adae3eee6ebd6016cffb00db924.png">
 <meta property="og:image" content="https://xshisme.github.io/2020/07/23/Vulhub%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%94%EF%BC%89/04669f81f783c8f707ee353b7b48f8e2.png">
 <meta property="article:published_time" content="2020-07-23T01:56:36.000Z">
-<meta property="article:modified_time" content="2020-08-24T02:29:11.373Z">
+<meta property="article:modified_time" content="2020-08-24T03:19:06.547Z">
 <meta property="article:author" content="Oah">
-<meta property="article:tag" content="Web安全">
 <meta property="article:tag" content="Java">
+<meta property="article:tag" content="Web安全">
 <meta property="article:tag" content="Vulhub">
 <meta property="article:tag" content="Weblogic">
 <meta property="article:tag" content="SSRF">
@@ -117,7 +117,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#漏洞复现"><span class="toc-number">1.</span> <span class="toc-text">漏洞复现</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-漏洞复现"><span class="toc-number">1.</span> <span class="toc-text">0x01 漏洞复现</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -164,7 +164,7 @@
     <blockquote>
 <p>Weblogic SSRF漏洞</p>
 </blockquote>
-<h1 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h1><p>启动环境</p>
+<h2 id="0x01-漏洞复现"><a href="#0x01-漏洞复现" class="headerlink" title="0x01 漏洞复现"></a>0x01 漏洞复现</h2><p>启动环境</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> vulhub/weblogic/ssrf</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
 
 <p>访问 <code>http://[your-ip]:7001/uddiexplorer/</code></p>
@@ -208,7 +208,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#漏洞复现"><span class="toc-number">1.</span> <span class="toc-text">漏洞复现</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-漏洞复现"><span class="toc-number">1.</span> <span class="toc-text">0x01 漏洞复现</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
