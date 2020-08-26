@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://xshisme.github.io/2020/05/28/Drupal-1-click-to-RCE%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/82345fd184f5d6e243049e0aabd9d66f.png">
 <meta property="og:image" content="https://xshisme.github.io/2020/05/28/Drupal-1-click-to-RCE%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/c8c99a8f3e79a86fd7e51c8382cdde66.png">
 <meta property="article:published_time" content="2020-05-28T01:57:02.000Z">
-<meta property="article:modified_time" content="2020-08-26T03:06:17.210Z">
+<meta property="article:modified_time" content="2020-08-26T03:10:08.833Z">
 <meta property="article:author" content="Oah">
 <meta property="article:tag" content="Web安全">
 <meta property="article:tag" content="PHP">
@@ -203,8 +203,10 @@
 </tr>
 </tbody></table>
 <h2 id="0x02-PREG-BAD-UTF8-ERROR"><a href="#0x02-PREG-BAD-UTF8-ERROR" class="headerlink" title="0x02 PREG_BAD_UTF8_ERROR"></a>0x02 PREG_BAD_UTF8_ERROR</h2><p>PHP的<code>preg_replace()</code>函数可以使用模式修饰符，其中<code>u</code>修饰符的作用是将字符串当作UTF-8来判断，如果字符串中存在无效的UTF-8字符，就会返回null</p>
+<blockquote>
 <p><strong>u (PCRE_UTF8)</strong></p>
-<p>此修正符打开一个与perl不兼容的附加功能。模式和目标字符串都被认为是UTF-8的。无效的目标字符串会导致<code>preg_*</code>函数什么都匹配不到；无效的模式字符串会导致<code>E_WARNING</code>级别的错误。PHP5.3.4后，5字节和6字节的UTF-8字符序列被考虑为无效（resp. PCRE 7.3 2007-08-28）。以前就被认为是无效的UTF-8。</p>
+<p>此修正符打开一个与perl不兼容的附加功能。模式和目标字符串都被认为是UTF-8的。无效的目标字符串会导致<code>preg_*</code>函数什么都匹配不到；无效的模式字符串会导致<code>E_WARNING</code>级别的错误。PHP5.3.4后，5字节和6字节的UTF-8字符序列被考虑为无效（resp. PCRE 7.3 2007-08-28）。以前就被认为是无效的UTF-8</p>
+</blockquote>
 <h3 id="2-1-测试代码"><a href="#2-1-测试代码" class="headerlink" title="2.1 测试代码"></a>2.1 测试代码</h3><p>在PHP中，单引号内的<code>\xdd</code>格式的字符是不会被解析成UTF-8的，需要用双引号</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$old = <span class="string">"\x00 a \xdf\x80 a \xFF a \x50"</span>;</span><br><span class="line">$new = preg_replace(<span class="string">'/[\x00-\x1F]/u'</span>, <span class="string">'_'</span>, $old);</span><br><span class="line">var_dump($old);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;hr&gt;'</span>;</span><br><span class="line">var_dump($new);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -267,7 +269,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET&#x2F;phar_test.php?action&#x3D;l</span><br></pre></td></tr></table></figure>
 
 <p><img src="c8c99a8f3e79a86fd7e51c8382cdde66.png" alt=""></p>
-<h1 id="Drupal-1-click-to-RCE漏洞"><a href="#Drupal-1-click-to-RCE漏洞" class="headerlink" title="Drupal 1-click to RCE漏洞"></a>Drupal 1-click to RCE漏洞</h1><p>TODO</p>
+<h1 id="Drupal-1-click-to-RCE漏洞"><a href="#Drupal-1-click-to-RCE漏洞" class="headerlink" title="Drupal 1-click to RCE漏洞"></a>Drupal 1-click to RCE漏洞</h1><p>// TODO</p>
 <h2 id="0x06-参考文章"><a href="#0x06-参考文章" class="headerlink" title="0x06 参考文章"></a>0x06 参考文章</h2><ul>
 <li><a href="https://www.cnblogs.com/echovalley/archive/2012/05/26/2519302.html" target="_blank" rel="noopener">UTF8字符集范围 - 我的白日梦 - 博客园</a></li>
 <li><a href="https://www.php.net/manual/zh/reference.pcre.pattern.modifiers.php" target="_blank" rel="noopener">PHP: 正则表达式模式中可用的模式修饰符 - Manual</a></li>
