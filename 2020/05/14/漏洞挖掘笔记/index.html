@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="0x01 PHP1.1 代码审计搜索常用正则表达式   漏洞类型 正则表达式    获取用户输入 &#96;$_SERVER   框架SQL注入 -&gt;query\(   代码执行 &#96;eval(   命令执行 &#96;system(   文件包含 &#96;require(   文件写入 &#96;fwrite(   文件删除 unlink\(   变量覆盖 extract\(   反序列化 unserialize\(">
+    <meta name="description" content="0x01 PHP1.1 代码审计搜索常用正则表达式   漏洞类型 正则表达式    获取用户输入 \$_SERVER|\$_COOKIE|\$_REQUEST|\$_GET|\$_POST   框架SQL注入 -&gt;query\(   代码执行 eval\(|assert\(|call_user_func\(   命令执行 system\(|exec\(|popen\(|passthru\(|">
 <meta property="og:type" content="article">
 <meta property="og:title" content="漏洞挖掘笔记">
 <meta property="og:url" content="https://xshisme.github.io/2020/05/14/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Oah&#39;s Blog">
-<meta property="og:description" content="0x01 PHP1.1 代码审计搜索常用正则表达式   漏洞类型 正则表达式    获取用户输入 &#96;$_SERVER   框架SQL注入 -&gt;query\(   代码执行 &#96;eval(   命令执行 &#96;system(   文件包含 &#96;require(   文件写入 &#96;fwrite(   文件删除 unlink\(   变量覆盖 extract\(   反序列化 unserialize\(">
+<meta property="og:description" content="0x01 PHP1.1 代码审计搜索常用正则表达式   漏洞类型 正则表达式    获取用户输入 \$_SERVER|\$_COOKIE|\$_REQUEST|\$_GET|\$_POST   框架SQL注入 -&gt;query\(   代码执行 eval\(|assert\(|call_user_func\(   命令执行 system\(|exec\(|popen\(|passthru\(|">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-14T01:03:15.000Z">
-<meta property="article:modified_time" content="2020-08-27T08:27:35.443Z">
+<meta property="article:modified_time" content="2020-08-27T08:35:16.753Z">
 <meta property="article:author" content="Oah">
 <meta property="article:tag" content="Web安全">
 <meta name="twitter:card" content="summary">
@@ -163,7 +163,7 @@
 </thead>
 <tbody><tr>
 <td>获取用户输入</td>
-<td>`$_SERVER</td>
+<td><code>\$_SERVER|\$_COOKIE|\$_REQUEST|\$_GET|\$_POST</code></td>
 </tr>
 <tr>
 <td>框架SQL注入</td>
@@ -171,19 +171,19 @@
 </tr>
 <tr>
 <td>代码执行</td>
-<td>`eval(</td>
+<td><code>eval\(|assert\(|call_user_func\(</code></td>
 </tr>
 <tr>
 <td>命令执行</td>
-<td>`system(</td>
+<td><code>system\(|exec\(|popen\(|passthru\(|shell_exec\(</code></td>
 </tr>
 <tr>
 <td>文件包含</td>
-<td>`require(</td>
+<td><code>require\(|require_once\(|include\(|include_once\(</code></td>
 </tr>
 <tr>
 <td>文件写入</td>
-<td>`fwrite(</td>
+<td><code>fwrite\(|file_put_contents\(</code></td>
 </tr>
 <tr>
 <td>文件删除</td>
