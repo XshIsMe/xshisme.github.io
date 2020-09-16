@@ -444,9 +444,9 @@
       
         <tags>
             
-            <tag> Vulhub </tag>
-            
             <tag> PHP </tag>
+            
+            <tag> Vulhub </tag>
             
             <tag> Wordpress </tag>
             
@@ -473,9 +473,9 @@
       
         <tags>
             
-            <tag> Vulhub </tag>
-            
             <tag> PHP </tag>
+            
+            <tag> Vulhub </tag>
             
             <tag> Zabbix </tag>
             
@@ -1260,12 +1260,6 @@
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> Hexo </tag>
-            
-        </tags>
       
     </entry>
     
