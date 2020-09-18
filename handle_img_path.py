@@ -25,9 +25,9 @@ def handle(folderpath, action="del"):
         filepath = os.path.join(folderpath, filename)
         if not os.path.isdir(filepath):
             if "del" == action:
-                del_path(filepath, filename.rstrip(".md"))
+                del_path(filepath, filename.replace(".md", ""))
             elif "add" == action:
-                add_path(filepath, filename.rstrip(".md"))
+                add_path(filepath, filename.replace(".md", ""))
 
 
 def main():

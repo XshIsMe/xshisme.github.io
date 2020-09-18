@@ -13,17 +13,17 @@
 <meta property="og:site_name" content="Oah&#39;s Blog">
 <meta property="og:description" content="0x01 一次性密码本(One Time Pad)一次性密码本是一种非常简单的密码，它的原理是将明文与一串随机的比特序列进行XOR运算。如果将硬币的正面设为0，反面设为1，则通过不断掷硬币就能够产生这样一串随机的比特序列 举个例子，midnight这个单词的ASCII码的二进制表示如下 12m        i        d        n        i        g">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://xshisme.github.io/2020/08/27/Many-Time-Pad/Many-Time-Pad/af1955cf1b53c0b2e09589c75e73fcda.png">
-<meta property="og:image" content="https://xshisme.github.io/2020/08/27/Many-Time-Pad/Many-Time-Pad/051442d39efd2ccdd4b7e09de599342a.png">
-<meta property="og:image" content="https://xshisme.github.io/2020/08/27/Many-Time-Pad/Many-Time-Pad/d182ac1b56f24bea9cf2bc692ffe6560.png">
+<meta property="og:image" content="https://xshisme.github.io/2020/08/27/Many-Time-Pad/af1955cf1b53c0b2e09589c75e73fcda.png">
+<meta property="og:image" content="https://xshisme.github.io/2020/08/27/Many-Time-Pad/051442d39efd2ccdd4b7e09de599342a.png">
+<meta property="og:image" content="https://xshisme.github.io/2020/08/27/Many-Time-Pad/d182ac1b56f24bea9cf2bc692ffe6560.png">
 <meta property="article:published_time" content="2020-08-27T01:45:02.000Z">
-<meta property="article:modified_time" content="2020-09-18T01:39:41.788Z">
+<meta property="article:modified_time" content="2020-09-18T01:49:27.062Z">
 <meta property="article:author" content="Oah">
 <meta property="article:tag" content="密码学">
 <meta property="article:tag" content="一次性密码本">
 <meta property="article:tag" content="流加密">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://xshisme.github.io/2020/08/27/Many-Time-Pad/Many-Time-Pad/af1955cf1b53c0b2e09589c75e73fcda.png">
+<meta name="twitter:image" content="https://xshisme.github.io/2020/08/27/Many-Time-Pad/af1955cf1b53c0b2e09589c75e73fcda.png">
     
     
         
@@ -208,14 +208,14 @@
 
 <p>这里使用MTP提供的<a href="https://github.com/CameronLonsdale/MTP/blob/master/examples/sample.ciphertexts" target="_blank" rel="noopener">示例文件</a></p>
 <p>它的内容是11条由相同密钥加密的密文，用hex的格式存储，MTP支持的也是hex格式</p>
-<p><img src="Many-Time-Pad/af1955cf1b53c0b2e09589c75e73fcda.png" alt=""></p>
+<p><img src="af1955cf1b53c0b2e09589c75e73fcda.png" alt=""></p>
 <p>使用MTP打开示例文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtp examples&#x2F;sample.ciphertexts</span><br></pre></td></tr></table></figure>
 
 <p>显示如下，MTP已经自动帮我们识别出了一些语句，接下来可以自己手动去猜测文本的内容</p>
-<p><img src="Many-Time-Pad/051442d39efd2ccdd4b7e09de599342a.png" alt=""></p>
+<p><img src="051442d39efd2ccdd4b7e09de599342a.png" alt=""></p>
 <p>这是猜测的结果</p>
-<p><img src="Many-Time-Pad/d182ac1b56f24bea9cf2bc692ffe6560.png" alt=""></p>
+<p><img src="d182ac1b56f24bea9cf2bc692ffe6560.png" alt=""></p>
 <p>退出虚拟环境</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 退出虚拟环境</span><br><span class="line">deactivate</span><br></pre></td></tr></table></figure>
 
