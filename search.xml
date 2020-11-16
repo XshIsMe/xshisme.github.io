@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>一次公众号推文解密</title>
+      <link href="/2020/11/17/%E4%B8%80%E6%AC%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E6%8E%A8%E6%96%87%E8%A7%A3%E5%AF%86/"/>
+      <url>/2020/11/17/%E4%B8%80%E6%AC%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E6%8E%A8%E6%96%87%E8%A7%A3%E5%AF%86/</url>
+      
+        <content type="html"><![CDATA[<p>看到了这篇推文：<a href="https://mp.weixin.qq.com/s/-PM3jWgPgOOtwOYjsGLU7w" target="_blank" rel="noopener">这件事，想先说给一直关注着我们的「你」听</a></p><p><img src="6750f495a821cab05afe5d3359a886dd.png" alt=""></p><p>进去只有两个字符串<code>aHR0cHM6Ly9wYXN0ZWJpbi5jb20vcmF3L3Y5Ynk4enU0</code>和<code>ec1fe12</code></p><p>首先处理长的那个字符串，遇事不决base64，得到URL：<a href="https://pastebin.com/raw/v9by8zu4" target="_blank" rel="noopener">https://pastebin.com/raw/v9by8zu4</a></p><p>访问URL，内容是二进制文件的hex格式</p><p><img src="ff13bb472c2862b28960ecf97a3b3dae.png" alt=""></p><p>看到<code>PK</code>开头就知道这是一个zip文件了，现在要做的是将这个hex格式的字符中的16进制数字提取出来，转换成二进制格式写入zip文件</p><p>用Python脚本来解决</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取数据</span></span><br><span class="line">url = <span class="string">"https://pastebin.com/raw/v9by8zu4"</span></span><br><span class="line">response = requests.get(url)</span><br><span class="line">bin_text = response.text</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提取数据中的十六进制数字</span></span><br><span class="line">source_data = <span class="string">""</span>.join(re.findall(<span class="string">r"([0-9a-zA-Z]&#123;4&#125;) "</span>, bin_text) + [<span class="string">"00"</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将十六进制数字转换为二进制数据流</span></span><br><span class="line">new_data = <span class="string">b""</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(source_data), <span class="number">2</span>):</span><br><span class="line">    tmp_char = source_data[i : i + <span class="number">2</span>]</span><br><span class="line">    new_data += bytes.fromhex(tmp_char)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出到zip文件</span></span><br><span class="line">filename = <span class="string">"output.zip"</span></span><br><span class="line"><span class="keyword">with</span> open(filename, <span class="string">"wb"</span>) <span class="keyword">as</span> file:</span><br><span class="line">    file.write(new_data)</span><br></pre></td></tr></table></figure><p>生成的压缩包</p><p><img src="628f25af1deb7c3626a4c6a707fdf31a.png" alt=""></p><p>解压需要密码，这时想到第二个字符串<code>ec1fe12</code></p><p><img src="bea6ee262ced89e05e1eb36a32d58169.png" alt=""></p><p><img src="d69f4a74c0de5c8106c1ffacb46bde8d.png" alt=""></p><p>上GitHub搜索，发现有提交记录，第一条记录的完整哈希值就是解压密码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ec1fe126ee9a42049b2d3d89779d405fd6a80747</span><br></pre></td></tr></table></figure><p>在命令行执行<code>cat cat</code>，显示出下面的字符画，这就是推文要传递的信息</p><p><img src="81be7934d6e74d38e2508fb63c37ca73.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 安全研究 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>php://filter详解</title>
       <link href="/2020/10/05/php-filter%E8%AF%A6%E8%A7%A3/"/>
       <url>/2020/10/05/php-filter%E8%AF%A6%E8%A7%A3/</url>
