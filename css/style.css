@@ -814,6 +814,9 @@ body {
 #header-post #toc a:hover {
   color: #d480aa;
 }
+#header-post #toc .toc-level-1 > .toc-link {
+  display: none;
+}
 #header-post #toc .toc-level-2 {
   color: #c9cacc;
   font-size: 0.8rem;
