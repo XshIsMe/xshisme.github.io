@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>Word从任意页开始设置页码为第一页</title>
+      <link href="/2021/03/09/Word%E4%BB%8E%E4%BB%BB%E6%84%8F%E9%A1%B5%E5%BC%80%E5%A7%8B%E8%AE%BE%E7%BD%AE%E9%A1%B5%E7%A0%81%E4%B8%BA%E7%AC%AC%E4%B8%80%E9%A1%B5/"/>
+      <url>/2021/03/09/Word%E4%BB%8E%E4%BB%BB%E6%84%8F%E9%A1%B5%E5%BC%80%E5%A7%8B%E8%AE%BE%E7%BD%AE%E9%A1%B5%E7%A0%81%E4%B8%BA%E7%AC%AC%E4%B8%80%E9%A1%B5/</url>
+      
+        <content type="html"><![CDATA[<p>新建一个Word文档，进行简单的编辑，可以看到现在的页码是从封面开始算第一页的，但是一般的需求都是从第一章开始才算第一页，这样不合适</p><p><img src="e7f6a6c62f9a6335f79c40a11d3f0023.png" alt=""></p><p>现在要使页码从第一章开始计算第一页</p><p>首先把光标移到要设置为第一页的那页的最开头</p><p><img src="eec0abdbcb9c15447aecaf6be9c4b917.png" alt=""></p><p>依次点击：布局→分隔符→下一页</p><p><img src="0bd781447a609f90d49c17c4d1ff2a32.png" alt=""></p><p>双击第一章（真正的第一页）的页码，将“链接到前一节”取消</p><p><img src="7f6a75e8d355d21fce07917ef3074a1d.png" alt=""></p><p>在第一章（真正的第一页）页面点击：插入→页码→设置页码格式</p><p><img src="bad15a5f3bdde86b9cf4998cd7916bfd.png" alt=""></p><p>将“起始页码设置为1”</p><p><img src="551705466c906bc2192e1426221b00c5.png" alt=""></p><p>可以看到第一章的页码已经变为了1</p><p><img src="3d853bee97fa8b6ed64198f6959534c8.png" alt=""></p><p>最后只需要将封面的页码删除就可以了</p><p><img src="8da6503672eb36cd8516540f4775e23e.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> IT </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Word </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>WordPress开启详细的Debug模式</title>
+      <link href="/2021/03/09/WordPress%E5%BC%80%E5%90%AF%E8%AF%A6%E7%BB%86%E7%9A%84Debug%E6%A8%A1%E5%BC%8F/"/>
+      <url>/2021/03/09/WordPress%E5%BC%80%E5%90%AF%E8%AF%A6%E7%BB%86%E7%9A%84Debug%E6%A8%A1%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<p>编辑WordPress文件夹根目录下的 <code>wp-config.php</code></p><p>找到 <code>define(&#39;WP_DEBUG&#39;, false);</code></p><p><img src="589031867c99956b14cebd4d06486971.png" alt=""></p><p>替换成</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ini_set(&#39;log_errors&#39;,&#39;On&#39;);</span><br><span class="line">ini_set(&#39;display_errors&#39;,&#39;On&#39;);</span><br><span class="line">ini_set(&#39;error_reporting&#39;, E_ALL );</span><br><span class="line">define(&#39;WP_DEBUG&#39;, true);</span><br><span class="line">define(&#39;WP_DEBUG_LOG&#39;, true);</span><br><span class="line">define(&#39;WP_DEBUG_DISPLAY&#39;, true);</span><br></pre></td></tr></table></figure><p>日志将会保存在 <code>wp-content/debug.log</code> 中</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> WordPress </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>一次公众号推文解密</title>
       <link href="/2020/11/17/%E4%B8%80%E6%AC%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E6%8E%A8%E6%96%87%E8%A7%A3%E5%AF%86/"/>
       <url>/2020/11/17/%E4%B8%80%E6%AC%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E6%8E%A8%E6%96%87%E8%A7%A3%E5%AF%86/</url>
