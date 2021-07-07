@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>【漏洞复现】Apache Druid 文件读取漏洞 (CVE-2021-26920)</title>
+      <link href="/2021/07/07/%E3%80%90%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E3%80%91Apache-Druid-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E-CVE-2021-26920/"/>
+      <url>/2021/07/07/%E3%80%90%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E3%80%91Apache-Druid-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E-CVE-2021-26920/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h1><p><a href="https://mp.weixin.qq.com/s/sIIoGSlUTg146bmJanKWeQ" target="_blank" rel="noopener">【漏洞通告】Apache Druid 文件读取漏洞 CVE-2021-26920</a></p><h1 id="2-漏洞分析"><a href="#2-漏洞分析" class="headerlink" title="2 漏洞分析"></a>2 漏洞分析</h1><p>下载 druid-0.20.2 的源码</p><p>漏洞通告中已经说明了漏洞在 HTTP InputSource 中</p><p><img src="2021-07-07-12-12-56.png" alt=""></p><p>找到 <code>HttpInputSourceTest</code> 类，可以看出 <code>HttpInputSource</code> 类是通过构造方法传入 URL，然后通过 <code>mapper.readValue()</code> 获取返回值</p><p><img src="2021-07-07-12-14-44.png" alt=""></p><p>查看 <code>HttpInputSource</code> 类的构造方法，这里只是单纯的将 URL 赋值，没有进行操作</p><p><img src="2021-07-07-12-16-24.png" alt=""></p><p><code>formattableReader</code> 中调用了 <code>HttpEntity</code> 类，并且传入了 uris</p><p><img src="2021-07-07-12-19-18.png" alt=""></p><blockquote><p>uris 在 <code>creareSplits</code> 方法中出现</p></blockquote><p><img src="2021-07-07-12-19-46.png" alt=""></p><p>跟踪到 <code>HttpEntity</code> 类，这里调用了 <code>URLConnection</code> 对 URL 发起请求，并且没有任何过滤，所以可以用 file 协议对文件进行读取</p><p><img src="2021-07-07-12-22-09.png" alt=""></p><h1 id="3-漏洞验证"><a href="#3-漏洞验证" class="headerlink" title="3 漏洞验证"></a>3 漏洞验证</h1><h2 id="3-1-环境搭建"><a href="#3-1-环境搭建" class="headerlink" title="3.1 环境搭建"></a>3.1 环境搭建</h2><p>参考之前写的博客 </p><p><a href="https://xshisme.github.io/2021/04/07/%E3%80%90%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E3%80%91Apache-Druid-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E-CVE-2021-26919/">【漏洞复现】Apache Druid 远程代码执行漏洞 (CVE-2021-26919)</a></p><h2 id="3-2-漏洞触发"><a href="#3-2-漏洞触发" class="headerlink" title="3.2 漏洞触发"></a>3.2 漏洞触发</h2><p>访问 <a href="http://192.168.182.134:8888/" target="_blank" rel="noopener">http://192.168.182.134:8888/</a></p><p>选择 Load data → HTTP(s)</p><p>在 URL 处输入 <code>file:///etc/passwd</code>，然后提交，成功读取到文件</p><p><img src="2021-07-07-12-40-28.png" alt=""></p><h1 id="4-参考"><a href="#4-参考" class="headerlink" title="4 参考"></a>4 参考</h1><ul><li><a href="https://mp.weixin.qq.com/s/sIIoGSlUTg146bmJanKWeQ" target="_blank" rel="noopener">【漏洞通告】Apache Druid 文件读取漏洞 CVE-2021-26920</a></li><li><a href="https://bbs.csdn.net/topics/390197489/" target="_blank" rel="noopener">URLConnection类向本地文件中写数据的问题-CSDN社区</a></li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【漏洞复现】Apache Druid 远程代码执行漏洞 (CVE-2021-26919)</title>
       <link href="/2021/04/07/%E3%80%90%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E3%80%91Apache-Druid-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E-CVE-2021-26919/"/>
       <url>/2021/04/07/%E3%80%90%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E3%80%91Apache-Druid-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E-CVE-2021-26919/</url>
